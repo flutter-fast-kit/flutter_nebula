@@ -83,8 +83,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
 
   VectorMath.Vector3 calculateScaleVector(double outlineWidth) {
     var value = VectorMath.Vector3(
-      2 * outlineWidth / itemSize.width,
-      2 * outlineWidth / itemSize.height,
+      1 * outlineWidth / itemSize.width,
+      1 * outlineWidth / itemSize.height,
       0.0,
     );
     if (widget.clipInner) {
@@ -183,7 +183,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
           isFirstCallback = false;
           setState(() {});
         }
-        if (itemKey.currentContext?.size != itemSize) {
+        if (itemKey.currentContext?.size != itemSize && mounted) {
           setState(() {});
         }
         itemSize = itemKey.currentContext?.size;

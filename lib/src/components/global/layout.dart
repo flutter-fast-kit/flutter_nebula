@@ -31,9 +31,6 @@ class _NeLayoutState extends State<NeLayout> {
   @override
   Widget build(BuildContext context) {
     final theme = widget.theme ?? StaticStyle.of(context)?.style;
-    final topPadding = MediaQuery.of(context).padding.top;
-    print(topPadding);
-    print('ayy lmao');
     return NeTheme(
       theme: theme,
       child: AnimatedContainer(

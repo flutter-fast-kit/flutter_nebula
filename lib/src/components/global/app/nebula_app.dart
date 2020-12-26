@@ -239,9 +239,7 @@ class NebulaApp extends StatelessWidget {
         return NeTheme(
           theme: theme,
           child: NeToastService(
-            child: NeDialogService(
-              child: modifiedChild,
-            ),
+            child: modifiedChild,
           ),
         );
       },

@@ -62,6 +62,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_css_style:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "v1.0.0"
+      resolved-ref: c56b150e7351c9820955a22db034241257905bd4
+      url: "git@gitlab.tqxd.com:aitd_exchange/aitd_exchange_mobile/flutter/flutter_css_style.git"
+    source: git
+    version: "1.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -121,13 +130,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0-nullsafety.1"
-  stylist:
-    dependency: "direct main"
-    description:
-      name: stylist
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.0.4"
   term_glyph:
     dependency: transitive
     description:

@@ -160,7 +160,6 @@ class _NeSelectState<T> extends State<NeSelect>
     var height = 0.0;
     for (final item in widget.items) {
       height += item.caluclateHeight(style);
-      print(height);
     }
 
     final position = renderBox.localToGlobal(Offset.zero);
@@ -257,7 +256,6 @@ class _NeSelectState<T> extends State<NeSelect>
 
     final fillColor =
         style.get(generateSelector([...selectorBase, 'background-color']));
-    print(selectorBase);
     final borderColor =
         style.get(generateSelector([...selectorBase, 'border-color']));
 

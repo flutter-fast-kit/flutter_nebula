@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 
 export 'package:flutter_nebula/src/components/app_bar/app_bar_style.dart';
@@ -137,45 +138,51 @@ class NeAppBar extends StatelessWidget implements PreferredSizeWidget {
     double height = 0.0;
     if (hasTitle) height += 64.0;
     if (bottom != null) height += bottom.preferredSize.height;
+    print('height: $height');
     return height;
   }
 
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
-    final topPadding = MediaQuery.of(context).padding.top;
-    return Container(
-      decoration: BoxDecoration(
-        color: backgroundColor ?? style.get('app-bar-background-color'),
-        boxShadow: [style.get('shadow')],
-      ),
-      child: Padding(
-        padding: EdgeInsets.only(top: topPadding),
-        child: StaticStyle(
-          inheritFromParent: false,
-          data: style.style.fork()
-            ..inject(StyleData({
-              'app-bar-foreground-color':
-                  foregroundColor ?? style.get('app-bar-foreground-color'),
-              'icon-color':
-                  foregroundColor ?? style.get('app-bar-foreground-color'),
-            })),
-          child: Container(
-            height: _calculateHeight(),
-            child: Column(
-              children: [
-                if (hasTitle)
-                  Container(
-                    height: 64.0,
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: _buildBody(context),
-                  ),
-                if (bottom != null)
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: bottom,
-                  ),
-              ],
+    Color _backgroundColor =
+        backgroundColor ?? style.get('app-bar-background-color');
+    final SystemUiOverlayStyle _overlayStyle =
+        ThemeData.estimateBrightnessForColor(_backgroundColor) ==
+                Brightness.dark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark;
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: _overlayStyle,
+      child: Material(
+        color: _backgroundColor,
+        child: SafeArea(
+          child: StaticStyle(
+            inheritFromParent: false,
+            data: style.style.fork()
+              ..inject(StyleData({
+                'app-bar-foreground-color':
+                    foregroundColor ?? style.get('app-bar-foreground-color'),
+                'icon-color':
+                    foregroundColor ?? style.get('app-bar-foreground-color'),
+              })),
+            child: Container(
+              height: 48,
+              child: Column(
+                children: [
+                  if (hasTitle)
+                    Container(
+                      height: 48.0,
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: _buildBody(context),
+                    ),
+                  if (bottom != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: bottom,
+                    ),
+                ],
+              ),
             ),
           ),
         ),
@@ -184,7 +191,7 @@ class NeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, _calculateHeight());
+  Size get preferredSize => const Size.fromHeight(48.0);
 }
 
 class _AppBarTitle extends StatelessWidget {

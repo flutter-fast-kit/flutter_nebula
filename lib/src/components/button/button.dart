@@ -228,42 +228,34 @@ class _NeButtonState extends State<NeButton> {
 
     final selectorBackgroundColor =
         style.get(generateSelector([...selectorStateBase, 'background-color']));
-
-    return OutlinedWidget(
-      outlined: outlined,
-      borderRadius: BorderRadius.all(NeWidgetShapeUtils.getRadius(
-        style: style.style,
-        shape: widget.shape,
-      )),
-      child: AnimatedContainer(
-        duration: style.get('minor-animation-duration'),
-        curve: style.get('minor-animation-curve'),
-        decoration: BoxDecoration(
-          color: widget.backgroundColor ?? selectorBackgroundColor,
-          borderRadius: BorderRadius.all(NeWidgetShapeUtils.getRadius(
-            style: style.style,
-            shape: widget.shape,
-          )),
-          border: Border.all(
-            width: style.get(
-              generateSelector([...selectorBase, 'border-width']),
-            ),
-            color: widget.borderColor ??
-                style.get(
-                  generateSelector([...selectorStateBase, 'border-color']),
-                ),
+    return AnimatedContainer(
+      duration: style.get('minor-animation-duration'),
+      curve: style.get('minor-animation-curve'),
+      decoration: BoxDecoration(
+        color: widget.backgroundColor ?? selectorBackgroundColor,
+        borderRadius: BorderRadius.all(NeWidgetShapeUtils.getRadius(
+          style: style.style,
+          shape: widget.shape,
+        )),
+        border: Border.all(
+          width: style.get(
+            generateSelector([...selectorBase, 'border-width']),
           ),
+          color: widget.borderColor ??
+              style.get(
+                generateSelector([...selectorStateBase, 'border-color']),
+              ),
         ),
-        child: OutlinedGestureDetector(
-          onTap: widget.onTap,
-          onOutlineChange: (v) => setState(() => outlined = v),
-          child: Padding(
-            padding: widget.padding ??
-                style.get(
-                  generateSelector([...selectorSizeBase, 'padding']),
-                ),
-            child: _buildBody(context),
-          ),
+      ),
+      child: OutlinedGestureDetector(
+        onTap: widget.onTap,
+        onOutlineChange: (v) => setState(() => outlined = v),
+        child: Padding(
+          padding: widget.padding ??
+              style.get(
+                generateSelector([...selectorSizeBase, 'padding']),
+              ),
+          child: _buildBody(context),
         ),
       ),
     );

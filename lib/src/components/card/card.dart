@@ -164,7 +164,6 @@ class _CardHeader extends StatelessWidget {
     final style = StaticStyle.of(context);
 
     final selectorBase = ['card-header', status];
-    print(selectorBase);
 
     return Container(
       width: double.infinity,

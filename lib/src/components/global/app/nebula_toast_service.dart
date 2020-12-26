@@ -15,8 +15,8 @@ class NeToastService extends StatefulWidget {
   NeToastServiceState createState() => NeToastServiceState();
 
   static NeToastServiceState of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(_NeToastServiceInherited)
-            as _NeToastServiceInherited)
+    return context
+        .dependOnInheritedWidgetOfExactType<_NeToastServiceInherited>()
         .data;
   }
 }

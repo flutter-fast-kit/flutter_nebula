@@ -18,6 +18,9 @@ class NeToggle extends StatefulWidget {
   /// Controls the location of description.
   final NePositioning descriptionPosition;
 
+  /// If it is true, Display icon when toggle is selected.
+  final bool showIcon;
+
   /// A method to call when user presses the toggle. Passes the inverse of [value].
   /// If it is null, then toggle is disabled.
   final void Function(bool) onChanged;
@@ -31,6 +34,7 @@ class NeToggle extends StatefulWidget {
     @required this.onChanged,
     this.status,
     this.description,
+    this.showIcon = false,
     this.descriptionPosition = NePositioning.left,
     this.padding,
   }) : super(key: key);
@@ -136,14 +140,24 @@ class _NeToggleState extends State<NeToggle>
               offset: Offset(
                   (size.width - size.height - 2.0) * animation.value, 0.0),
               child: Container(
-                width: size.height - 4.0,
-                height: size.height - 4.0,
-                decoration: BoxDecoration(
-                  color: style
-                      .get(generateSelector([...selectorBasis, 'knob-color'])),
-                  shape: BoxShape.circle,
-                ),
-              ),
+                  width: size.height - 4.0,
+                  height: size.height - 4.0,
+                  decoration: BoxDecoration(
+                    color: style.get(
+                        generateSelector([...selectorBasis, 'knob-color'])),
+                    shape: BoxShape.circle,
+                  ),
+                  child: widget.showIcon
+                      ? AnimatedOpacity(
+                          duration: Duration(milliseconds: 200),
+                          opacity: selected ? 1 : 0,
+                          child: NeIcon(
+                            EvaIcons.checkmarkOutline,
+                            color: style.get(generateSelector(
+                                [...selectorBasis, 'background-color'])),
+                          ),
+                        )
+                      : null),
             ),
           ),
         ),

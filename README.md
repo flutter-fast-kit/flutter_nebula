@@ -7,9 +7,12 @@ Flutter nebula 是 Eva 设计系统的一个Flutter实现。它包含一组以�
 ```yaml
 flutter_nebula:
     git: 
-      url: http://gitlab.tqxd.com/aitd-hurong/sgp-flutter/flutter_nebula.git
+      url: git@gitlab.tqxd.com:aitd_exchange/aitd_exchange_mobile/flutter/flutter_nebula.git
       ref: v1.0.0
 ```
 
 ## 文档
 
+主色调：
+
+![](./doc/images/nebula-design-color-shades.png)

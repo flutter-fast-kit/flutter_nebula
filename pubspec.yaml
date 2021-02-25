@@ -12,10 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   # css 类样式
-  flutter_css_style:
-    git:
-      url: git@gitlab.tqxd.com:aitd_exchange/aitd_exchange_mobile/flutter/flutter_css_style.git
-      ref: v1.0.0
+  flutter_css_style: ^1.0.0
   # eva_icons_flutter
   # https://github.com/piyushmaurya23/eva_icons_flutter
   eva_icons_flutter: ^2.0.1

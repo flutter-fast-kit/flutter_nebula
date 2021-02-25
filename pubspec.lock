@@ -65,11 +65,9 @@ packages:
   flutter_css_style:
     dependency: "direct main"
     description:
-      path: "."
-      ref: "v1.0.0"
-      resolved-ref: c56b150e7351c9820955a22db034241257905bd4
-      url: "git@gitlab.tqxd.com:aitd_exchange/aitd_exchange_mobile/flutter/flutter_css_style.git"
-    source: git
+      name: flutter_css_style
+      url: "https://pub.flutter-io.cn"
+    source: hosted
     version: "1.0.0"
   flutter_test:
     dependency: "direct dev"

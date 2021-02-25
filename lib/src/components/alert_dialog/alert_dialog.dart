@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
@@ -249,12 +251,14 @@ class NeAlertDialog extends StatelessWidget {
     if (title != null)
       titleWidget = Padding(
         padding: titlePadding ??
-            EdgeInsets.fromLTRB(24.0, 18.0, 24.0, content == null ? 20.0 : 0.0),
+            EdgeInsets.fromLTRB(24.0, 20.0, 24.0, content == null ? 20.0 : 0.0),
         child: DefaultTextStyle(
           child: Semantics(
-            child: Center(
-              child: title,
-            ),
+            child: Platform.isIOS
+                ? Center(
+                    child: title,
+                  )
+                : title,
             namesRoute: true,
             container: true,
           ),
@@ -273,11 +277,12 @@ class NeAlertDialog extends StatelessWidget {
         padding: contentPadding,
         child: DefaultTextStyle(
           child: content,
-          style: titleTextStyle ??
+          textAlign: Platform.isIOS ? TextAlign.center : TextAlign.start,
+          style: contentTextStyle ??
               TextStyle(
                 color: style.get('alert-dialog-text-color'),
                 fontFamily: style.get('alert-dialog-text-font-family'),
-                fontSize: style.get('alert-dialog-text-font-size'),
+                fontSize: style.get('alert-dialog-text-font-size') + 1,
                 fontWeight: style.get('alert-dialog-text-font-weight'),
               ),
         ),
@@ -285,10 +290,12 @@ class NeAlertDialog extends StatelessWidget {
 
     if (actions != null)
       actionsWidget = Container(
-        // padding: actionsPadding,
-        height: 45,
+        padding: actionsPadding,
+        height: Platform.isIOS ? 50 : null,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: Platform.isIOS
+              ? MainAxisAlignment.spaceEvenly
+              : MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.max,
           children: actions,
         ),
@@ -317,21 +324,21 @@ class NeAlertDialog extends StatelessWidget {
       }
     }
 
-    columnChildren.add(Divider(
-      height: 0,
-      color: style.get('alert-dialog-divider-color'),
-    ));
+    if (Platform.isIOS) {
+      columnChildren.add(Divider(
+        height: 0,
+        color: style.get('alert-dialog-divider-color'),
+      ));
+    }
 
     if (actions != null) {
       columnChildren.add(actionsWidget);
     }
 
-    Widget dialogChild = IntrinsicWidth(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: columnChildren,
-      ),
+    Widget dialogChild = Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: columnChildren,
     );
 
     if (label != null)

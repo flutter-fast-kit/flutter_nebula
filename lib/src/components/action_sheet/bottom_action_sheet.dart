@@ -264,7 +264,7 @@ class _ActionSheetState extends State<_ActionSheet> {
           widgets.add(NeButton.ghost(
               fluid: true,
               size: NeWidgetSize.giant,
-              label: NeText.label(
+              label: NeText.subtitle1(
                 action.title,
                 state: NeTextState.basic,
                 textAlign: TextAlign.center,
@@ -441,7 +441,7 @@ class _ChoiceItemWidgetState extends State<__ChoiceItemWidget> {
                         fontSize: 12,
                       ).merge(widget.titleTextStyle),
                     )
-                  : NeText.label(
+                  : NeText.subtitle2(
                       widget.title,
                       state: NeTextState.basic,
                     ),

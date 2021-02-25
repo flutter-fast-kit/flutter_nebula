@@ -4,11 +4,12 @@ library flutter_nebula;
 export 'package:eva_icons_flutter/eva_icons_flutter.dart';
 export 'package:flutter_css_style/flutter_css_style.dart';
 export 'package:flutter_nebula/src/components/action_sheet/action_sheet.dart';
-export 'package:flutter_nebula/src/components/alert_dialog/alert_dialog.dart';
 // Components
 export 'package:flutter_nebula/src/components/android_toast/atoast.dart';
 export 'package:flutter_nebula/src/components/app_bar/app_bar.dart';
 export 'package:flutter_nebula/src/components/button/button.dart';
+export 'package:flutter_nebula/src/components/alert_dialog/alert_dialog.dart';
+export 'package:flutter_nebula/src/components/dialog/dialog.dart';
 export 'package:flutter_nebula/src/components/card/card.dart';
 export 'package:flutter_nebula/src/components/checkbox/checkbox.dart';
 export 'package:flutter_nebula/src/components/divider/divider.dart';

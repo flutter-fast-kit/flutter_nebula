@@ -1,6 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
+import 'package:flutter_nebula/flutter_nebula.dart';
+import 'package:flutter_nebula/src/components/button/button.dart';
 
 import 'alert_action.dart';
 import 'alert_dialog.dart';
@@ -37,41 +40,45 @@ void showAlertDialog({
       final style = StaticStyle.of(context);
       final List<Widget> actionWidgets = [];
       actions.forEach((action) {
-        actionWidgets.add(Expanded(
-            flex: 1,
-            child: CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: action.actionState != AlertActionState.disable
-                  ? () {
-                      Navigator.pop(context);
-                      if (action.onPress != null) {
-                        action.onPress();
-                      }
-                    }
-                  : null,
-              child: Text(
-                action.title,
-                style: const TextStyle(
-                  fontSize: 14,
-                ).merge(action.titleTextStyle).merge(
-                    action.actionStyle == AlertActionStyle.cancel
-                        ? const TextStyle(fontWeight: FontWeight.bold)
-                        : action.actionStyle == AlertActionStyle.destructive
-                            ? const TextStyle(
-                                color: Colors.redAccent,
-                                fontWeight: FontWeight.bold)
-                            : null),
-              ),
-            )));
+        NeWidgetStatus status;
+        switch (action.actionStyle) {
+          case AlertActionStyle.cancel:
+            status = NeWidgetStatus.info;
+            break;
+          case AlertActionStyle.destructive:
+            status = NeWidgetStatus.danger;
+            break;
+          default:
+            break;
+        }
 
-        final index = actions.indexOf(action);
-        if (actions.length == 2 && index == 0) {
-          actionWidgets.add(Container(
-            child: VerticalDivider(
-              indent: 0,
-              color: style.get('alert-dialog-divider-color'),
-            ),
-          ));
+        actionWidgets.add(
+          NeButton.ghost(
+            fluid: false,
+            label: Text(action.title),
+            size: NeWidgetSize.large,
+            status: status,
+            onTap: action.actionState == AlertActionState.disable
+                ? null
+                : () {
+                    Navigator.pop(context);
+                    if (action.onPress != null) {
+                      action.onPress();
+                    }
+                  },
+          ),
+        );
+
+        if (Platform.isIOS) {
+          final index = actions.indexOf(action);
+          if (actions.length == 2 && index == 0) {
+            actionWidgets.add(Container(
+              child: VerticalDivider(
+                indent: 0,
+                color: style.get('alert-dialog-divider-color'),
+              ),
+            ));
+          }
         }
       });
 
@@ -82,6 +89,9 @@ void showAlertDialog({
         content: content,
         contentTextStyle: contentTextStyle,
         actions: actionWidgets,
+        actionsPadding: Platform.isIOS
+            ? EdgeInsets.zero
+            : EdgeInsets.only(bottom: 12, right: 12),
       );
     },
   );
@@ -108,7 +118,7 @@ void showConfirmAlertDialog({
       scrollable: scrollable,
       barrierDismissible: barrierDismissible,
       actions: [
-        AlertAction(title: cancelText),
+        AlertAction(title: cancelText, actionStyle: AlertActionStyle.cancel),
         AlertAction(title: okText, onPress: onOkPress)
       ]);
 }

@@ -69,8 +69,7 @@ ToastFuture showToast(
 
   textPadding ??= _toastTheme?.textPadding ??
       EdgeInsets.symmetric(horizontal: 17.0, vertical: 10.0);
-
-  backgroundColor ??= _toastTheme?.backgroundColor ?? const Color(0x99000000);
+  backgroundColor ??= _toastTheme?.backgroundColor ?? Colors.black87;
   borderRadius ??= _toastTheme?.borderRadius ?? BorderRadius.circular(5.0);
 
   shapeBorder ??= _toastTheme?.shapeBorder ??
@@ -390,7 +389,7 @@ class _StyledToastState extends State<StyledToast> {
           color: Colors.white,
         );
 
-    Color backgroundColor = widget.backgroundColor ?? const Color(0x99000000);
+    Color backgroundColor = widget.backgroundColor ?? Colors.black87;
 
     BorderRadius borderRadius =
         widget.borderRadius ?? BorderRadius.circular(5.0);

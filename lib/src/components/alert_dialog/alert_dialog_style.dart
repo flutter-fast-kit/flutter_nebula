@@ -17,7 +17,10 @@ final StyleData alertDialogStyle = StyleData({
   'alert-dialog-divider-width': 'divider-width',
   'alert-dialog-header-background-color': 'card-background-color',
   'alert-dialog-header-text-color': 'text-basic-color',
-  'alert-dialog-header-text-font-family': 'text-subtitle-font-family',
-  'alert-dialog-header-text-font-weight': 'text-subtitle-font-weight',
-  'alert-dialog-header-text-font-size': 'text-subtitle-font-size',
+  'alert-dialog-header-text-font-family': 'text-heading-6-font-family',
+  'alert-dialog-header-text-font-weight': 'text-heading-6-font-weight',
+  'alert-dialog-header-text-font-size': 'text-heading-6-font-size',
+  'alert-dialog-button-text-font-family': 'text-heading-6-font-family',
+  'alert-dialog-button-text-font-weight': 'text-heading-6-font-weight',
+  'alert-dialog-button-text-font-size': 'text-heading-6-font-size',
 });

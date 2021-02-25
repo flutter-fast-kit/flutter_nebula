@@ -19,6 +19,7 @@ dependencies:
   # 一个用于二维和三维应用的矢量数学库。
   # https://github.com/google/vector_math.dart
   vector_math: ^2.0.8
+  flutter_platform_selector: ^1.0.1
 
 dev_dependencies:
   flutter_test:

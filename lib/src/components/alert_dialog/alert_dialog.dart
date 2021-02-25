@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
+import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
 export 'alert_action.dart';
 export 'alert_quick.dart';
@@ -254,11 +255,11 @@ class NeAlertDialog extends StatelessWidget {
             EdgeInsets.fromLTRB(24.0, 20.0, 24.0, content == null ? 20.0 : 0.0),
         child: DefaultTextStyle(
           child: Semantics(
-            child: Platform.isIOS
-                ? Center(
-                    child: title,
-                  )
-                : title,
+            child: PlatformSelector.select(
+                ios: Center(
+                  child: title,
+                ),
+                android: title),
             namesRoute: true,
             container: true,
           ),
@@ -277,7 +278,8 @@ class NeAlertDialog extends StatelessWidget {
         padding: contentPadding,
         child: DefaultTextStyle(
           child: content,
-          textAlign: Platform.isIOS ? TextAlign.center : TextAlign.start,
+          textAlign: PlatformSelector.select(
+              ios: TextAlign.center, other: TextAlign.start),
           style: contentTextStyle ??
               TextStyle(
                 color: style.get('alert-dialog-text-color'),
@@ -291,11 +293,11 @@ class NeAlertDialog extends StatelessWidget {
     if (actions != null)
       actionsWidget = Container(
         padding: actionsPadding,
-        height: Platform.isIOS ? 50 : null,
+        height: PlatformSelector.select(ios: 50),
         child: Row(
-          mainAxisAlignment: Platform.isIOS
-              ? MainAxisAlignment.spaceEvenly
-              : MainAxisAlignment.end,
+          mainAxisAlignment: PlatformSelector.select(
+              ios: MainAxisAlignment.spaceEvenly,
+              android: MainAxisAlignment.end),
           mainAxisSize: MainAxisSize.max,
           children: actions,
         ),

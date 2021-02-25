@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_nebula/src/components/button/button.dart';
+import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
 import 'alert_action.dart';
 import 'alert_dialog.dart';
@@ -83,16 +84,16 @@ void showAlertDialog({
       });
 
       return NeAlertDialog(
-        title: title,
-        elevation: 0,
-        scrollable: scrollable,
-        content: content,
-        contentTextStyle: contentTextStyle,
-        actions: actionWidgets,
-        actionsPadding: Platform.isIOS
-            ? EdgeInsets.zero
-            : EdgeInsets.only(bottom: 12, right: 12),
-      );
+          title: title,
+          elevation: 0,
+          scrollable: scrollable,
+          content: content,
+          contentTextStyle: contentTextStyle,
+          actions: actionWidgets,
+          actionsPadding: PlatformSelector.select<EdgeInsetsGeometry>(
+            ios: EdgeInsets.zero,
+            android: EdgeInsets.only(bottom: 12, right: 12),
+          ));
     },
   );
 }

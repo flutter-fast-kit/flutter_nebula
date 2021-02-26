@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy:
+  tags:
+    - Ubuntu
+  stage: deploy
+  image: docker:latest
+  script:
+    - docker build -t flutter_nebula_web_demo .
+    - if [ $(docker ps -aq --filter name=flutter_nebula_web_demo) ]; then docker rm -f flutter_nebula_web_demo;fi
+    - docker run -d -p 19911:80 --name flutter_nebula_web_demo flutter_nebula_web_demo

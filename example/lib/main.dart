@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
@@ -36,7 +35,7 @@ class _EquinoxShowcaseAppState extends State<EquinoxShowcaseApp> {
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) {
+    if (defaultTargetPlatform == TargetPlatform.android) {
       SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle(
           statusBarColor: Colors.transparent, //设置为透明
           statusBarIconBrightness: Brightness.light);

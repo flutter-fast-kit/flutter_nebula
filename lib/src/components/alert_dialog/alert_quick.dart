@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_nebula/src/components/button/button.dart';
 import 'package:flutter_platform_selector/flutter_platform_selector.dart';
+import 'package:flutter_nebula/src/locales/locales.dart';
 
 import 'alert_action.dart';
 import 'alert_dialog.dart';
@@ -98,25 +98,29 @@ void showAlertDialog({
 ///
 void showConfirmAlertDialog({
   @required BuildContext context,
-  Widget title = const Text('温馨提示'),
+  Widget title,
   Widget content,
   TextStyle contentTextStyle,
   bool scrollable = true,
   bool barrierDismissible = true,
-  String cancelText = '取消',
-  String okText = '确定',
+  String cancelText,
+  String okText,
   VoidCallback onOkPress,
+  VoidCallback onCancelPress,
 }) {
   showAlertDialog(
       context: context,
-      title: title,
+      title: title ?? Text(context.tr('title')),
       content: content,
       contentTextStyle: contentTextStyle,
       scrollable: scrollable,
       barrierDismissible: barrierDismissible,
       actions: [
-        AlertAction(title: cancelText, actionStyle: AlertActionStyle.cancel),
-        AlertAction(title: okText, onPress: onOkPress)
+        AlertAction(
+            title: cancelText ?? Text(context.tr('cancel')),
+            actionStyle: AlertActionStyle.cancel,
+            onPress: onCancelPress),
+        AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)
       ]);
 }
 
@@ -124,20 +128,22 @@ void showConfirmAlertDialog({
 ///
 void showInfoAlertDialog({
   @required BuildContext context,
-  Widget title = const Text('温馨提示'),
+  Widget title,
   Widget content,
   TextStyle contentTextStyle,
   bool scrollable = true,
   bool barrierDismissible = true,
-  String okText = '确定',
+  String okText,
   VoidCallback onOkPress,
 }) {
   showAlertDialog(
       context: context,
-      title: title,
+      title: title ?? Text(context.tr('title')),
       content: content,
       contentTextStyle: contentTextStyle,
       scrollable: scrollable,
       barrierDismissible: barrierDismissible,
-      actions: [AlertAction(title: okText, onPress: onOkPress)]);
+      actions: [
+        AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)
+      ]);
 }

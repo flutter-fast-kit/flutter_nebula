@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
@@ -70,7 +69,7 @@ void showAlertDialog({
           ),
         );
 
-        if (Platform.isIOS) {
+        if (PlatformUniversal.isIOS) {
           final index = actions.indexOf(action);
           if (actions.length == 2 && index == 0) {
             actionWidgets.add(Container(

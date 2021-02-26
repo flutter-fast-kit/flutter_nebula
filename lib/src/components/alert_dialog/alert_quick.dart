@@ -73,10 +73,7 @@ void showAlertDialog({
           final index = actions.indexOf(action);
           if (actions.length == 2 && index == 0) {
             actionWidgets.add(Container(
-              child: VerticalDivider(
-                indent: 0,
-                color: style.get('alert-dialog-divider-color'),
-              ),
+              child: NeDivider.v(),
             ));
           }
         }

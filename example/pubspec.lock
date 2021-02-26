@@ -50,6 +50,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  dotted_line:
+    dependency: "direct main"
+    description:
+      name: dotted_line
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.2"
   eva_icons_flutter:
     dependency: transitive
     description:

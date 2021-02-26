@@ -73,6 +73,10 @@ class MainPage extends StatelessWidget {
       title: 'App Bar',
     ),
     ShowcaseData(
+      builder: (_) => DialogShowcase(),
+      title: 'Dialog',
+    ),
+    ShowcaseData(
       builder: (_) => AndroidToastShowcase(),
       title: 'Android Style Toast',
     ),

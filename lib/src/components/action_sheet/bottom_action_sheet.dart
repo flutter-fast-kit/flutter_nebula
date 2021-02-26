@@ -158,10 +158,7 @@ class _TopActionItemWidget extends StatelessWidget {
           children: widgets,
         ),
         if (topActionItem.showBottomLine)
-          Divider(
-            color: style.get('action-sheet-divider-color'),
-            height: 0,
-          )
+          NeDivider(color: style.get('action-sheet-divider-color'))
         else
           const SizedBox(height: 0, width: 0)
       ],
@@ -271,10 +268,7 @@ class _ActionSheetState extends State<_ActionSheet> {
               ),
               onTap: action.onPressed));
           if (index < widget.actions.length - 1) {
-            widgets.add(Divider(
-              color: style.get('action-sheet-divider-color'),
-              height: 0,
-            ));
+            widgets.add(NeDivider());
           }
         });
       }
@@ -317,10 +311,7 @@ class _ActionSheetState extends State<_ActionSheet> {
               setState(() {});
             }));
         if (index < widget.choiceConfig.items.length - 1) {
-          choiceItems.add(Divider(
-            color: style.get('action-sheet-divider-color'),
-            height: 0,
-          ));
+          choiceItems.add(NeDivider());
         }
       });
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
+import 'package:flutter_nebula/src/components/divider/divider.dart';
 import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
 export 'alert_action.dart';
@@ -325,10 +326,7 @@ class NeAlertDialog extends StatelessWidget {
     }
 
     if (PlatformUniversal.isIOS) {
-      columnChildren.add(Divider(
-        height: 0,
-        color: style.get('alert-dialog-divider-color'),
-      ));
+      columnChildren.add(NeDivider());
     }
 
     if (actions != null) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nebula/flutter_nebula.dart';
 
 const int _kDefaultMS = 1000;
 
@@ -129,13 +130,15 @@ class NeSkeletonState extends State<NeSkeleton>
 
   @override
   Widget build(BuildContext context) {
+    final style = StaticStyle.of(context);
     return AnimatedBuilder(
         animation: _animation,
         builder: (context, child) {
           final BoxShape shape = widget.shape ?? BoxShape.rectangle;
-          final Color color = widget.color ?? const Color(0xFFE8E8E8);
+          final Color color =
+              widget.color ?? style.get('skeleton-background-color');
           final Color shimmerColor =
-              widget.shimmerColor ?? const Color(0xFFEDEDED);
+              widget.shimmerColor ?? style.get('skeleton-shimmer-color');
           final Gradient gradient =
               widget.type == NeSkeletonAnimationType.shimmer
                   ? LinearGradient(

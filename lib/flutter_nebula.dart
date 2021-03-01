@@ -11,6 +11,7 @@ export 'package:flutter_nebula/src/components/button/button.dart';
 export 'package:flutter_nebula/src/components/alert_dialog/alert_dialog.dart';
 export 'package:flutter_nebula/src/components/card/card.dart';
 export 'package:flutter_nebula/src/components/space/space.dart';
+export 'package:flutter_nebula/src/components/skeleton/skeleton.dart';
 export 'package:flutter_nebula/src/components/checkbox/checkbox.dart';
 export 'package:flutter_nebula/src/components/divider/divider.dart';
 export 'package:flutter_nebula/src/components/global/app/nebula_app.dart';

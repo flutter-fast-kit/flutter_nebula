@@ -3,6 +3,7 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_nebula/src/components/action_sheet/action_sheet_style.dart';
 import 'package:flutter_nebula/src/components/alert_dialog/alert_dialog_style.dart';
 import 'package:flutter_nebula/src/components/app_bar/app_bar_style.dart';
+import 'package:flutter_nebula/src/components/skeleton/skeleton_style.dart';
 import 'package:flutter_nebula/src/theme/themings/animation_style.dart';
 import 'package:flutter_nebula/src/theme/themings/icon_style.dart';
 import 'package:flutter_nebula/src/theme/themings/support_style.dart';
@@ -163,6 +164,7 @@ class NeThemes {
     ..inject(radioStyle)
     ..inject(appBarStyle)
     ..inject(cardStyle)
+    ..inject(skeletonStyle)
     ..inject(buttonStyle)
     ..inject(iconButtonStyle)
     ..inject(checkboxStyle)
@@ -207,5 +209,5 @@ class NeThemes {
             blurRadius: 16.0,
             color: Color.fromRGBO(12, 13, 16, 0.25)),
       },
-    ));
+    ))..inject(skeletonDarkStyle);
 }

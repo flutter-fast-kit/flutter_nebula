@@ -22,6 +22,7 @@ import 'package:flutter_nebula_demo_online/components/toggle.dart';
 import 'package:flutter_nebula_demo_online/state.dart';
 
 import 'components/app_bar.dart';
+import 'components/skeleton.dart';
 import 'components/text.dart';
 
 void main() => runApp(EquinoxShowcaseApp());
@@ -95,6 +96,10 @@ class MainPage extends StatelessWidget {
     ShowcaseData(
       builder: (_) => CardShowcase(),
       title: 'Cards',
+    ),
+    ShowcaseData(
+      builder: (_) => SkeletonShowcase(),
+      title: 'Skeleton',
     ),
     ShowcaseData(
       builder: (_) => CheckboxShowcase(),

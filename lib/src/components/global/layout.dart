@@ -39,30 +39,39 @@ class _NeLayoutState extends State<NeLayout> {
         color: theme.get('background-basic-color-3'),
         child: MaterialDesign.Material(
           type: MaterialDesign.MaterialType.transparency,
-          child: Stack(
-            children: <Widget>[
-              Positioned(
-                top: (widget.appBar != null)
-                    ? widget.appBar.preferredSize.height +
-                        MediaQuery.of(context).padding.top
-                    : 0.0,
-                bottom: (widget.bottomTabBar != null)
-                    ? widget.bottomTabBar.preferredSize.height
-                    : 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: widget.child,
-              ),
-              if (widget.appBar != null) widget.appBar,
-              if (widget.bottomTabBar != null)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: widget.bottomTabBar,
-                ),
-            ],
+          child: MaterialDesign.Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: widget.appBar,
+            body: widget.child,
+            bottomNavigationBar: widget.bottomTabBar,
           ),
         ),
       ),
     );
   }
 }
+
+// Stack(
+//   children: <Widget>[
+//     Positioned(
+//       top: (widget.appBar != null)
+//           ? widget.appBar.preferredSize.height +
+//               MediaQuery.of(context).padding.top
+//           : 0.0,
+//       bottom: (widget.bottomTabBar != null)
+//           ? widget.bottomTabBar.preferredSize.height
+//           : 0.0,
+//       left: 0.0,
+//       right: 0.0,
+//       child: widget.child,
+//     ),
+//     if (widget.appBar != null) ...{
+//       MaterialDesign.SizedBox(height: 110, child: widget.appBar,)
+//     },
+//     if (widget.bottomTabBar != null)
+//       Align(
+//         alignment: Alignment.bottomCenter,
+//         child: widget.bottomTabBar,
+//       ),
+//   ],
+// )

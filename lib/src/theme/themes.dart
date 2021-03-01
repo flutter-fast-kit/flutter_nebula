@@ -160,7 +160,7 @@ class NeThemes {
     ..inject(animationStyle)
     ..inject(iconStyle)
     ..inject(radioStyle)
-    ..inject(appBarStyle)
+    // ..inject(appBarStyle)
     ..inject(cardStyle)
     ..inject(buttonStyle)
     ..inject(iconButtonStyle)

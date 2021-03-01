@@ -10,6 +10,8 @@ class NebulaApp extends StatelessWidget {
   /// or one of default themes from [NeThemes], such as [NeThemes.defaultLightTheme] or [NeThemes.defaultDarkTheme]
   final StyleData theme;
 
+  final bool isDarkMode;
+
   /// {@macro flutter.widgets.widgetsApp.navigatorKey}
   final GlobalKey<NavigatorState> navigatorKey;
 
@@ -208,6 +210,7 @@ class NebulaApp extends StatelessWidget {
   const NebulaApp({
     Key key,
     @required this.theme,
+    @required this.isDarkMode = false,
     @required this.title,
     this.navigatorKey,
     this.home,
@@ -238,6 +241,7 @@ class NebulaApp extends StatelessWidget {
         if (builder != null) modifiedChild = builder(context, child);
         return NeTheme(
           theme: theme,
+          isDarkMode: isDarkMode,
           child: NeToastService(
             child: modifiedChild,
           ),

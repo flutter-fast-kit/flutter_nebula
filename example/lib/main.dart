@@ -146,7 +146,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeLayout(
       appBar: NeAppBar(
-        title: 'Showcase app',
+        title: Text('Showcase app'),
         centerTitle: true,
         actions: [
           NeIconButton(

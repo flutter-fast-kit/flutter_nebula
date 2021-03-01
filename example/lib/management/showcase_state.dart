@@ -46,8 +46,8 @@ abstract class ShowcaseState<T extends StatefulWidget> extends State<T> {
   Widget build(BuildContext context) {
     return NeLayout(
       appBar: NeAppBar(
-        title: 'Showcase',
-        subtitle: showcaseName,
+        title: Text('Showcase'),
+        // subtitle: showcaseName,
         centerTitle: true,
         actions: [
           NeIconButton(
@@ -58,7 +58,7 @@ abstract class ShowcaseState<T extends StatefulWidget> extends State<T> {
         ],
       ),
       child: Container(
-        margin: EdgeInsets.only(top: 10),
+        // margin: EdgeInsets.only(top: 10),
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: children,

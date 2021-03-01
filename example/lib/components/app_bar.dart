@@ -9,34 +9,60 @@ class AppBarShowcase extends StatefulWidget {
   _AppBarShowcaseState createState() => _AppBarShowcaseState();
 }
 
-class _AppBarShowcaseState extends State {
+class _AppBarShowcaseState extends ShowcaseState<AppBarShowcase> {
   @override
-  Widget build(BuildContext context) {
-    // return NeLayout(
-    //   appBar: NeAppBar(
-    //     title: Text('Showcase'),
-    //     actions: [
-    //       NeIconButton(
-    //         icon: EvaIcons.sunOutline,
-    //         onTap: AppState.toggleTheme,
-    //         appearance: NeWidgetAppearance.ghost,
-    //       ),
-    //     ],
-    //   ),
-    //   child: Container(color: Colors.amberAccent),
-    // );
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Showcase'),
-        actions: [
-          NeIconButton(
-            icon: EvaIcons.sunOutline,
-            onTap: AppState.toggleTheme,
-            appearance: NeWidgetAppearance.ghost,
-          ),
-        ],
-      ),
-      body: Container(color: Colors.amberAccent),
-    );
+  Widget playgroundBuilder() {
+    return SizedBox();
   }
+
+  @override
+  String get showcaseName => 'App Bar';
+
+  @override
+  List<ShowcaseWidgetData> get showcases => [
+        ShowcaseWidgetData(
+          title: 'AppBar',
+          builder: () => Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            alignment: WrapAlignment.start,
+            children: [
+              NeAppBar(
+                title: Text('Showcase'),
+                actions: [
+                  NeIconButton(
+                    icon: EvaIcons.sunOutline,
+                    onTap: AppState.toggleTheme,
+                    appearance: NeWidgetAppearance.ghost,
+                  ),
+                ],
+              ),
+              // NeAppBar.withoutTitle(
+              //   bottom: NeAppBar(
+              //     title: 'Showcase',
+              //     // subtitle: showcaseName,
+              //     // actions: [
+              //     //   NeIconButton(
+              //     //     icon: EvaIcons.sunOutline,
+              //     //     onTap: AppState.toggleTheme,
+              //     //     appearance: NeWidgetAppearance.ghost,
+              //     //   ),
+              //     // ],
+              //   ),
+              // ),
+              // NeAppBar.bottom(
+              //   bottom: NeTabBar.top(
+              //     tabs: [
+              //       NeTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+              //       NeTabData.fromIcon(
+              //           icon: EvaIcons.star, title: 'Tab', disabled: true),
+              //       NeTabData.fromIcon(icon: EvaIcons.star, title: 'Tab'),
+              //     ],
+              //     onSelect: (i) {},
+              //   ),
+              // )
+            ],
+          ),
+        ),
+      ];
 }

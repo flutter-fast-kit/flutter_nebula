@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_nebula/src/components/action_sheet/action_sheet_style.dart';
 import 'package:flutter_nebula/src/components/alert_dialog/alert_dialog_style.dart';
+import 'package:flutter_nebula/src/components/app_bar/app_bar_style.dart';
 import 'package:flutter_nebula/src/theme/themings/animation_style.dart';
 import 'package:flutter_nebula/src/theme/themings/icon_style.dart';
 import 'package:flutter_nebula/src/theme/themings/support_style.dart';
@@ -160,7 +161,7 @@ class NeThemes {
     ..inject(animationStyle)
     ..inject(iconStyle)
     ..inject(radioStyle)
-    // ..inject(appBarStyle)
+    ..inject(appBarStyle)
     ..inject(cardStyle)
     ..inject(buttonStyle)
     ..inject(iconButtonStyle)

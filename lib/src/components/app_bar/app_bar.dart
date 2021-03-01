@@ -1,9 +1,12 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/src/components/icon_button/icon_button.dart';
+import 'package:flutter_nebula/src/model/params.dart';
 
 /// An app bar consists of a toolbar and potentially other widgets, such as a
 /// [NeTabBar][TabBar] and a [FlexibleSpaceBar].
@@ -309,6 +312,7 @@ class _NeAppBarState extends State<NeAppBar> {
     assert(!widget.primary || debugCheckHasMediaQuery(context));
     assert(debugCheckHasMaterialLocalizations(context));
     final ThemeData theme = Theme.of(context);
+    final style = StaticStyle.of(context);
     final AppBarTheme appBarTheme = AppBarTheme.of(context);
     // final ScaffoldState scaffold = Scaffold.of(context);
     // final ScaffoldState scaffold =Scaffold.of(context, nullOk: true);
@@ -326,8 +330,13 @@ class _NeAppBarState extends State<NeAppBar> {
         appBarTheme.actionsIconTheme ??
         overallIconTheme;
     TextStyle centerStyle = widget.textTheme?.headline5 ??
-        appBarTheme.textTheme?.headline5 ??
-        theme.primaryTextTheme.headline5;
+        TextStyle(
+          fontWeight: style.get("app-bar-title-font-weight"),
+          fontSize: style.get("app-bar-title-font-size"),
+          fontFamily: style.get("app-bar-title-font-family"),
+          color: style.get("app-bar-title-color"),
+        );
+
     TextStyle sideStyle = widget.textTheme?.bodyText1 ??
         appBarTheme.textTheme?.bodyText1 ??
         theme.primaryTextTheme.bodyText1;
@@ -366,7 +375,9 @@ class _NeAppBarState extends State<NeAppBar> {
         );
       } else {
         if (canPop) {
-          leading = useCloseButton ? const CloseButton() : const BackButton();
+          leading = useCloseButton
+              ? const CloseButton()
+              : const NeBackButton();
         }
       }
     }
@@ -438,11 +449,11 @@ class _NeAppBarState extends State<NeAppBar> {
           suffixIcon: NeIconButton(
             icon: Icons.close,
             // type: NeIconButton.transparent,
-            // onPressed: () {
-            //   setState(() {
-            //     showSearchBar = !showSearchBar;
-            //   });
-            // },
+            onTap: () {
+              setState(() {
+                showSearchBar = !showSearchBar;
+              });
+            },
           ),
           hintText: widget.searchHintText,
           hintStyle: widget.searchHintStyle,
@@ -467,11 +478,11 @@ class _NeAppBarState extends State<NeAppBar> {
         trailing: NeIconButton(
           icon: Icons.search,
           // type: GFButtonType.transparent,
-          // onPressed: () {
-          //   setState(() {
-          //     showSearchBar = true;
-          //   });
-          // },
+          onTap: () {
+            setState(() {
+              showSearchBar = true;
+            });
+          },
         ),
       );
     }
@@ -543,20 +554,20 @@ class _NeAppBarState extends State<NeAppBar> {
       );
     }
 
-    final Brightness brightness = widget.brightness ??
-        appBarTheme.brightness ??
-        theme.primaryColorBrightness;
-    final SystemUiOverlayStyle overlayStyle = brightness == Brightness.dark
-        ? SystemUiOverlayStyle.light
-        : SystemUiOverlayStyle.dark;
+    Color _backgroundColor =
+        widget.backgroundColor ?? style.get('app-bar-background-color');
+    final SystemUiOverlayStyle _overlayStyle =
+        ThemeData.estimateBrightnessForColor(_backgroundColor) ==
+                Brightness.dark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark;
 
     return Semantics(
       container: true,
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: overlayStyle,
+        value: _overlayStyle,
         child: Material(
-          color:
-              widget.backgroundColor ?? appBarTheme.color ?? theme.primaryColor,
+          color: widget.backgroundColor ?? _backgroundColor,
           elevation:
               widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
           shape: widget.shape,
@@ -636,5 +647,45 @@ class RenderNeAppBarTitleBar extends RenderAligningShiftedBox {
     );
     size = constraints.constrain(child.size);
     alignChild();
+  }
+}
+
+class NeBackButton extends StatelessWidget {
+  /// Creates an [IconButton] with the appropriate "back" icon for the current
+  /// target platform.
+  const NeBackButton({Key key, this.color, this.onPressed}) : super(key: key);
+
+  /// The color to use for the icon.
+  ///
+  /// Defaults to the [IconThemeData.color] specified in the ambient [IconTheme],
+  /// which usually matches the ambient [Theme]'s [ThemeData.iconTheme].
+  final Color color;
+
+  /// An override callback to perform instead of the default behavior which is
+  /// to pop the [Navigator].
+  ///
+  /// It can, for instance, be used to pop the platform's navigation stack
+  /// via [SystemNavigator] instead of Flutter's [Navigator] in add-to-app
+  /// situations.
+  ///
+  /// Defaults to null.
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    assert(debugCheckHasMaterialLocalizations(context));
+    return NeIconButton(
+      icon: EvaIcons.arrowBack,
+      size: NeWidgetSize.medium,
+      color: color,
+      appearance: NeWidgetAppearance.ghost,
+      onTap: () {
+        if (onPressed != null) {
+          onPressed();
+        } else {
+          Navigator.maybePop(context);
+        }
+      },
+    );
   }
 }

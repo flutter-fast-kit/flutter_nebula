@@ -7,8 +7,7 @@ import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 export 'alert_action.dart';
 export 'alert_quick.dart';
 
-const EdgeInsets _defaultInsetPadding =
-    EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
+const EdgeInsets _defaultInsetPadding = EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0);
 
 class NeAlertDialog extends StatelessWidget {
   /// Creates an alert dialog.
@@ -19,7 +18,7 @@ class NeAlertDialog extends StatelessWidget {
   /// null, which implies a default that depends on the values of the other
   /// properties. See the documentation of [titlePadding] for details.
   const NeAlertDialog({
-    Key key,
+    Key? key,
     this.title,
     this.titlePadding,
     this.titleTextStyle,
@@ -38,7 +37,7 @@ class NeAlertDialog extends StatelessWidget {
     this.clipBehavior = Clip.none,
     this.shape,
     this.scrollable = false,
-    this.barrierDismissible,
+    this.barrierDismissible = true,
   })  : assert(contentPadding != null),
         assert(clipBehavior != null),
         super(key: key);
@@ -47,7 +46,7 @@ class NeAlertDialog extends StatelessWidget {
   /// of the dialog.
   ///
   /// Typically a [Text] widget.
-  final Widget title;
+  final Widget? title;
 
   /// Padding around the title.
   ///
@@ -59,13 +58,13 @@ class NeAlertDialog extends StatelessWidget {
   /// provided (but see [contentPadding]). If it _is_ null, then an extra 20
   /// pixels of bottom padding is added to separate the [title] from the
   /// [actions].
-  final EdgeInsetsGeometry titlePadding;
+  final EdgeInsetsGeometry? titlePadding;
 
   /// Style for the text in the [title] of this [MyDialog].
   ///
   /// If null, [DialogTheme.titleTextStyle] is used, if that's null, defaults to
   /// [ThemeData.textTheme.headline6].
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
 
   /// The (optional) content of the dialog is displayed in the center of the
   /// dialog in a lighter font.
@@ -74,7 +73,7 @@ class NeAlertDialog extends StatelessWidget {
   /// message. As noted in the [MyDialog] documentation, it's important
   /// to use a [SingleChildScrollView] if there's any risk that the content
   /// will not fit.
-  final Widget content;
+  final Widget? content;
 
   /// Padding around the content.
   ///
@@ -88,7 +87,7 @@ class NeAlertDialog extends StatelessWidget {
   ///
   /// If null, [DialogTheme.contentTextStyle] is used, if that's null, defaults
   /// to [ThemeData.textTheme.subtitle1].
-  final TextStyle contentTextStyle;
+  final TextStyle? contentTextStyle;
 
   final bool barrierDismissible;
 
@@ -103,7 +102,7 @@ class NeAlertDialog extends StatelessWidget {
   /// If the [title] is not null but the [content] _is_ null, then an extra 20
   /// pixels of padding is added above the [ButtonBar] to separate the [title]
   /// from the [actions].
-  final List<Widget> actions;
+  final List<Widget>? actions;
 
   /// Padding around the set of [actions] at the bottom of the dialog.
   ///
@@ -153,7 +152,7 @@ class NeAlertDialog extends StatelessWidget {
   /// See also:
   ///
   /// * [ButtonBar], which [actions] configures to lay itself out.
-  final VerticalDirection actionsOverflowDirection;
+  final VerticalDirection? actionsOverflowDirection;
 
   /// The spacing between [actions] when the button bar overflows.
   ///
@@ -169,7 +168,7 @@ class NeAlertDialog extends StatelessWidget {
   ///
   /// If null then no spacing will be added in between buttons in
   /// an overflow state.
-  final double actionsOverflowButtonSpacing;
+  final double? actionsOverflowButtonSpacing;
 
   /// The padding that surrounds each button in [actions].
   ///
@@ -183,14 +182,14 @@ class NeAlertDialog extends StatelessWidget {
   /// See also:
   ///
   /// * [ButtonBar], which [actions] configures to lay itself out.
-  final EdgeInsetsGeometry buttonPadding;
+  final EdgeInsetsGeometry? buttonPadding;
 
   /// {@macro flutter.material.dialog.backgroundColor}
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// {@macro flutter.material.dialog.elevation}
   /// {@macro flutter.material.material.elevation}
-  final double elevation;
+  final double? elevation;
 
   /// The semantic label of the dialog used by accessibility frameworks to
   /// announce screen transitions when the dialog is opened and closed.
@@ -203,7 +202,7 @@ class NeAlertDialog extends StatelessWidget {
   ///
   ///  * [SemanticsConfiguration.isRouteName], for a description of how this
   ///    value is used.
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// {@macro flutter.material.dialog.insetPadding}
   final EdgeInsets insetPadding;
@@ -212,7 +211,7 @@ class NeAlertDialog extends StatelessWidget {
   final Clip clipBehavior;
 
   /// {@macro flutter.material.dialog.shape}
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
 
   /// Determines whether the [title] and [content] widgets are wrapped in a
   /// scrollable.
@@ -229,7 +228,7 @@ class NeAlertDialog extends StatelessWidget {
     final style = StaticStyle.of(context);
     final ThemeData theme = Theme.of(context);
 
-    String label = semanticLabel;
+    String? label = semanticLabel;
     if (title == null) {
       switch (theme.platform) {
         case TargetPlatform.iOS:
@@ -240,18 +239,16 @@ class NeAlertDialog extends StatelessWidget {
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
         case TargetPlatform.windows:
-          label = semanticLabel ??
-              MaterialLocalizations.of(context)?.alertDialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context)?.alertDialogLabel;
       }
     }
 
-    Widget titleWidget;
-    Widget contentWidget;
-    Widget actionsWidget;
+    late Widget titleWidget;
+    late Widget contentWidget;
+    late Widget actionsWidget;
     if (title != null)
       titleWidget = Padding(
-        padding: titlePadding ??
-            EdgeInsets.fromLTRB(24.0, 20.0, 24.0, content == null ? 20.0 : 0.0),
+        padding: titlePadding ?? EdgeInsets.fromLTRB(24.0, 20.0, 24.0, content == null ? 20.0 : 0.0),
         child: DefaultTextStyle(
           child: Semantics(
             child: PlatformSelector.select(
@@ -276,9 +273,8 @@ class NeAlertDialog extends StatelessWidget {
       contentWidget = Padding(
         padding: contentPadding,
         child: DefaultTextStyle(
-          child: content,
-          textAlign: PlatformSelector.select(
-              ios: TextAlign.center, other: TextAlign.start),
+          child: content!,
+          textAlign: PlatformSelector.select(ios: TextAlign.center, other: TextAlign.start),
           style: contentTextStyle ??
               TextStyle(
                 color: style.get('alert-dialog-text-color'),
@@ -294,11 +290,10 @@ class NeAlertDialog extends StatelessWidget {
         padding: actionsPadding,
         height: PlatformSelector.select(ios: 50),
         child: Row(
-          mainAxisAlignment: PlatformSelector.select(
-              ios: MainAxisAlignment.spaceEvenly,
-              android: MainAxisAlignment.end),
+          mainAxisAlignment:
+              PlatformSelector.select(ios: MainAxisAlignment.spaceEvenly, android: MainAxisAlignment.end)!,
           mainAxisSize: MainAxisSize.max,
-          children: actions,
+          children: actions!,
         ),
       );
 
@@ -351,8 +346,7 @@ class NeAlertDialog extends StatelessWidget {
           return barrierDismissible;
         },
         child: Dialog(
-          backgroundColor:
-              backgroundColor ?? style.get('card-background-color'),
+          backgroundColor: backgroundColor ?? style.get('card-background-color'),
           elevation: elevation,
           insetPadding: insetPadding,
           clipBehavior: clipBehavior,

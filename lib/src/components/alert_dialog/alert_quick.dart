@@ -22,12 +22,12 @@ import 'alert_dialog.dart';
 ///
 void showAlertDialog({
   required BuildContext context,
-  Widget title,
-  Widget content,
-  TextStyle contentTextStyle,
+  Widget? title,
+  Widget? content,
+  TextStyle? contentTextStyle,
   bool scrollable = true,
   bool barrierDismissible = true,
-  List<AlertAction> actions,
+  required List<AlertAction> actions,
 }) {
   assert(context != null);
 
@@ -40,7 +40,7 @@ void showAlertDialog({
       final style = StaticStyle.of(context);
       final List<Widget> actionWidgets = [];
       actions.forEach((action) {
-        NeWidgetStatus status;
+        late NeWidgetStatus status;
         switch (action.actionStyle) {
           case AlertActionStyle.cancel:
             status = NeWidgetStatus.info;
@@ -59,11 +59,11 @@ void showAlertDialog({
             size: NeWidgetSize.large,
             status: status,
             onTap: action.actionState == AlertActionState.disable
-                ? null
+                ? () {}
                 : () {
                     Navigator.pop(context);
                     if (action.onPress != null) {
-                      action.onPress();
+                      action.onPress!();
                     }
                   },
           ),
@@ -89,7 +89,7 @@ void showAlertDialog({
           actionsPadding: PlatformSelector.select<EdgeInsetsGeometry>(
             ios: EdgeInsets.zero,
             android: EdgeInsets.only(bottom: 12, right: 12),
-          ));
+          )!);
     },
   );
 }
@@ -98,15 +98,15 @@ void showAlertDialog({
 ///
 void showConfirmAlertDialog({
   required BuildContext context,
-  Widget title,
-  Widget content,
-  TextStyle contentTextStyle,
+  Widget? title,
+  Widget? content,
+  TextStyle? contentTextStyle,
   bool scrollable = true,
   bool barrierDismissible = true,
-  String cancelText,
-  String okText,
-  VoidCallback onOkPress,
-  VoidCallback onCancelPress,
+  String? cancelText,
+  String? okText,
+  VoidCallback? onOkPress,
+  VoidCallback? onCancelPress,
 }) {
   showAlertDialog(
       context: context,
@@ -117,10 +117,8 @@ void showConfirmAlertDialog({
       barrierDismissible: barrierDismissible,
       actions: [
         AlertAction(
-            title: cancelText ?? Text(context.tr('cancel')),
-            actionStyle: AlertActionStyle.cancel,
-            onPress: onCancelPress),
-        AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)
+            title: cancelText ?? context.tr('cancel'), actionStyle: AlertActionStyle.cancel, onPress: onCancelPress),
+        AlertAction(title: okText ?? context.tr('ok'), onPress: onOkPress)
       ]);
 }
 
@@ -128,13 +126,13 @@ void showConfirmAlertDialog({
 ///
 void showInfoAlertDialog({
   required BuildContext context,
-  Widget title,
-  Widget content,
-  TextStyle contentTextStyle,
+  Widget? title,
+  Widget? content,
+  TextStyle? contentTextStyle,
   bool scrollable = true,
   bool barrierDismissible = true,
-  String okText,
-  VoidCallback onOkPress,
+  String? okText,
+  VoidCallback? onOkPress,
 }) {
   showAlertDialog(
       context: context,
@@ -143,5 +141,5 @@ void showInfoAlertDialog({
       contentTextStyle: contentTextStyle,
       scrollable: scrollable,
       barrierDismissible: barrierDismissible,
-      actions: [AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)]);
+      actions: [AlertAction(title: okText ?? context.tr('ok'), onPress: onOkPress)]);
 }

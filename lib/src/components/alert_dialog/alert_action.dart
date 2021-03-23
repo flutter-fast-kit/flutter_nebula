@@ -23,10 +23,10 @@ enum AlertActionState { disable, enable }
 /// [onPress] 回调事件
 class AlertAction {
   final String title;
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
   final AlertActionStyle actionStyle;
   final AlertActionState actionState;
-  final VoidCallback onPress;
+  final VoidCallback? onPress;
 
   AlertAction(
       {required this.title,

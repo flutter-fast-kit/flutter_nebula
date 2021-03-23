@@ -10,25 +10,25 @@ enum NeSkeletonAnimationType {
 
 /// To show skeleton with any widget.
 class NeSkeleton extends StatefulWidget {
-  final BoxShape shape;
-  final EdgeInsetsGeometry padding;
-  final Color color;
-  final Color shimmerColor;
-  final double width;
-  final double height;
-  final EdgeInsetsGeometry margin;
-  final BorderRadiusGeometry borderRadius;
-  final Duration duration;
+  final BoxShape? shape;
+  final EdgeInsetsGeometry? padding;
+  final Color? color;
+  final Color? shimmerColor;
+  final double? width;
+  final double? height;
+  final EdgeInsetsGeometry? margin;
+  final BorderRadiusGeometry? borderRadius;
+  final Duration? duration;
   final bool active;
 
   /// [stretchWidth] required for using stretch
   final NeSkeletonAnimationType type;
 
   /// Required for stretch
-  final double stretchWidth;
+  final double? stretchWidth;
 
   const NeSkeleton(
-      {Key key,
+      {Key? key,
       this.shape,
       this.padding,
       this.color,
@@ -47,16 +47,14 @@ class NeSkeleton extends StatefulWidget {
   NeSkeletonState createState() => NeSkeletonState();
 }
 
-class NeSkeletonState extends State<NeSkeleton>
-    with SingleTickerProviderStateMixin {
-  Animation<double> _animation;
-  AnimationController _controller;
+class NeSkeletonState extends State<NeSkeleton> with SingleTickerProviderStateMixin {
+  late Animation<double> _animation;
+  late AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    final Duration duration =
-        widget.duration ?? const Duration(milliseconds: _kDefaultMS);
+    final Duration duration = widget.duration ?? const Duration(milliseconds: _kDefaultMS);
     _controller = AnimationController(
       vsync: this,
       duration: duration,
@@ -96,8 +94,7 @@ class NeSkeletonState extends State<NeSkeleton>
   }
 
   void _handleShimmerAnimationStatus(AnimationStatus status) {
-    if (status == AnimationStatus.completed ||
-        status == AnimationStatus.dismissed) {
+    if (status == AnimationStatus.completed || status == AnimationStatus.dismissed) {
       _controllerRepeat();
     }
   }
@@ -135,29 +132,16 @@ class NeSkeletonState extends State<NeSkeleton>
         animation: _animation,
         builder: (context, child) {
           final BoxShape shape = widget.shape ?? BoxShape.rectangle;
-          final Color color =
-              widget.color ?? style.get('skeleton-background-color');
-          final Color shimmerColor =
-              widget.shimmerColor ?? style.get('skeleton-shimmer-color');
-          final Gradient gradient =
-              widget.type == NeSkeletonAnimationType.shimmer
-                  ? LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                          color,
-                          shimmerColor.withAlpha(200),
-                          color
-                        ],
-                      stops: [
-                          _animation.value - 0.4,
-                          _animation.value,
-                          _animation.value + 0.4
-                        ])
-                  : null;
-          final double width = widget.type == NeSkeletonAnimationType.shimmer
-              ? widget.width
-              : _animation.value;
+          final Color color = widget.color ?? style.get('skeleton-background-color');
+          final Color shimmerColor = widget.shimmerColor ?? style.get('skeleton-shimmer-color');
+          final Gradient? gradient = widget.type == NeSkeletonAnimationType.shimmer
+              ? LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  colors: [color, shimmerColor.withAlpha(200), color],
+                  stops: [_animation.value - 0.4, _animation.value, _animation.value + 0.4])
+              : null;
+          final double? width = widget.type == NeSkeletonAnimationType.shimmer ? widget.width : _animation.value;
           // final decColor =
           //     widget.type == NeSkeletonAnimationType.stretch ? color : null;
           final decColor = null;
@@ -190,19 +174,19 @@ extension SkeletonExtension on Widget {
   ///
   /// show skeleton extension
   Widget skeleton(
-          {Key key,
-          BoxShape shape,
-          EdgeInsetsGeometry padding,
-          Color color,
-          Color shimmerColor,
-          double width,
-          double height,
-          EdgeInsetsGeometry margin,
-          BorderRadiusGeometry borderRadius,
-          Duration duration,
+          {Key? key,
+          BoxShape? shape,
+          EdgeInsetsGeometry? padding,
+          Color? color,
+          Color? shimmerColor,
+          double? width,
+          double? height,
+          EdgeInsetsGeometry? margin,
+          BorderRadiusGeometry? borderRadius,
+          Duration? duration,
           bool active = true,
           NeSkeletonAnimationType type = NeSkeletonAnimationType.shimmer,
-          double stretchWidth}) =>
+          double? stretchWidth}) =>
       NeSkeleton(
         key: key,
         active: active,

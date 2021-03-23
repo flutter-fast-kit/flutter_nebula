@@ -3,18 +3,16 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 
 /// Divider is used to divide parts of content.
 class NeDivider extends StatelessWidget {
-  final Color color;
-  final double width;
+  final Color? color;
+  final double? width;
   final Axis direction;
-  const NeDivider(
-      {Key key, this.color, this.width, this.direction = Axis.horizontal})
-      : super(key: key);
+  const NeDivider({Key? key, this.color, this.width, this.direction = Axis.horizontal}) : super(key: key);
 
-  factory NeDivider.h({Color color, double width}) {
+  factory NeDivider.h({Color? color, double? width}) {
     return NeDivider(color: color, width: width, direction: Axis.horizontal);
   }
 
-  factory NeDivider.v({Color color, double width}) {
+  factory NeDivider.v({Color? color, double? width}) {
     return NeDivider(color: color, width: width, direction: Axis.vertical);
   }
 

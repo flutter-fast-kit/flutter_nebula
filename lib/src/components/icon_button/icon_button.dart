@@ -11,11 +11,11 @@ class NeIconButton extends StatefulWidget {
   final NeWidgetSize size;
 
   /// Controls the colors.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// If provided, overwrites the color set by [status] in [WidgetAppearance.ghost] and
   /// [WidgetAppearance.outline] appearances.
-  final Color color;
+  final Color? color;
 
   /// Controls the appearance of the widget.
   final NeWidgetAppearance appearance;
@@ -30,7 +30,7 @@ class NeIconButton extends StatefulWidget {
   final IconData icon;
 
   const NeIconButton({
-    Key key,
+    Key? key,
     required this.icon,
     required this.onTap,
     this.size = NeWidgetSize.medium,

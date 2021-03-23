@@ -29,7 +29,7 @@ class AlertAction {
   final VoidCallback onPress;
 
   AlertAction(
-      {@required this.title,
+      {required this.title,
       this.titleTextStyle,
       this.actionStyle = AlertActionStyle.normal,
       this.actionState = AlertActionState.enable,

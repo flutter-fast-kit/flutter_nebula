@@ -26,8 +26,8 @@ class NeTabs extends StatefulWidget implements PreferredSizeWidget {
   const NeTabs({
     Key key,
     this.defaultSelected,
-    @required this.onSelect,
-    @required this.tabs,
+    required this.onSelect,
+    required this.tabs,
     this.showPagerIndicator = true,
     this.pagerIndicatorPosition = NeVerticalPositioning.bottom,
   }) : super(key: key);
@@ -62,16 +62,13 @@ class _NeTabsState extends State<NeTabs> {
         Flexible(
           flex: 1,
           child: NeTab(
-            pagerIndicatorAlignment:
-                (widget.pagerIndicatorPosition == NeVerticalPositioning.top)
-                    ? Alignment.topCenter
-                    : Alignment.bottomCenter,
+            pagerIndicatorAlignment: (widget.pagerIndicatorPosition == NeVerticalPositioning.top)
+                ? Alignment.topCenter
+                : Alignment.bottomCenter,
             showPagerIndicator: widget.showPagerIndicator,
             data: tab,
             active: selected == i,
-            onTap: (tab.disabled || widget.onSelect == null)
-                ? null
-                : () => onSelect(i),
+            onTap: (tab.disabled || widget.onSelect == null) ? null : () => onSelect(i),
           ),
         ),
       );

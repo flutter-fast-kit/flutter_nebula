@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 
 class NeToggleableDesciptionUtils {
-  static List<Widget> buildListWithDescription(
-      {Widget main,
-      double padding,
-      Widget description,
-      NePositioning descriptionPosition}) {
+  static List<Widget>? buildListWithDescription(
+      {required Widget main,
+      required double padding,
+      Widget? description,
+      required NePositioning descriptionPosition}) {
     if (description == null || descriptionPosition == NePositioning.none) {
       return <Widget>[main];
     }

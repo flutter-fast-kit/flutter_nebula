@@ -6,7 +6,7 @@ class NeTextFieldForm extends FormField<String> {
   final TextEditingController controller;
   NeTextFieldForm({
     Key key,
-    @required String hint,
+    required String hint,
     NeWidgetShape shape = NeWidgetShape.rectangle,
     NeWidgetStatus status,
     NeWidgetStatus errorStatus = NeWidgetStatus.danger,
@@ -30,8 +30,7 @@ class NeTextFieldForm extends FormField<String> {
     String initialValue,
   }) : super(
             key: key,
-            initialValue:
-                controller != null ? controller.text : (initialValue ?? ''),
+            initialValue: controller != null ? controller.text : (initialValue ?? ''),
             onSaved: onSaved,
             validator: validator,
             autovalidate: autovalidate,
@@ -69,8 +68,7 @@ class NeTextFieldForm extends FormField<String> {
 class _NeTextFieldFormState extends FormFieldState<String> {
   TextEditingController _controller;
 
-  TextEditingController get _effectiveController =>
-      widget.controller ?? _controller;
+  TextEditingController get _effectiveController => widget.controller ?? _controller;
 
   @override
   NeTextFieldForm get widget => super.widget;
@@ -93,8 +91,7 @@ class _NeTextFieldFormState extends FormFieldState<String> {
       widget.controller?.addListener(_handleControllerChanged);
 
       if (oldWidget.controller != null && widget.controller == null)
-        _controller =
-            TextEditingController.fromValue(oldWidget.controller.value);
+        _controller = TextEditingController.fromValue(oldWidget.controller.value);
       if (widget.controller != null) {
         setValue(widget.controller.text);
         if (oldWidget.controller == null) _controller = null;
@@ -124,7 +121,6 @@ class _NeTextFieldFormState extends FormFieldState<String> {
     // notifications for changes originating from within this class -- for
     // example, the reset() method. In such cases, the FormField value will
     // already have been set.
-    if (_effectiveController.text != value)
-      didChange(_effectiveController.text);
+    if (_effectiveController.text != value) didChange(_effectiveController.text);
   }
 }

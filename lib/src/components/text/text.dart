@@ -102,7 +102,7 @@ class NeText extends StatelessWidget {
     Key key,
     this.state,
     this.style,
-    @required this.neStyle,
+    required this.neStyle,
     this.strutStyle,
     this.textAlign,
     this.textDirection,
@@ -562,8 +562,7 @@ class NeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
-    final textStyle =
-        NeTextUtils.getTextStyle(style: neStyle, styleData: style);
+    final textStyle = NeTextUtils.getTextStyle(style: neStyle, styleData: style);
 
     var finalStyle = textStyle.merge(this.style);
     if (status != null) {

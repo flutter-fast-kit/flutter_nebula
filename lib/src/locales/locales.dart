@@ -1,20 +1,21 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nebula/src/locales/delegate.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 class NeLocales {
   static NeLocalesDelegate get defaultLocales => NeLocalesDefault();
-  static NeLocalesDelegate _customLocale;
-  static NeLocalesDelegate get customLocale => _customLocale;
+  static late NeLocalesDelegate? _customLocale;
+
+  static NeLocalesDelegate? get customLocale => _customLocale;
 
   static void setLocaleDelegate(NeLocalesDelegate delegate) {
     _customLocale = delegate;
   }
 
   static String getLang(BuildContext context, String key) {
-    String lang;
+    String? lang;
     if (_customLocale != null) {
-      lang = _customLocale.load(context, key);
+      lang = _customLocale!.load(context, key);
     }
     if (lang == null) {
       lang = defaultLocales.load(context, key);
@@ -42,9 +43,7 @@ class NeLocalesDefault implements NeLocalesDelegate {
 
   @override
   String load(BuildContext context, String key) {
-    return _defaultLangs[
-                '${context.locale.languageCode}_${context.locale.countryCode}']
-            [key] ??
-        _defaultLangs['zh_TW'][key];
+    final dic = _defaultLangs['${context.locale.languageCode}_${context.locale.countryCode}'];
+    return dic?[key] ?? _defaultLangs['zh_TW']![key]!;
   }
 }

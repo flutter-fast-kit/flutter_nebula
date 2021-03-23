@@ -24,8 +24,8 @@ class NoSplashFactory implements InteractiveInkFeatureFactory {
 
 class NoSplash extends InteractiveInkFeature {
   NoSplash({
-    @required MaterialInkController controller,
-    @required RenderBox referenceBox,
+    required MaterialInkController controller,
+    required RenderBox referenceBox,
   }) : super(
           controller: controller,
           referenceBox: referenceBox,

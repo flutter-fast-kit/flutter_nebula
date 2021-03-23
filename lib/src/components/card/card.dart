@@ -49,7 +49,7 @@ class NeCard extends StatelessWidget {
 
   const NeCard({
     Key key,
-    @required this.child,
+    required this.child,
     this.header,
     this.footer,
     this.status,
@@ -66,8 +66,7 @@ class NeCard extends StatelessWidget {
     final padding = this.padding ?? style.get('card-padding');
 
     if (header != null) {
-      if (status != null &&
-          this.statusAppearance == NeCardStatusAppearance.strip) {
+      if (status != null && this.statusAppearance == NeCardStatusAppearance.strip) {
         widgets.add(_CardStatusStripWidget(shape: shape, status: status));
       }
       widgets.add(_CardHeader(
@@ -77,8 +76,7 @@ class NeCard extends StatelessWidget {
         status: status,
         statusAppearance: statusAppearance,
       ));
-      if (!(status != null &&
-          this.statusAppearance == NeCardStatusAppearance.header)) {
+      if (!(status != null && this.statusAppearance == NeCardStatusAppearance.header)) {
         widgets.add(NeDivider(
           color: style.get('card-divider-color'),
           width: style.get('card-divider-width'),
@@ -157,7 +155,7 @@ class _CardHeader extends StatelessWidget {
     this.shape,
     this.statusAppearance,
     this.padding,
-    @required this.child,
+    required this.child,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -204,12 +202,7 @@ class _CardFooter extends StatelessWidget {
   final Widget child;
 
   const _CardFooter(
-      {MaterialDesign.Key key,
-      this.status,
-      this.shape,
-      this.statusAppearance,
-      this.padding,
-      @required this.child})
+      {MaterialDesign.Key key, this.status, this.shape, this.statusAppearance, this.padding, required this.child})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -240,9 +233,7 @@ class _CardStatusStripWidget extends StatelessWidget {
   final NeWidgetStatus status;
   final NeWidgetShape shape;
 
-  const _CardStatusStripWidget(
-      {MaterialDesign.Key key, this.status, this.shape})
-      : super(key: key);
+  const _CardStatusStripWidget({MaterialDesign.Key key, this.status, this.shape}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context).style;
@@ -255,8 +246,7 @@ class _CardStatusStripWidget extends StatelessWidget {
           top: NeWidgetShapeUtils.getRadius(style: style, shape: shape),
           bottom: Radius.zero,
         ),
-        color: style
-            .get(generateSelector(['card-header', status, 'background-color'])),
+        color: style.get(generateSelector(['card-header', status, 'background-color'])),
       ),
     );
   }

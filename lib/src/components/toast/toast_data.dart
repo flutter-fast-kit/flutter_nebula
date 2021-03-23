@@ -25,7 +25,7 @@ class NeToast {
   final VoidCallback onTap;
 
   const NeToast({
-    @required this.message,
+    required this.message,
     this.subtitle,
     this.icon,
     this.onTap,

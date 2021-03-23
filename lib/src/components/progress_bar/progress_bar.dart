@@ -29,7 +29,7 @@ class NeProgressBar extends StatefulWidget {
 
   const NeProgressBar({
     Key key,
-    @required this.value,
+    required this.value,
     this.status,
     this.color,
     this.text,
@@ -41,8 +41,7 @@ class NeProgressBar extends StatefulWidget {
   _NeProgressBarState createState() => _NeProgressBarState();
 }
 
-class _NeProgressBarState extends State<NeProgressBar>
-    with SingleTickerProviderStateMixin {
+class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> animation;
   double value;
@@ -64,8 +63,7 @@ class _NeProgressBarState extends State<NeProgressBar>
   didChangeDependencies() {
     var style = StaticStyle.of(context);
     if (controller == null) {
-      controller = AnimationController(
-          vsync: this, duration: style.get('minor-animation-duration'));
+      controller = AnimationController(vsync: this, duration: style.get('minor-animation-duration'));
 
       controller.value = widget.value;
       animation = CurvedAnimation(parent: controller, curve: Curves.linear);
@@ -90,8 +88,7 @@ class _NeProgressBarState extends State<NeProgressBar>
       widget.size,
     ];
 
-    final height = widget.height ??
-        style.get(generateSelector([...selectorSizeBase, 'height']));
+    final height = widget.height ?? style.get(generateSelector([...selectorSizeBase, 'height']));
     final borderRadius = BorderRadius.all(NeWidgetShapeUtils.getRadius(
       style: style.style,
       shape: widget.shape,
@@ -102,8 +99,7 @@ class _NeProgressBarState extends State<NeProgressBar>
       height: height,
       decoration: BoxDecoration(
         borderRadius: borderRadius,
-        color:
-            style.get(generateSelector([...selectorBase, 'background-color'])),
+        color: style.get(generateSelector([...selectorBase, 'background-color'])),
       ),
       child: AnimatedBuilder(
         animation: controller,
@@ -118,22 +114,17 @@ class _NeProgressBarState extends State<NeProgressBar>
               height: height,
               decoration: BoxDecoration(
                 borderRadius: borderRadius,
-                color: style
-                    .get(generateSelector([...selectorBase, 'progress-color'])),
+                color: style.get(generateSelector([...selectorBase, 'progress-color'])),
               ),
               child: widget.text != null
                   ? Center(
                       child: Text(
                         widget.text,
                         style: TextStyle(
-                          fontFamily: style.get(generateSelector(
-                              [...selectorSizeBase, 'text-font-family'])),
-                          fontSize: style.get(generateSelector(
-                              [...selectorSizeBase, 'text-font-size'])),
-                          fontWeight: style.get(generateSelector(
-                              [...selectorSizeBase, 'text-font-weight'])),
-                          color: style.get(generateSelector(
-                              [...selectorBase, 'text-color'])),
+                          fontFamily: style.get(generateSelector([...selectorSizeBase, 'text-font-family'])),
+                          fontSize: style.get(generateSelector([...selectorSizeBase, 'text-font-size'])),
+                          fontWeight: style.get(generateSelector([...selectorSizeBase, 'text-font-weight'])),
+                          color: style.get(generateSelector([...selectorBase, 'text-color'])),
                         ),
                       ),
                     )

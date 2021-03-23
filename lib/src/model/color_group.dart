@@ -7,17 +7,17 @@ class NeBackgroundColors {
   final Color color4;
 
   NeBackgroundColors({
-    @required this.color1,
-    @required this.color2,
-    @required this.color3,
-    @required this.color4,
+    required this.color1,
+    required this.color2,
+    required this.color3,
+    required this.color4,
   });
 
   NeBackgroundColors copyWith({
-    Color color1,
-    Color color2,
-    Color color3,
-    Color color4,
+    Color? color1,
+    Color? color2,
+    Color? color3,
+    Color? color4,
   }) {
     return NeBackgroundColors(
       color1: color1 ?? this.color1,
@@ -46,19 +46,19 @@ class NeBorderColors {
   final Color color5;
 
   NeBorderColors({
-    @required this.color1,
-    @required this.color2,
-    @required this.color3,
-    @required this.color4,
-    @required this.color5,
+    required this.color1,
+    required this.color2,
+    required this.color3,
+    required this.color4,
+    required this.color5,
   });
 
   NeBorderColors copyWith({
-    Color color1,
-    Color color2,
-    Color color3,
-    Color color4,
-    Color color5,
+    Color? color1,
+    Color? color2,
+    Color? color3,
+    Color? color4,
+    Color? color5,
   }) {
     return NeBorderColors(
       color1: color1 ?? this.color1,
@@ -89,11 +89,11 @@ class ColorStates {
   final Color disabled;
 
   ColorStates({
-    @required this.focus,
-    @required this.hover,
-    @required this.normal,
-    @required this.active,
-    @required this.disabled,
+    required this.focus,
+    required this.hover,
+    required this.normal,
+    required this.active,
+    required this.disabled,
   });
 }
 
@@ -113,18 +113,18 @@ class ColorGroup {
   final List<Color> shades;
 
   ColorGroup({
-    @required this.shade100,
-    @required this.shade200,
-    @required this.shade300,
-    @required this.shade400,
-    @required this.shade500,
-    @required this.shade600,
-    @required this.shade700,
-    @required this.shade800,
-    @required this.shade900,
-    this.shade1000,
-    this.shade1100,
-    this.shade1200,
+    required this.shade100,
+    required this.shade200,
+    required this.shade300,
+    required this.shade400,
+    required this.shade500,
+    required this.shade600,
+    required this.shade700,
+    required this.shade800,
+    required this.shade900,
+    required this.shade1000,
+    required this.shade1100,
+    required this.shade1200,
   }) : shades = [
           shade100,
           shade200,

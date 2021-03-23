@@ -1,5 +1,6 @@
-import 'package:flutter/widgets.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/widgets.dart';
 
 /// Animates its own size and clips and aligns its child.
 ///
@@ -38,7 +39,7 @@ class CustomSizeTransition extends AnimatedWidget {
     Key key,
     this.axis = Axis.vertical,
     this.alignment,
-    @required Animation<double> sizeFactor,
+    required Animation<double> sizeFactor,
     this.axisAlignment = 0.0,
     this.child,
   })  : assert(axis != null),
@@ -90,10 +91,8 @@ class CustomSizeTransition extends AnimatedWidget {
     return ClipRect(
       child: Align(
         alignment: alignment ?? alignmentDirect,
-        heightFactor:
-            axis == Axis.vertical ? math.max(sizeFactor.value, 0.0) : null,
-        widthFactor:
-            axis == Axis.horizontal ? math.max(sizeFactor.value, 0.0) : null,
+        heightFactor: axis == Axis.vertical ? math.max(sizeFactor.value, 0.0) : null,
+        widthFactor: axis == Axis.horizontal ? math.max(sizeFactor.value, 0.0) : null,
         child: child,
       ),
     );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_nebula/src/components/button/button.dart';
-import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 import 'package:flutter_nebula/src/locales/locales.dart';
+import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
 import 'alert_action.dart';
 import 'alert_dialog.dart';
@@ -21,7 +21,7 @@ import 'alert_dialog.dart';
 /// [rightAction] 右侧按钮
 ///
 void showAlertDialog({
-  @required BuildContext context,
+  required BuildContext context,
   Widget title,
   Widget content,
   TextStyle contentTextStyle,
@@ -97,7 +97,7 @@ void showAlertDialog({
 /// 带有 取消、确定的弹出框
 ///
 void showConfirmAlertDialog({
-  @required BuildContext context,
+  required BuildContext context,
   Widget title,
   Widget content,
   TextStyle contentTextStyle,
@@ -127,7 +127,7 @@ void showConfirmAlertDialog({
 /// 只有确定按钮的弹出框
 ///
 void showInfoAlertDialog({
-  @required BuildContext context,
+  required BuildContext context,
   Widget title,
   Widget content,
   TextStyle contentTextStyle,
@@ -143,7 +143,5 @@ void showInfoAlertDialog({
       contentTextStyle: contentTextStyle,
       scrollable: scrollable,
       barrierDismissible: barrierDismissible,
-      actions: [
-        AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)
-      ]);
+      actions: [AlertAction(title: okText ?? Text(context.tr('ok')), onPress: onOkPress)]);
 }

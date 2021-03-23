@@ -30,8 +30,8 @@ class NeListItem extends StatefulWidget {
   const NeListItem({
     Key key,
     this.icon,
-    @required this.title,
-    @required this.onTap,
+    required this.title,
+    required this.onTap,
     this.subtitle,
     this.status = NeWidgetStatus.primary,
     this.active = false,

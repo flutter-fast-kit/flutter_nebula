@@ -54,7 +54,7 @@ String enumValueToString(dynamic e) {
 }
 
 class NeWidgetShapeUtils {
-  static Radius getRadius({StyleData style, NeWidgetShape shape}) {
+  static Radius getRadius({required StyleData style, NeWidgetShape? shape}) {
     final widgetShape = shape ?? style.get('widget-shape');
 
     switch (widgetShape) {
@@ -69,40 +69,3 @@ class NeWidgetShapeUtils {
     }
   }
 }
-/*
-class WidgetSizeUtils {
-  static double getSizeValue({WidgetSize size}) {
-    switch (size) {
-      case WidgetSize.giant:
-        return 56.0;
-      case WidgetSize.large:
-        return 48.0;
-      case WidgetSize.medium:
-        return 40.0;
-      case WidgetSize.small:
-        return 32.0;
-      case WidgetSize.tiny:
-        return 24.0;
-      default:
-        return 40.0;
-    }
-  }
-
-  static EdgeInsets getPadding({WidgetSize size}) {
-    switch (size) {
-      case WidgetSize.giant:
-        return EdgeInsets.symmetric(vertical: 16.0, horizontal: 26.0);
-      case WidgetSize.large:
-        return EdgeInsets.symmetric(vertical: 14.0, horizontal: 22.0);
-      case WidgetSize.medium:
-        return EdgeInsets.symmetric(vertical: 12.0, horizontal: 18.0);
-      case WidgetSize.small:
-        return EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0);
-      case WidgetSize.tiny:
-        return EdgeInsets.symmetric(vertical: 6.0, horizontal: 14.0);
-      default:
-        return EdgeInsets.symmetric(vertical: 10.0, horizontal: 18.0);
-    }
-  }
-}}
-*/

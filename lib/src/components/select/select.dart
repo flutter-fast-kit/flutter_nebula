@@ -47,9 +47,9 @@ class NeSelect<T> extends StatefulWidget {
 
   const NeSelect({
     Key key,
-    @required this.items,
-    @required this.onSelect,
-    @required this.hint,
+    required this.items,
+    required this.onSelect,
+    required this.hint,
     this.label,
     this.description,
     this.icon,
@@ -64,8 +64,7 @@ class NeSelect<T> extends StatefulWidget {
   _NeSelectState<T> createState() => _NeSelectState<T>();
 }
 
-class _NeSelectState<T> extends State<NeSelect>
-    with SingleTickerProviderStateMixin {
+class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMixin {
   int selectedIndex;
   bool outlined = false;
   OverlayEntry _overlayEntry;
@@ -84,11 +83,9 @@ class _NeSelectState<T> extends State<NeSelect>
     if (animationController != null) {
       animationController.duration = animationDuration;
     } else {
-      animationController =
-          AnimationController(vsync: this, duration: animationDuration);
+      animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(
-        parent: animationController, curve: style.get('minor-animation-curve'));
+    animation = CurvedAnimation(parent: animationController, curve: style.get('minor-animation-curve'));
   }
 
   dispose() {
@@ -143,11 +140,9 @@ class _NeSelectState<T> extends State<NeSelect>
     final style = StaticStyle.of(context);
 
     double containerHeight = size.height;
-    if (widget.description != null)
-      containerHeight -= style.get('select-description-font-size') + 4.0;
+    if (widget.description != null) containerHeight -= style.get('select-description-font-size') + 4.0;
 
-    if (widget.label != null)
-      containerHeight -= style.get('select-label-font-size') + 6.0;
+    if (widget.label != null) containerHeight -= style.get('select-label-font-size') + 6.0;
 
     double verticalOffset = containerHeight - 2.0;
     final borderRadius = NeWidgetShapeUtils.getRadius(
@@ -186,9 +181,7 @@ class _NeSelectState<T> extends State<NeSelect>
           offset: Offset(0.0, verticalOffset),
           child: Container(
             height: height,
-            alignment: (openingFromBottom)
-                ? Alignment.topCenter
-                : Alignment.bottomCenter,
+            alignment: (openingFromBottom) ? Alignment.topCenter : Alignment.bottomCenter,
             child: NeSelectOverlay(
               height: height,
               openingFromBottom: openingFromBottom,
@@ -240,24 +233,18 @@ class _NeSelectState<T> extends State<NeSelect>
     var finalOutlineBorderRadius = borderRadius;
 
     if (openingFromBottom != null && !openingFromBottom) {
-      finalBorderRadius = BorderRadius.vertical(
-          top: Radius.zero, bottom: borderRadius.bottomLeft);
+      finalBorderRadius = BorderRadius.vertical(top: Radius.zero, bottom: borderRadius.bottomLeft);
       finalOutlineBorderRadius = BorderRadius.vertical(
-          top: Radius.circular(style.get('border-radius-rectangle')),
-          bottom: borderRadius.bottomLeft);
+          top: Radius.circular(style.get('border-radius-rectangle')), bottom: borderRadius.bottomLeft);
     } else if (openingFromBottom != null && openingFromBottom) {
-      finalBorderRadius =
-          BorderRadius.vertical(top: borderRadius.topLeft, bottom: Radius.zero);
+      finalBorderRadius = BorderRadius.vertical(top: borderRadius.topLeft, bottom: Radius.zero);
 
       finalOutlineBorderRadius = BorderRadius.vertical(
-          top: borderRadius.topLeft,
-          bottom: Radius.circular(style.get('border-radius-rectangle')));
+          top: borderRadius.topLeft, bottom: Radius.circular(style.get('border-radius-rectangle')));
     }
 
-    final fillColor =
-        style.get(generateSelector([...selectorBase, 'background-color']));
-    final borderColor =
-        style.get(generateSelector([...selectorBase, 'border-color']));
+    final fillColor = style.get(generateSelector([...selectorBase, 'background-color']));
+    final borderColor = style.get(generateSelector([...selectorBase, 'border-color']));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,8 +281,7 @@ class _NeSelectState<T> extends State<NeSelect>
                   ),
                 ),
                 alignment: Alignment.centerLeft,
-                padding:
-                    style.get(generateSelector([...selectorSize, 'padding'])),
+                padding: style.get(generateSelector([...selectorSize, 'padding'])),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -303,35 +289,24 @@ class _NeSelectState<T> extends State<NeSelect>
                     if (widget.icon != null) ...[
                       Icon(
                         widget.icon,
-                        color: style.get(
-                            generateSelector([...selectorBase, 'hint-color'])),
+                        color: style.get(generateSelector([...selectorBase, 'hint-color'])),
                       ),
                       SizedBox(width: 16.0),
                     ],
                     Expanded(
-                      child: Text(
-                          selectedIndex != null
-                              ? widget.items[selectedIndex].title
-                              : widget.hint,
+                      child: Text(selectedIndex != null ? widget.items[selectedIndex].title : widget.hint,
                           style: (selectedIndex != null)
                               ? TextStyle(
-                                  color: style.get(generateSelector(
-                                      [...selectorBase, 'text-color'])),
-                                  fontFamily: style.get(generateSelector(
-                                      [...selectorSize, 'text-font-family'])),
-                                  fontWeight: style.get(generateSelector(
-                                      [...selectorSize, 'text-font-weight'])),
-                                  fontSize: style.get(generateSelector(
-                                      [...selectorSize, 'text-font-size'])),
+                                  color: style.get(generateSelector([...selectorBase, 'text-color'])),
+                                  fontFamily: style.get(generateSelector([...selectorSize, 'text-font-family'])),
+                                  fontWeight: style.get(generateSelector([...selectorSize, 'text-font-weight'])),
+                                  fontSize: style.get(generateSelector([...selectorSize, 'text-font-size'])),
                                 )
                               : TextStyle(
-                                  color: style.get(generateSelector(
-                                      [...selectorBase, 'hint-color'])),
-                                  fontFamily:
-                                      style.get('select-hint-font-family'),
+                                  color: style.get(generateSelector([...selectorBase, 'hint-color'])),
+                                  fontFamily: style.get('select-hint-font-family'),
                                   fontSize: style.get('select-hint-font-size'),
-                                  fontWeight:
-                                      style.get('select-hint-font-weight'),
+                                  fontWeight: style.get('select-hint-font-weight'),
                                 )),
                     ),
                     SizedBox(width: 16.0),
@@ -342,8 +317,7 @@ class _NeSelectState<T> extends State<NeSelect>
                           angle: (animation.value) * pi,
                           child: Icon(
                             EvaIcons.chevronDown,
-                            color: style.get(generateSelector(
-                                [...selectorBase, 'hint-color'])),
+                            color: style.get(generateSelector([...selectorBase, 'hint-color'])),
                           ),
                         );
                       },

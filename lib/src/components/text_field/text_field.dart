@@ -66,7 +66,7 @@ class NeTextField extends StatefulWidget {
 
   const NeTextField({
     Key key,
-    @required this.hint,
+    required this.hint,
     this.shape = NeWidgetShape.rectangle,
     this.status,
     this.error,
@@ -162,8 +162,7 @@ class _NeTextFieldState extends State<NeTextField> {
           SizedBox(height: 6.0),
         ],
         GestureDetector(
-          onTapDown:
-              (widget.enabled) ? (_) => setState(() => outlined = true) : null,
+          onTapDown: (widget.enabled) ? (_) => setState(() => outlined = true) : null,
           child: OutlinedWidget(
             outlined: outlined,
             borderRadius: borderRadius,
@@ -174,68 +173,48 @@ class _NeTextFieldState extends State<NeTextField> {
                 obscureText: widget.obscureText,
                 keyboardType: widget.keyboardType,
                 controller: widget.controller,
-                cursorColor: style
-                    .get(generateSelector([...statusSelector, 'border-color'])),
+                cursorColor: style.get(generateSelector([...statusSelector, 'border-color'])),
                 onTap: widget.onTap,
                 onEditingComplete: widget.onEditingComplete,
                 onChanged: widget.onChanged,
                 onSubmitted: widget.onSubmitted,
                 enabled: widget.enabled,
                 style: TextStyle(
-                  color: style
-                      .get(generateSelector([...statusSelector, 'text-color'])),
-                  fontFamily: style.get(
-                      generateSelector([...sizedSelector, 'text-font-family'])),
-                  fontWeight: style.get(
-                      generateSelector([...sizedSelector, 'text-font-weight'])),
-                  fontSize: style.get(
-                      generateSelector([...sizedSelector, 'text-font-size'])),
+                  color: style.get(generateSelector([...statusSelector, 'text-color'])),
+                  fontFamily: style.get(generateSelector([...sizedSelector, 'text-font-family'])),
+                  fontWeight: style.get(generateSelector([...sizedSelector, 'text-font-weight'])),
+                  fontSize: style.get(generateSelector([...sizedSelector, 'text-font-size'])),
                 ),
                 decoration: MaterialDesign.InputDecoration(
                   hintText: widget.hint,
                   hintStyle: TextStyle(
-                    color: style.get(
-                        generateSelector([...statusSelector, 'hint-color'])),
+                    color: style.get(generateSelector([...statusSelector, 'hint-color'])),
                     fontFamily: style.get('text-field-hint-font-family'),
                     fontSize: style.get('text-field-hint-font-size'),
                     fontWeight: style.get('text-field-hint-font-weight'),
                   ),
                   filled: true,
-                  fillColor: style.get(generateSelector(
-                      [...statusSelector, 'background-color'])),
-                  prefixIcon: (widget.icon != null &&
-                          widget.iconPosition == NePositioning.left)
+                  fillColor: style.get(generateSelector([...statusSelector, 'background-color'])),
+                  prefixIcon: (widget.icon != null && widget.iconPosition == NePositioning.left)
                       ? NeIcon(
                           widget.icon,
-                          color: style.get(generateSelector(
-                              [...statusSelector, 'hint-color'])),
-                          size: style.get(generateSelector(
-                              [...sizedSelector, 'text-font-size'])),
+                          color: style.get(generateSelector([...statusSelector, 'hint-color'])),
+                          size: style.get(generateSelector([...sizedSelector, 'text-font-size'])),
                         )
                       : null,
-                  suffixIcon: (widget.icon != null &&
-                          widget.iconPosition == NePositioning.right)
+                  suffixIcon: (widget.icon != null && widget.iconPosition == NePositioning.right)
                       ? NeIcon(
                           widget.icon,
-                          color: style.get(generateSelector(
-                              [...statusSelector, 'hint-color'])),
-                          size: style.get(generateSelector(
-                              [...sizedSelector, 'text-font-size'])),
+                          color: style.get(generateSelector([...statusSelector, 'hint-color'])),
+                          size: style.get(generateSelector([...sizedSelector, 'text-font-size'])),
                         )
                       : null,
-                  contentPadding: widget.padding ??
-                      style
-                          .get(generateSelector([...sizedSelector, 'padding'])),
+                  contentPadding: widget.padding ?? style.get(generateSelector([...sizedSelector, 'padding'])),
                   border: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
                       color: style.get(
                         generateSelector(
-                          [
-                            'text-field',
-                            widget.status,
-                            (errored) ? 'error' : null,
-                            'border-color'
-                          ],
+                          ['text-field', widget.status, (errored) ? 'error' : null, 'border-color'],
                         ),
                       ),
                       width: style.get('text-field-border-width'),
@@ -244,27 +223,21 @@ class _NeTextFieldState extends State<NeTextField> {
                   ),
                   enabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          [...statusSelector, 'border-color'])),
+                      color: style.get(generateSelector([...statusSelector, 'border-color'])),
                       width: style.get('text-field-border-width'),
                     ),
                     borderRadius: borderRadius,
                   ),
                   focusedBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector(
-                          [...statusSelector, 'border-color'])),
+                      color: style.get(generateSelector([...statusSelector, 'border-color'])),
                       width: style.get('text-field-active-border-width'),
                     ),
                     borderRadius: borderRadius,
                   ),
                   disabledBorder: MaterialDesign.OutlineInputBorder(
                     borderSide: BorderSide(
-                      color: style.get(generateSelector([
-                        'text-field',
-                        widget.status,
-                        'disabled-border-color'
-                      ])),
+                      color: style.get(generateSelector(['text-field', widget.status, 'disabled-border-color'])),
                       width: style.get('text-field-border-width'),
                     ),
                     borderRadius: borderRadius,

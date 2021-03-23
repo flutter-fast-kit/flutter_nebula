@@ -5,21 +5,21 @@ author: SimMan
 homepage: http://gitlab.tqxd.com/aitd_exchange/aitd_exchange_mobile/flutter/flutter_nebula
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.17.0 <2.0.0"
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   # css 类样式
-  flutter_css_style: ^1.0.0
+  flutter_css_style: ^2.0.0
   # eva_icons_flutter
   # https://github.com/piyushmaurya23/eva_icons_flutter
-  eva_icons_flutter: ^2.0.1
+  eva_icons_flutter: ^3.0.0
   # 一个用于二维和三维应用的矢量数学库。
   # https://github.com/google/vector_math.dart
-  vector_math: ^2.0.8
-  flutter_platform_selector: ^1.0.2
+  vector_math: ^2.1.0
+  flutter_platform_selector: ^2.0.0
   easy_localization:
 
 dev_dependencies:

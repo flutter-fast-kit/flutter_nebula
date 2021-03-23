@@ -31,8 +31,8 @@ class NeIconButton extends StatefulWidget {
 
   const NeIconButton({
     Key key,
-    @required this.icon,
-    @required this.onTap,
+    required this.icon,
+    required this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.appearance = NeWidgetAppearance.filled,
@@ -78,8 +78,7 @@ class _NeIconButtonState extends State<NeIconButton> {
         duration: style.get('minor-animation-duration'),
         curve: style.get('minor-animation-curve'),
         decoration: BoxDecoration(
-          color: style.get(
-              generateSelector([...selectorStateBase, 'background-color'])),
+          color: style.get(generateSelector([...selectorStateBase, 'background-color'])),
           borderRadius: BorderRadius.all(NeWidgetShapeUtils.getRadius(
             style: style.style,
             shape: widget.shape,
@@ -102,10 +101,8 @@ class _NeIconButtonState extends State<NeIconButton> {
             ),
             child: Icon(
               widget.icon,
-              size: style.get(
-                  generateSelector(['icon-button', widget.size, 'icon-size'])),
-              color: style
-                  .get(generateSelector([...selectorStateBase, 'icon-color'])),
+              size: style.get(generateSelector(['icon-button', widget.size, 'icon-size'])),
+              color: style.get(generateSelector([...selectorStateBase, 'icon-color'])),
             ),
           ),
         ),

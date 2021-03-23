@@ -36,8 +36,8 @@ class NeCheckbox extends StatefulWidget {
 
   const NeCheckbox({
     Key key,
-    @required this.value,
-    @required this.onChanged,
+    required this.value,
+    required this.onChanged,
     this.description,
     this.status,
     this.shape,
@@ -78,8 +78,7 @@ class _NeCheckboxState extends State<NeCheckbox> {
               : null,
     ];
 
-    final borderRadius =
-        NeWidgetShapeUtils.getRadius(style: style.style, shape: widget.shape);
+    final borderRadius = NeWidgetShapeUtils.getRadius(style: style.style, shape: widget.shape);
 
     final checkbox = OutlinedWidget(
       outlined: outlined,
@@ -92,11 +91,9 @@ class _NeCheckboxState extends State<NeCheckbox> {
         height: style.get('checkbox-size'),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(borderRadius),
-          color: style
-              .get(generateSelector([...selectorBasis, 'background-color'])),
+          color: style.get(generateSelector([...selectorBasis, 'background-color'])),
           border: Border.all(
-            color:
-                style.get(generateSelector([...selectorBasis, 'border-color'])),
+            color: style.get(generateSelector([...selectorBasis, 'border-color'])),
             width: style.get('checkbox-border-width'),
           ),
         ),
@@ -106,15 +103,13 @@ class _NeCheckboxState extends State<NeCheckbox> {
             child: (widget.value == null)
                 ? Icon(
                     EvaIcons.minus,
-                    color: style.get(generateSelector(
-                        [...selectorBasis, 'checkmark-color'])),
+                    color: style.get(generateSelector([...selectorBasis, 'checkmark-color'])),
                     size: 16.0,
                   )
                 : (widget.value)
                     ? Icon(
                         EvaIcons.checkmark,
-                        color: style.get(generateSelector(
-                            [...selectorBasis, 'checkmark-color'])),
+                        color: style.get(generateSelector([...selectorBasis, 'checkmark-color'])),
                         size: 16.0,
                       )
                     : SizedBox(),
@@ -130,9 +125,7 @@ class _NeCheckboxState extends State<NeCheckbox> {
               fontFamily: style.get('checkbox-text-font-family'),
               fontSize: style.get('checkbox-text-font-size'),
               fontWeight: style.get('checkbox-text-font-weight'),
-              color: (enabled)
-                  ? style.get('checkbox-text-color')
-                  : style.get('checkbox-disabled-text-color'),
+              color: (enabled) ? style.get('checkbox-text-color') : style.get('checkbox-disabled-text-color'),
             ),
           )
         : null;
@@ -148,8 +141,7 @@ class _NeCheckboxState extends State<NeCheckbox> {
           children: NeToggleableDesciptionUtils.buildListWithDescription(
             main: checkbox,
             description: description,
-            descriptionPosition: widget.descriptionPosition ??
-                style.get('checkbox-description-position'),
+            descriptionPosition: widget.descriptionPosition ?? style.get('checkbox-description-position'),
             padding: style.get('checkbox-description-padding'),
           ),
         ),

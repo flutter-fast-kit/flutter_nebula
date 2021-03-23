@@ -56,8 +56,8 @@ class NeButton extends StatefulWidget {
 
   const NeButton({
     Key key,
-    @required this.label,
-    @required this.onTap,
+    required this.label,
+    required this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.appearance = NeWidgetAppearance.filled,
@@ -76,8 +76,8 @@ class NeButton extends StatefulWidget {
   /// Automatically sets the [appearance] to be `WidgetAppearance.filled`.
   const NeButton.filled({
     Key key,
-    @required this.label,
-    @required this.onTap,
+    required this.label,
+    required this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.shape = NeWidgetShape.rectangle,
@@ -96,8 +96,8 @@ class NeButton extends StatefulWidget {
   /// Automatically sets the [appearance] to be `WidgetAppearance.outline`.
   const NeButton.outline({
     Key key,
-    @required this.label,
-    @required this.onTap,
+    required this.label,
+    required this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.shape = NeWidgetShape.rectangle,
@@ -116,8 +116,8 @@ class NeButton extends StatefulWidget {
   /// Automatically sets the [appearance] to be `WidgetAppearance.ghost`.
   const NeButton.ghost({
     Key key,
-    @required this.label,
-    @required this.onTap,
+    required this.label,
+    required this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.shape = NeWidgetShape.rectangle,
@@ -190,12 +190,10 @@ class _NeButtonState extends State<NeButton> {
         duration: style.get('minor-animation-duration'),
         curve: style.get('minor-animation-curve'),
         style: TextStyle(
-          fontSize: style
-              .get(generateSelector(['button-text', widget.size, 'font-size'])),
+          fontSize: style.get(generateSelector(['button-text', widget.size, 'font-size'])),
           fontWeight: style.get('button-text-font-weight'),
           fontFamily: style.get('button-text-font-family'),
-          color: widget.foregroundColor ??
-              style.get(generateSelector([...selectorStateBase, 'text-color'])),
+          color: widget.foregroundColor ?? style.get(generateSelector([...selectorStateBase, 'text-color'])),
         ),
         child: Row(
           mainAxisSize: (widget.fluid) ? MainAxisSize.max : MainAxisSize.min,
@@ -226,8 +224,7 @@ class _NeButtonState extends State<NeButton> {
               : null,
     ];
 
-    final selectorBackgroundColor =
-        style.get(generateSelector([...selectorStateBase, 'background-color']));
+    final selectorBackgroundColor = style.get(generateSelector([...selectorStateBase, 'background-color']));
     return AnimatedContainer(
       duration: style.get('minor-animation-duration'),
       curve: style.get('minor-animation-curve'),

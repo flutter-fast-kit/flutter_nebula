@@ -27,8 +27,8 @@ class NeRadio extends StatefulWidget {
 
   const NeRadio({
     Key key,
-    @required this.onSelected,
-    @required this.value,
+    required this.onSelected,
+    required this.value,
     this.description,
     this.status,
     this.descriptionPosition = NePositioning.right,
@@ -67,11 +67,9 @@ class _NeRadioState extends State<NeRadio> {
         height: style.get('radio-size'),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(style.get('radio-size')),
-          color: style
-              .get(generateSelector([...selectorBasis, 'background', 'color'])),
+          color: style.get(generateSelector([...selectorBasis, 'background', 'color'])),
           border: Border.all(
-            color: style
-                .get(generateSelector([...selectorBasis, 'border', 'color'])),
+            color: style.get(generateSelector([...selectorBasis, 'border', 'color'])),
             width: style.get('radio-border-width'),
           ),
         ),
@@ -85,8 +83,7 @@ class _NeRadioState extends State<NeRadio> {
               height: style.get('radio-size') * (2 / 3),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(style.get('radio-size')),
-                color: style
-                    .get(generateSelector([...selectorBasis, 'knob', 'color'])),
+                color: style.get(generateSelector([...selectorBasis, 'knob', 'color'])),
               ),
             ),
           ),
@@ -101,9 +98,7 @@ class _NeRadioState extends State<NeRadio> {
               fontFamily: style.get('radio-text-font-family'),
               fontSize: style.get('radio-text-font-size'),
               fontWeight: style.get('radio-text-font-weight'),
-              color: (enabled)
-                  ? style.get('radio-text-color')
-                  : style.get('radio-disabled-text-color'),
+              color: (enabled) ? style.get('radio-text-color') : style.get('radio-disabled-text-color'),
             ),
           )
         : null;
@@ -119,8 +114,7 @@ class _NeRadioState extends State<NeRadio> {
           children: NeToggleableDesciptionUtils.buildListWithDescription(
             main: radio,
             description: description,
-            descriptionPosition: widget.descriptionPosition ??
-                style.get('radio-description-position'),
+            descriptionPosition: widget.descriptionPosition ?? style.get('radio-description-position'),
             padding: style.get('radio-description-padding'),
           ),
         ),

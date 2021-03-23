@@ -209,9 +209,9 @@ class NebulaApp extends StatelessWidget {
 
   const NebulaApp({
     Key key,
-    @required this.theme,
-    @required this.isDarkMode = false,
-    @required this.title,
+    required this.theme,
+    required this.isDarkMode = false,
+    required this.title,
     this.navigatorKey,
     this.home,
     this.routes = const <String, WidgetBuilder>{},

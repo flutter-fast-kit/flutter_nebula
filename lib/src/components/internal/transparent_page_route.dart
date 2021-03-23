@@ -3,7 +3,7 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 
 class TransparentPageRoute<T> extends PageRoute<T> {
   TransparentPageRoute({
-    @required this.builder,
+    required this.builder,
     RouteSettings settings,
   })  : assert(builder != null),
         super(
@@ -29,8 +29,7 @@ class TransparentPageRoute<T> extends PageRoute<T> {
   Duration get transitionDuration => Duration(milliseconds: 250);
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     final result = builder(context);
     return Semantics(
       scopesRoute: true,
@@ -40,8 +39,7 @@ class TransparentPageRoute<T> extends PageRoute<T> {
           builder: (BuildContext context, Widget child) {
             final style = StaticStyle.of(context);
             return Opacity(
-              opacity:
-                  style.get('minor-animation-curve').transform(animation.value),
+              opacity: style.get('minor-animation-curve').transform(animation.value),
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(

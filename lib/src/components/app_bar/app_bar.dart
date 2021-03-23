@@ -1,9 +1,9 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/src/components/icon_button/icon_button.dart';
 import 'package:flutter_nebula/src/model/params.dart';
@@ -321,14 +321,10 @@ class _NeAppBarState extends State<NeAppBar> {
     final bool hasDrawer = false; // scaffold?.hasDrawer ?? false;
     final bool hasEndDrawer = false; // scaffold?.hasEndDrawer ?? false;
     final bool canPop = parentRoute?.canPop ?? false;
-    final bool useCloseButton =
-        parentRoute is PageRoute<dynamic> && parentRoute.fullscreenDialog;
+    final bool useCloseButton = parentRoute is PageRoute<dynamic> && parentRoute.fullscreenDialog;
 
-    IconThemeData overallIconTheme =
-        widget.iconTheme ?? appBarTheme.iconTheme ?? theme.primaryIconTheme;
-    IconThemeData actionsIconTheme = widget.actionsIconTheme ??
-        appBarTheme.actionsIconTheme ??
-        overallIconTheme;
+    IconThemeData overallIconTheme = widget.iconTheme ?? appBarTheme.iconTheme ?? theme.primaryIconTheme;
+    IconThemeData actionsIconTheme = widget.actionsIconTheme ?? appBarTheme.actionsIconTheme ?? overallIconTheme;
     TextStyle centerStyle = widget.textTheme?.headline5 ??
         TextStyle(
           fontWeight: style.get("app-bar-title-font-weight"),
@@ -337,9 +333,8 @@ class _NeAppBarState extends State<NeAppBar> {
           color: style.get("app-bar-title-color"),
         );
 
-    TextStyle sideStyle = widget.textTheme?.bodyText1 ??
-        appBarTheme.textTheme?.bodyText1 ??
-        theme.primaryTextTheme.bodyText1;
+    TextStyle sideStyle =
+        widget.textTheme?.bodyText1 ?? appBarTheme.textTheme?.bodyText1 ?? theme.primaryTextTheme.bodyText1;
 
     if (widget.toolbarOpacity != 1.0) {
       final double opacity = const Interval(
@@ -375,9 +370,7 @@ class _NeAppBarState extends State<NeAppBar> {
         );
       } else {
         if (canPop) {
-          leading = useCloseButton
-              ? const CloseButton()
-              : const NeBackButton();
+          leading = useCloseButton ? const CloseButton() : const NeBackButton();
         }
       }
     }
@@ -554,13 +547,10 @@ class _NeAppBarState extends State<NeAppBar> {
       );
     }
 
-    Color _backgroundColor =
-        widget.backgroundColor ?? style.get('app-bar-background-color');
-    final SystemUiOverlayStyle _overlayStyle =
-        ThemeData.estimateBrightnessForColor(_backgroundColor) ==
-                Brightness.dark
-            ? SystemUiOverlayStyle.light
-            : SystemUiOverlayStyle.dark;
+    Color _backgroundColor = widget.backgroundColor ?? style.get('app-bar-background-color');
+    final SystemUiOverlayStyle _overlayStyle = ThemeData.estimateBrightnessForColor(_backgroundColor) == Brightness.dark
+        ? SystemUiOverlayStyle.light
+        : SystemUiOverlayStyle.dark;
 
     return Semantics(
       container: true,
@@ -568,8 +558,7 @@ class _NeAppBarState extends State<NeAppBar> {
         value: _overlayStyle,
         child: Material(
           color: widget.backgroundColor ?? _backgroundColor,
-          elevation:
-              widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
+          elevation: widget.elevation ?? appBarTheme.elevation ?? _defaultElevation,
           shape: widget.shape,
           child: Semantics(
             explicitChildNodes: true,
@@ -587,8 +576,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
   const _ToolbarContainerLayout();
 
   @override
-  BoxConstraints getConstraintsForChild(BoxConstraints constraints) =>
-      constraints.tighten(
+  BoxConstraints getConstraintsForChild(BoxConstraints constraints) => constraints.tighten(
         height: kToolbarHeight,
       );
 
@@ -599,8 +587,7 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
       );
 
   @override
-  Offset getPositionForChild(Size size, Size childSize) =>
-      Offset(0, size.height - childSize.height);
+  Offset getPositionForChild(Size size, Size childSize) => Offset(0, size.height - childSize.height);
 
   @override
   bool shouldRelayout(_ToolbarContainerLayout oldDelegate) => false;
@@ -610,19 +597,17 @@ class _ToolbarContainerLayout extends SingleChildLayoutDelegate {
 // center it within its (NavigationToolbar) parent, and allow the
 // parent to constrain the title's actual height.
 class NeAppBarTitleBar extends SingleChildRenderObjectWidget {
-  const NeAppBarTitleBar({Key key, @required Widget child})
+  const NeAppBarTitleBar({Key key, required Widget child})
       : assert(child != null),
         super(key: key, child: child);
 
   @override
-  RenderNeAppBarTitleBar createRenderObject(BuildContext context) =>
-      RenderNeAppBarTitleBar(
+  RenderNeAppBarTitleBar createRenderObject(BuildContext context) => RenderNeAppBarTitleBar(
         textDirection: Directionality.of(context),
       );
 
   @override
-  void updateRenderObject(
-      BuildContext context, RenderNeAppBarTitleBar renderObject) {
+  void updateRenderObject(BuildContext context, RenderNeAppBarTitleBar renderObject) {
     renderObject.textDirection = Directionality.of(context);
   }
 }
@@ -639,8 +624,7 @@ class RenderNeAppBarTitleBar extends RenderAligningShiftedBox {
 
   @override
   void performLayout() {
-    final BoxConstraints innerConstraints =
-        constraints.copyWith(maxHeight: double.infinity);
+    final BoxConstraints innerConstraints = constraints.copyWith(maxHeight: double.infinity);
     child.layout(
       innerConstraints,
       parentUsesSize: true,

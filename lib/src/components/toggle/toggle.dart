@@ -30,8 +30,8 @@ class NeToggle extends StatefulWidget {
 
   const NeToggle({
     Key key,
-    @required this.value,
-    @required this.onChanged,
+    required this.value,
+    required this.onChanged,
     this.status,
     this.description,
     this.showIcon = false,
@@ -43,8 +43,7 @@ class NeToggle extends StatefulWidget {
   _NeToggleState createState() => _NeToggleState();
 }
 
-class _NeToggleState extends State<NeToggle>
-    with SingleTickerProviderStateMixin {
+class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin {
   AnimationController animationController;
   Animation<double> animation;
 
@@ -58,11 +57,9 @@ class _NeToggleState extends State<NeToggle>
     if (animationController != null) {
       animationController.duration = animationDuration;
     } else {
-      animationController =
-          AnimationController(vsync: this, duration: animationDuration);
+      animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(
-        parent: animationController, curve: style.get('minor-animation-curve'));
+    animation = CurvedAnimation(parent: animationController, curve: style.get('minor-animation-curve'));
   }
 
   @override
@@ -123,11 +120,9 @@ class _NeToggleState extends State<NeToggle>
         height: size.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(size.longestSide / 2.0),
-          color: style
-              .get(generateSelector([...selectorBasis, 'background-color'])),
+          color: style.get(generateSelector([...selectorBasis, 'background-color'])),
           border: Border.all(
-            color:
-                style.get(generateSelector([...selectorBasis, 'border-color'])),
+            color: style.get(generateSelector([...selectorBasis, 'border-color'])),
             width: style.get('toggle-border-width'),
           ),
         ),
@@ -137,14 +132,12 @@ class _NeToggleState extends State<NeToggle>
           child: AnimatedBuilder(
             animation: animation,
             builder: (context, _) => Transform.translate(
-              offset: Offset(
-                  (size.width - size.height - 2.0) * animation.value, 0.0),
+              offset: Offset((size.width - size.height - 2.0) * animation.value, 0.0),
               child: Container(
                   width: size.height - 4.0,
                   height: size.height - 4.0,
                   decoration: BoxDecoration(
-                    color: style.get(
-                        generateSelector([...selectorBasis, 'knob-color'])),
+                    color: style.get(generateSelector([...selectorBasis, 'knob-color'])),
                     shape: BoxShape.circle,
                   ),
                   child: widget.showIcon
@@ -153,8 +146,7 @@ class _NeToggleState extends State<NeToggle>
                           opacity: selected ? 1 : 0,
                           child: NeIcon(
                             EvaIcons.checkmarkOutline,
-                            color: style.get(generateSelector(
-                                [...selectorBasis, 'background-color'])),
+                            color: style.get(generateSelector([...selectorBasis, 'background-color'])),
                           ),
                         )
                       : null),
@@ -170,9 +162,7 @@ class _NeToggleState extends State<NeToggle>
               fontFamily: style.get('toggle-text-font-family'),
               fontSize: style.get('toggle-text-font-size'),
               fontWeight: style.get('toggle-text-font-weight'),
-              color: (enabled)
-                  ? style.get('toggle-text-color')
-                  : style.get('toggle-disabled-text-color'),
+              color: (enabled) ? style.get('toggle-text-color') : style.get('toggle-disabled-text-color'),
             ),
           )
         : null;
@@ -188,8 +178,7 @@ class _NeToggleState extends State<NeToggle>
           children: NeToggleableDesciptionUtils.buildListWithDescription(
             main: toggle,
             description: description,
-            descriptionPosition: widget.descriptionPosition ??
-                style.get('toggle-description-position'),
+            descriptionPosition: widget.descriptionPosition ?? style.get('toggle-description-position'),
             padding: style.get('toggle-description-padding'),
           ),
         ),

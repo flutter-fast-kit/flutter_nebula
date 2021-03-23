@@ -12,8 +12,8 @@ class OutlinedWidget extends StatefulWidget {
 
   const OutlinedWidget({
     Key key,
-    @required this.outlined,
-    @required this.child,
+    required this.outlined,
+    required this.child,
     this.predefinedSize,
     this.borderRadius,
     this.clipInner = true,
@@ -23,8 +23,7 @@ class OutlinedWidget extends StatefulWidget {
   _OutlinedWidgetState createState() => _OutlinedWidgetState();
 }
 
-class _OutlinedWidgetState extends State<OutlinedWidget>
-    with SingleTickerProviderStateMixin {
+class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProviderStateMixin {
   GlobalKey itemKey = GlobalKey();
   Size itemSize;
   BorderRadius borderRadius;
@@ -43,8 +42,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
         animationController.reverse();
       } else {
         Future.delayed(
-          animationController.duration -
-              animationController.lastElapsedDuration,
+          animationController.duration - animationController.lastElapsedDuration,
           animationController.reverse,
         );
       }
@@ -61,17 +59,14 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var animationDuration =
-        StaticStyle.of(context).get('minor-animation-duration');
+    var animationDuration = StaticStyle.of(context).get('minor-animation-duration');
 
     if (animationController != null) {
       animationController.duration = animationDuration;
     } else {
-      animationController =
-          AnimationController(vsync: this, duration: animationDuration);
+      animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation =
-        CurvedAnimation(parent: animationController, curve: Curves.decelerate);
+    animation = CurvedAnimation(parent: animationController, curve: Curves.decelerate);
   }
 
   @override
@@ -94,12 +89,9 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
     }
   }
 
-  Border calculateBorder(
-      double outlineWidth, Color outlineColor, VectorMath.Vector3 scaleFactor) {
-    var verticalBorderSide =
-        BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.y));
-    var horizontalBorderSide =
-        BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.x));
+  Border calculateBorder(double outlineWidth, Color outlineColor, VectorMath.Vector3 scaleFactor) {
+    var verticalBorderSide = BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.y));
+    var horizontalBorderSide = BorderSide(color: outlineColor, width: outlineWidth / (scaleFactor.x));
     return Border(
       top: verticalBorderSide,
       bottom: verticalBorderSide,
@@ -132,18 +124,13 @@ class _OutlinedWidgetState extends State<OutlinedWidget>
                           VectorMath.Quaternion.identity(),
                           scaleFactor,
                         ),
-                        origin:
-                            Offset(itemSize.width / 2.0, itemSize.height / 2.0),
+                        origin: Offset(itemSize.width / 2.0, itemSize.height / 2.0),
                         child: (widget.clipInner)
                             ? ClipPath(
                                 clipper: DoubleClipRRect(
                                   borderRadius: borderRadius,
-                                  outilneVerticalWidth:
-                                      (outlineWidth * animation.value) /
-                                          scaleFactor.y,
-                                  outlineHorizontalWidth:
-                                      (outlineWidth * animation.value) /
-                                          (scaleFactor.x),
+                                  outilneVerticalWidth: (outlineWidth * animation.value) / scaleFactor.y,
+                                  outlineHorizontalWidth: (outlineWidth * animation.value) / (scaleFactor.x),
                                 ),
                                 child: Container(
                                   width: itemSize.width,

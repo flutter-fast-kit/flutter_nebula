@@ -19,7 +19,7 @@ class NeLayout extends StatefulWidget {
   const NeLayout({
     Key key,
     this.theme,
-    @required this.child,
+    required this.child,
     this.appBar,
     this.bottomTabBar,
   }) : super(key: key);

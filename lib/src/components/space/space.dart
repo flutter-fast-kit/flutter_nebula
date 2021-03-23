@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class NeSpace extends StatelessWidget {
   const NeSpace({
-    Key key,
+    Key? key,
     this.direction = Axis.horizontal,
     this.size = 0.0,
   }) : super(key: key);
@@ -47,11 +47,11 @@ class NeSpace extends StatelessWidget {
 
   static const NeSpace empty = NeSpace();
 
-  factory NeSpace.v(double size, {Key key}) {
+  factory NeSpace.v(double size, {Key? key}) {
     return NeSpace(key: key, direction: Axis.vertical, size: size);
   }
 
-  factory NeSpace.h(double size, {Key key}) {
+  factory NeSpace.h(double size, {Key? key}) {
     return NeSpace(key: key, direction: Axis.horizontal, size: size);
   }
 

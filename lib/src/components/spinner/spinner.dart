@@ -18,7 +18,7 @@ class NeSpinner extends StatefulWidget {
   final NeWidgetSize size;
 
   const NeSpinner({
-    Key key,
+    Key? key,
     this.status = NeWidgetStatus.primary,
     this.size = NeWidgetSize.medium,
   }) : super(key: key);
@@ -26,18 +26,15 @@ class NeSpinner extends StatefulWidget {
   _NeSpinnerState createState() => _NeSpinnerState();
 }
 
-class _NeSpinnerState extends State<NeSpinner>
-    with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+class _NeSpinnerState extends State<NeSpinner> with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 800));
+    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 800));
 
-    animation = CurvedAnimation(
-        curve: Cubic(0.275, 0.725, 0.725, 0.275), parent: animationController);
+    animation = CurvedAnimation(curve: Cubic(0.275, 0.725, 0.725, 0.275), parent: animationController);
 
     animationController.repeat(min: 0.0, max: 1.0);
   }
@@ -62,10 +59,8 @@ class _NeSpinnerState extends State<NeSpinner>
             angle: animation.value * pi * 2.0,
             child: CustomPaint(
               painter: SpinnerPainter(
-                color: style
-                    .get(generateSelector(['spinner', widget.status, 'color'])),
-                strokeWidth: style.get(
-                    generateSelector(['spinner', widget.size, 'stroke-width'])),
+                color: style.get(generateSelector(['spinner', widget.status, 'color'])),
+                strokeWidth: style.get(generateSelector(['spinner', widget.size, 'stroke-width'])),
               ),
               isComplex: false,
               willChange: false,

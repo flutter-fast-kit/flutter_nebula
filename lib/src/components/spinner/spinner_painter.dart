@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class SpinnerPainter extends CustomPainter {
-  SpinnerPainter({this.color, this.strokeWidth});
+  SpinnerPainter({required this.color, required this.strokeWidth});
 
   final Color color;
   final double strokeWidth;

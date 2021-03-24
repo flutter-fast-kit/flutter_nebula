@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ToastRevealAnimationWidget extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final Animation<double> animation;
   final outlineWidth;
 
   const ToastRevealAnimationWidget({
-    Key key,
-    this.animation,
+    Key? key,
+    required this.animation,
     this.child,
     this.outlineWidth,
   }) : super(key: key);
@@ -50,6 +50,5 @@ class ToastRevealAnimationClipper extends CustomClipper<Rect> {
 
   @override
   bool shouldReclip(ToastRevealAnimationClipper oldClipper) =>
-      oldClipper.sizeMultiplier != sizeMultiplier ||
-      oldClipper.outlineWidth != outlineWidth;
+      oldClipper.sizeMultiplier != sizeMultiplier || oldClipper.outlineWidth != outlineWidth;
 }

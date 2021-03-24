@@ -8,12 +8,12 @@ export 'package:flutter_nebula/src/components/toast/toast_style.dart';
 
 class NeToastWidget extends StatefulWidget {
   final NeToast data;
-  final VoidCallback serviceRemoveToastCallback;
+  final VoidCallback? serviceRemoveToastCallback;
   final EdgeInsets padding;
 
   const NeToastWidget({
-    Key key,
-    this.data,
+    Key? key,
+    required this.data,
     this.serviceRemoveToastCallback,
     this.padding = EdgeInsets.zero,
   }) : super(key: key);
@@ -22,10 +22,9 @@ class NeToastWidget extends StatefulWidget {
   _NeToastWidgetState createState() => _NeToastWidgetState();
 }
 
-class _NeToastWidgetState extends State<NeToastWidget>
-    with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+class _NeToastWidgetState extends State<NeToastWidget> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
   bool revealing = true;
 
   @override
@@ -63,7 +62,7 @@ class _NeToastWidgetState extends State<NeToastWidget>
     if (mounted && revealing) {
       revealing = false;
       controller.reverse(from: 1.0);
-      Future.delayed(controller.duration, widget.serviceRemoveToastCallback);
+      Future.delayed(controller.duration!, widget.serviceRemoveToastCallback);
       setState(() {});
     }
   }
@@ -80,7 +79,7 @@ class _NeToastWidgetState extends State<NeToastWidget>
   }
 
   void onTap(BuildContext context) {
-    if (widget.data.onTap != null) widget.data.onTap();
+    if (widget.data.onTap != null) widget.data.onTap!();
     hide();
   }
 
@@ -108,8 +107,7 @@ class _NeToastWidgetState extends State<NeToastWidget>
             duration: style.get('minor-animation-duration'),
             curve: style.get('minor-animation-curve'),
             decoration: BoxDecoration(
-              color: style.get(
-                  generateSelector([...statusSelector, 'background-color'])),
+              color: style.get(generateSelector([...statusSelector, 'background-color'])),
               boxShadow: [style.get('toast-shadow')],
               borderRadius: borderRadius,
             ),
@@ -135,11 +133,11 @@ class _NeToastWidgetState extends State<NeToastWidget>
 
 class _NeToastBody extends StatefulWidget {
   final NeToast data;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const _NeToastBody({
-    Key key,
-    this.data,
+    Key? key,
+    required this.data,
     this.onTap,
   }) : super(key: key);
 
@@ -152,8 +150,7 @@ class _NeToastBodyState extends State<_NeToastBody> {
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
-    final foregroundColor = style.get(
-        generateSelector(['toast', widget.data.status, 'foreground-color']));
+    final foregroundColor = style.get(generateSelector(['toast', widget.data.status, 'foreground-color']));
 
     final borderRadius = BorderRadius.all(NeWidgetShapeUtils.getRadius(
       style: style.style,
@@ -187,9 +184,8 @@ class _NeToastBodyState extends State<_NeToastBody> {
                   ),
                   padding: style.get('toast-icon-padding'),
                   child: NeIcon(
-                    widget.data.icon,
-                    color: style.get(generateSelector(
-                        ['toast', widget.data.status, 'icon-color'])),
+                    widget.data.icon!,
+                    color: style.get(generateSelector(['toast', widget.data.status, 'icon-color'])),
                     size: style.get('toast-icon-size'),
                   ),
                 ),
@@ -211,7 +207,7 @@ class _NeToastBodyState extends State<_NeToastBody> {
                     ),
                     if (widget.data.subtitle != null)
                       Text(
-                        widget.data.subtitle,
+                        widget.data.subtitle!,
                         style: TextStyle(
                           fontFamily: style.get('toast-subtitle-font-family'),
                           fontSize: style.get('toast-subtitle-font-size'),

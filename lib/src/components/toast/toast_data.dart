@@ -7,22 +7,22 @@ class NeToast {
   final String message;
 
   /// Subtitle provides some additional information besides [message]. Optional.
-  final String subtitle;
+  final String? subtitle;
 
   /// Icon to display alongside [message]. Optional.
-  final IconData icon;
+  final IconData? icon;
 
   /// Status of this toast
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// The shape of this toast. Uses [NeThemeData.defaultWidgetShape] as default.
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
   /// Duration of this toast. After [duration] elapses, tab will hide automatically.
   final Duration duration;
 
   /// Gets called when user taps the toast. Optional.
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const NeToast({
     required this.message,

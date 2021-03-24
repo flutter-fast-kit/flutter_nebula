@@ -6,7 +6,7 @@ import 'package:vector_math/vector_math_64.dart' as VectorMath;
 class OutlinedWidget extends StatefulWidget {
   final bool outlined;
   final Widget child;
-  final Size predefinedSize;
+  final Size? predefinedSize;
   final BorderRadius? borderRadius;
   final bool clipInner;
 
@@ -14,7 +14,7 @@ class OutlinedWidget extends StatefulWidget {
     Key? key,
     required this.outlined,
     required this.child,
-    required this.predefinedSize,
+    this.predefinedSize,
     this.borderRadius,
     this.clipInner = true,
   }) : super(key: key);

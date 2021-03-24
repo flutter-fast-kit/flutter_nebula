@@ -19,24 +19,24 @@ class NeTabBar extends StatelessWidget implements PreferredSizeWidget {
   final NeVerticalPositioning position;
 
   const NeTabBar({
-    Key key,
-    this.defaultSelected,
+    Key? key,
+    required this.defaultSelected,
     required this.onSelect,
     required this.tabs,
     this.position = NeVerticalPositioning.top,
   }) : super(key: key);
 
   const NeTabBar.top({
-    Key key,
-    this.defaultSelected,
+    Key? key,
+    required this.defaultSelected,
     required this.onSelect,
     required this.tabs,
   })   : this.position = NeVerticalPositioning.top,
         super(key: key);
 
   const NeTabBar.bottom({
-    Key key,
-    this.defaultSelected,
+    Key? key,
+    required this.defaultSelected,
     required this.onSelect,
     required this.tabs,
   })   : this.position = NeVerticalPositioning.bottom,
@@ -48,7 +48,7 @@ class NeTabBar extends StatelessWidget implements PreferredSizeWidget {
       onSelect: onSelect,
       tabs: tabs,
       defaultSelected: defaultSelected,
-      showPagerIndicator: position == NeVerticalPositioning.top ? true : null,
+      showPagerIndicator: position == NeVerticalPositioning.top ? true : false,
       pagerIndicatorPosition:
           this.position == NeVerticalPositioning.top ? NeVerticalPositioning.bottom : NeVerticalPositioning.top,
     );

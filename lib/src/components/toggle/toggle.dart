@@ -10,10 +10,10 @@ class NeToggle extends StatefulWidget {
   final bool value;
 
   /// Status of the widget. Controls the color of the toggle.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
-  final String description;
+  final String? description;
 
   /// Controls the location of description.
   final NePositioning descriptionPosition;
@@ -26,10 +26,10 @@ class NeToggle extends StatefulWidget {
   final void Function(bool) onChanged;
 
   /// Amount of padding.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   const NeToggle({
-    Key key,
+    Key? key,
     required this.value,
     required this.onChanged,
     this.status,
@@ -44,8 +44,8 @@ class NeToggle extends StatefulWidget {
 }
 
 class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   bool outlined = false;
 
@@ -157,7 +157,7 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
     );
     final description = (widget.description != null)
         ? NeText.subtitle2(
-            widget.description,
+            widget.description!,
             style: TextStyle(
               fontFamily: style.get('toggle-text-font-family'),
               fontSize: style.get('toggle-text-font-size'),
@@ -180,7 +180,7 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
             description: description,
             descriptionPosition: widget.descriptionPosition ?? style.get('toggle-description-position'),
             padding: style.get('toggle-description-padding'),
-          ),
+          )!,
         ),
       ),
     );

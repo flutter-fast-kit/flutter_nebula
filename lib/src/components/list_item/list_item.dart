@@ -7,13 +7,13 @@ export 'package:flutter_nebula/src/components/list_item/list_item_style.dart';
 /// NeListItem is used to display a line of information, typically in a list.
 class NeListItem extends StatefulWidget {
   /// Icon to display before the content.
-  final IconData icon;
+  final IconData? icon;
 
   /// The main information of this item.
   final String title;
 
   /// Additional information.
-  final String subtitle;
+  final String? subtitle;
 
   /// Active means that this list item is highlighted (selected).
   final bool active;
@@ -25,10 +25,10 @@ class NeListItem extends StatefulWidget {
   final VoidCallback onTap;
 
   /// Padding to use in this list item.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   const NeListItem({
-    Key key,
+    Key? key,
     this.icon,
     required this.title,
     required this.onTap,
@@ -95,7 +95,7 @@ class _NeListItemState extends State<NeListItem> {
                 ),
                 if (widget.subtitle != null)
                   Text(
-                    widget.subtitle,
+                    widget.subtitle!,
                     style: TextStyle(
                       fontWeight: style.get('list-item-subtitle-font-weight'),
                       fontSize: style.get('list-item-subtitle-font-size'),

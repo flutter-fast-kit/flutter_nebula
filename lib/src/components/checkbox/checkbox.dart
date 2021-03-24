@@ -14,28 +14,28 @@ class NeCheckbox extends StatefulWidget {
   final bool value;
 
   /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
-  final String description;
+  final String? description;
 
   /// Status of the widget. Controls the color of the checkbox.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Status of the widget. Controls the color of the checkbox. Gets overwritten
   /// if [NeCheckboxThemeData.borderRadius] is present.
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
   /// Controls the location of description.
-  final NePositioning descriptionPosition;
+  final NePositioning? descriptionPosition;
 
   /// Padding for the radio. Defaults to `control-padding`.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// A method that is called when checkbox's value is changed. Checkbox is disabled if [onChanged] is null.
   /// If [value] is null, returns `true`.
   /// Otherwise, returns the opposite of [value].
-  final void Function(bool) onChanged;
+  final void Function(bool)? onChanged;
 
   const NeCheckbox({
-    Key key,
+    Key? key,
     required this.value,
     required this.onChanged,
     this.description,
@@ -54,9 +54,9 @@ class _NeCheckboxState extends State<NeCheckbox> {
 
   _onTap() {
     if (widget.value == null)
-      widget.onChanged(true);
+      widget.onChanged!(true);
     else
-      widget.onChanged(!widget.value);
+      widget.onChanged!(!widget.value);
   }
 
   @override
@@ -120,7 +120,7 @@ class _NeCheckboxState extends State<NeCheckbox> {
 
     final description = (widget.description != null)
         ? NeText.subtitle2(
-            widget.description,
+            widget.description!,
             style: TextStyle(
               fontFamily: style.get('checkbox-text-font-family'),
               fontSize: style.get('checkbox-text-font-size'),
@@ -143,7 +143,7 @@ class _NeCheckboxState extends State<NeCheckbox> {
             description: description,
             descriptionPosition: widget.descriptionPosition ?? style.get('checkbox-description-position'),
             padding: style.get('checkbox-description-padding'),
-          ),
+          )!,
         ),
       ),
     );

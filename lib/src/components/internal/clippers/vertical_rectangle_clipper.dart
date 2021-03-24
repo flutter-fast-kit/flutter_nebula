@@ -4,7 +4,7 @@ class VerticalRectangleClipper extends CustomClipper<Rect> {
   double verticalMultiplier;
   double shadowSize;
 
-  VerticalRectangleClipper({this.verticalMultiplier, this.shadowSize});
+  VerticalRectangleClipper({required this.verticalMultiplier, required this.shadowSize});
 
   @override
   Rect getClip(Size size) {
@@ -19,6 +19,5 @@ class VerticalRectangleClipper extends CustomClipper<Rect> {
 
   @override
   bool shouldReclip(VerticalRectangleClipper oldClipper) =>
-      (oldClipper.verticalMultiplier != verticalMultiplier ||
-          oldClipper.shadowSize != shadowSize);
+      (oldClipper.verticalMultiplier != verticalMultiplier || oldClipper.shadowSize != shadowSize);
 }

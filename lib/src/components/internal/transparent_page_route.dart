@@ -4,7 +4,7 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 class TransparentPageRoute<T> extends PageRoute<T> {
   TransparentPageRoute({
     required this.builder,
-    RouteSettings settings,
+    RouteSettings? settings,
   })  : assert(builder != null),
         super(
           settings: settings,
@@ -17,10 +17,10 @@ class TransparentPageRoute<T> extends PageRoute<T> {
   bool get opaque => false;
 
   @override
-  Color get barrierColor => null;
+  Color? get barrierColor => null;
 
   @override
-  String get barrierLabel => null;
+  String? get barrierLabel => null;
 
   @override
   bool get maintainState => true;
@@ -31,12 +31,14 @@ class TransparentPageRoute<T> extends PageRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     final result = builder(context);
+
     return Semantics(
-      scopesRoute: true,
-      explicitChildNodes: true,
-      child: AnimatedBuilder(
+        scopesRoute: true,
+        explicitChildNodes: true,
+        child: AnimatedBuilder(
           animation: animation,
-          builder: (BuildContext context, Widget child) {
+          child: null,
+          builder: (BuildContext context, Widget? child) {
             final style = StaticStyle.of(context);
             return Opacity(
               opacity: style.get('minor-animation-curve').transform(animation.value),
@@ -55,7 +57,7 @@ class TransparentPageRoute<T> extends PageRoute<T> {
                 ),
               ),
             );
-          }),
-    );
+          },
+        ));
   }
 }

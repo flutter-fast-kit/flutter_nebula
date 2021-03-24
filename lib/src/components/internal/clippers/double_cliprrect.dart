@@ -6,9 +6,9 @@ class DoubleClipRRect extends CustomClipper<Path> {
   final double outlineHorizontalWidth;
 
   DoubleClipRRect({
-    this.outilneVerticalWidth,
-    this.outlineHorizontalWidth,
-    this.borderRadius,
+    required this.outilneVerticalWidth,
+    required this.outlineHorizontalWidth,
+    required this.borderRadius,
   });
 
   @override

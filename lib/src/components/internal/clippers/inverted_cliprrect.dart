@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class InvertedClipRRect extends CustomClipper<Path> {
   final BorderRadius borderRadius;
 
-  InvertedClipRRect({this.borderRadius});
+  InvertedClipRRect({required this.borderRadius});
 
   @override
   Path getClip(Size size) {

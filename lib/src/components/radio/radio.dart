@@ -14,19 +14,19 @@ class NeRadio extends StatefulWidget {
   final bool value;
 
   /// A description to put either on left or on the right of checkbox, controlled by [descriptionPosition].
-  final String description;
+  final String? description;
 
   /// Status of the widget. Controls the color of the toggle.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Controls the location of description.
   final NePositioning descriptionPosition;
 
   /// Padding for the radio. Defaults to `control-padding`.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   const NeRadio({
-    Key key,
+    Key? key,
     required this.onSelected,
     required this.value,
     this.description,
@@ -93,7 +93,7 @@ class _NeRadioState extends State<NeRadio> {
 
     final description = widget.description != null
         ? NeText.subtitle2(
-            widget.description,
+            widget.description!,
             style: TextStyle(
               fontFamily: style.get('radio-text-font-family'),
               fontSize: style.get('radio-text-font-size'),
@@ -116,7 +116,7 @@ class _NeRadioState extends State<NeRadio> {
             description: description,
             descriptionPosition: widget.descriptionPosition ?? style.get('radio-description-position'),
             padding: style.get('radio-description-padding'),
-          ),
+          )!,
         ),
       ),
     );

@@ -12,12 +12,12 @@ void dismissAllToast({bool showAnim = false}) {
 /// When the Toast is dismissed, call [onDismiss] if specified;
 class ToastFuture {
   final OverlayEntry _entry;
-  final VoidCallback _onDismiss;
+  final VoidCallback? _onDismiss;
   bool _isShow = true;
   final GlobalKey<StyledToastWidgetState> _containerKey;
 
   /// A [Timer] used to dismiss this toast future after the given period of time.
-  Timer _timer;
+  late Timer _timer;
 
   ToastFuture.create(
     Duration duration,
@@ -28,8 +28,7 @@ class ToastFuture {
     _timer = Timer(duration, () => dismiss());
   }
 
-  void dismiss(
-      {bool showAnim = false, Duration animDuration = animationDuration}) {
+  void dismiss({bool showAnim = false, Duration animDuration = animationDuration}) {
     if (!_isShow) {
       return;
     }
@@ -48,7 +47,7 @@ class ToastFuture {
 class ToastManager {
   ToastManager._();
 
-  static ToastManager _instance;
+  static late ToastManager _instance;
 
   factory ToastManager() {
     _instance ??= ToastManager._();

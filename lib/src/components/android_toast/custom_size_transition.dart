@@ -61,7 +61,7 @@ class CustomSizeTransition extends AnimatedWidget {
   ///
   /// If the value of [sizeFactor] is less than one, the child will be clipped
   /// in the appropriate axis.
-  Animation<double> get sizeFactor => listenable;
+  Animation<double> get sizeFactor => listenable as Animation<double>;
 
   /// Describes how to align the child along the axis that [sizeFactor] is
   /// modifying.

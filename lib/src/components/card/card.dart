@@ -13,11 +13,11 @@ class NeCard extends StatelessWidget {
 
   /// A widget to use as card's header. Gets padded by [headerPadding] or [padding].
   /// Set [headerPadding] to `EdgeInsets.zero` if you want no padding.
-  final Widget header;
+  final Widget? header;
 
   /// A widget to use as card's header. Gets padded by [footerPadding] or [padding].
   /// Set [footerPadding] to `EdgeInsets.zero` if you want no padding.
-  final Widget footer;
+  final Widget? footer;
 
   /// A card's status. It will be dispalyed according to [statusAppearance].
   /// - If [statusAppearance] is [CardStatusAppearance.body], entire card will be painted in
@@ -27,28 +27,28 @@ class NeCard extends StatelessWidget {
   /// - If [statusAppearance] is [CardStatusAppearance.strip], the status will be displayed as
   /// tiny line on top of the card.
   /// - Otherwise, no status will be displayed.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Controls the card's border radius. If none is passed, uses [NeThemeData.defaultWidgetShape].
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
   /// Controls the card's status appearance. See [status] for more details.
-  final NeCardStatusAppearance statusAppearance;
+  final NeCardStatusAppearance? statusAppearance;
 
   /// Controls the padding of the child. Also sets the [headerPadding] and [footerPadding] if they're null.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Controls the padding for the header. Gets set by [padding] if it's `null`. See [header].
-  final EdgeInsets headerPadding;
+  final EdgeInsets? headerPadding;
 
   /// Controls the padding for the footer. Gets set by [padding] if it's `null`. See [footer].
-  final EdgeInsets footerPadding;
+  final EdgeInsets? footerPadding;
 
   /// Use this to overwrite the borderRadius set by the theme.
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   const NeCard({
-    Key key,
+    Key? key,
     required this.child,
     this.header,
     this.footer,
@@ -67,10 +67,10 @@ class NeCard extends StatelessWidget {
 
     if (header != null) {
       if (status != null && this.statusAppearance == NeCardStatusAppearance.strip) {
-        widgets.add(_CardStatusStripWidget(shape: shape, status: status));
+        widgets.add(_CardStatusStripWidget(shape: shape, status: status!));
       }
       widgets.add(_CardHeader(
-        child: header,
+        child: header!,
         padding: headerPadding ?? padding,
         shape: shape,
         status: status,
@@ -91,7 +91,7 @@ class NeCard extends StatelessWidget {
         width: style.get('card-divider-width'),
       ));
       widgets.add(_CardFooter(
-        child: footer,
+        child: footer!,
         padding: footerPadding ?? padding,
         shape: shape,
         status: status,
@@ -143,20 +143,21 @@ class NeCard extends StatelessWidget {
 }
 
 class _CardHeader extends StatelessWidget {
-  final NeWidgetStatus status;
-  final NeWidgetShape shape;
-  final NeCardStatusAppearance statusAppearance;
+  final NeWidgetStatus? status;
+  final NeWidgetShape? shape;
+  final NeCardStatusAppearance? statusAppearance;
   final EdgeInsets padding;
   final Widget child;
 
   const _CardHeader({
-    Key key,
+    Key? key,
     this.status,
     this.shape,
     this.statusAppearance,
-    this.padding,
+    required this.padding,
     required this.child,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context);
@@ -195,15 +196,21 @@ class _CardHeader extends StatelessWidget {
 }
 
 class _CardFooter extends StatelessWidget {
-  final NeWidgetStatus status;
-  final NeWidgetShape shape;
-  final NeCardStatusAppearance statusAppearance;
+  final NeWidgetStatus? status;
+  final NeWidgetShape? shape;
+  final NeCardStatusAppearance? statusAppearance;
   final EdgeInsets padding;
   final Widget child;
 
   const _CardFooter(
-      {MaterialDesign.Key key, this.status, this.shape, this.statusAppearance, this.padding, required this.child})
+      {MaterialDesign.Key? key,
+      this.status,
+      this.shape,
+      this.statusAppearance,
+      required this.padding,
+      required this.child})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final theme = StaticStyle.of(context);
@@ -231,9 +238,10 @@ class _CardFooter extends StatelessWidget {
 
 class _CardStatusStripWidget extends StatelessWidget {
   final NeWidgetStatus status;
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
-  const _CardStatusStripWidget({MaterialDesign.Key key, this.status, this.shape}) : super(key: key);
+  const _CardStatusStripWidget({MaterialDesign.Key? key, required this.status, this.shape}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final style = StaticStyle.of(context).style;

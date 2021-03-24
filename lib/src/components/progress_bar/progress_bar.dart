@@ -10,25 +10,25 @@ class NeProgressBar extends StatefulWidget {
   final double value;
 
   /// Status changes the color.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Size controls the size of the progress.
   final NeWidgetSize size;
 
   /// Size controls the borderRadius of the progress.
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
   /// Text is displayed inside of the progress. Not visible at all times. Optional.
-  final String text;
+  final String? text;
 
   /// Color overwrites the color set by [status]. Use it if you, for example, want to animate the color.
-  final Color color;
+  final Color? color;
 
   /// Height of the progress bar. Use it to override the default height.
-  final double height;
+  final double? height;
 
   const NeProgressBar({
-    Key key,
+    Key? key,
     required this.value,
     this.status,
     this.color,
@@ -42,15 +42,15 @@ class NeProgressBar extends StatefulWidget {
 }
 
 class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
-  double value;
+  late AnimationController controller;
+  late Animation<double> animation;
+  late double value;
 
   didUpdateWidget(NeProgressBar oldWidget) {
     if (oldWidget.value != widget.value) {
       value = widget.value;
       double diff = (controller.value - value).abs();
-      controller.animateTo(widget.value, duration: controller.duration * diff);
+      controller.animateTo(widget.value, duration: controller.duration! * diff);
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -119,7 +119,7 @@ class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProvider
               child: widget.text != null
                   ? Center(
                       child: Text(
-                        widget.text,
+                        widget.text!,
                         style: TextStyle(
                           fontFamily: style.get(generateSelector([...selectorSizeBase, 'text-font-family'])),
                           fontSize: style.get(generateSelector([...selectorSizeBase, 'text-font-size'])),

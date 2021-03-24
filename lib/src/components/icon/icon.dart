@@ -4,13 +4,13 @@ import 'package:flutter_nebula/src/nebula_internal.dart';
 
 class NeIcon extends StatelessWidget {
   final IconData icon;
-  final double size;
-  final Color color;
-  final NeWidgetStatus status;
+  final double? size;
+  final Color? color;
+  final NeWidgetStatus? status;
 
   const NeIcon(
     this.icon, {
-    Key key,
+    Key? key,
     this.size,
     this.color,
     this.status,

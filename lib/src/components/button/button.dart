@@ -13,7 +13,7 @@ class NeButton extends StatefulWidget {
   final NeWidgetSize size;
 
   /// Controls the status - and color of the widget.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Controls the appearance of the button. It can be either filled, outlined, or ghost. Will overwrite the value set by the theme.
   final NeWidgetAppearance appearance;
@@ -28,34 +28,34 @@ class NeButton extends StatefulWidget {
   final Widget label;
 
   /// A leading widget. Will be placed on the left.
-  final Widget leading;
+  final Widget? leading;
 
   /// A trailing widget. Will be placed on the right.
-  final Widget trailing;
+  final Widget? trailing;
 
   /// Width of the separator between [label] and [leading], [trailing].
   final double separatorWidth;
 
   /// Padding to use inside the button.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Alignment of items in the button.
   final MainAxisAlignment itemAlignment;
 
   /// Color to use for the background.
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Color to use for the border.
-  final Color borderColor;
+  final Color? borderColor;
 
   /// Color to use for the foreground.
-  final Color foregroundColor;
+  final Color? foregroundColor;
 
   /// Whether this button should fill the entire allowed width.
   final bool fluid;
 
   const NeButton({
-    Key key,
+    Key? key,
     required this.label,
     required this.onTap,
     this.size = NeWidgetSize.medium,
@@ -75,7 +75,7 @@ class NeButton extends StatefulWidget {
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.filled`.
   const NeButton.filled({
-    Key key,
+    Key? key,
     required this.label,
     required this.onTap,
     this.size = NeWidgetSize.medium,
@@ -95,7 +95,7 @@ class NeButton extends StatefulWidget {
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.outline`.
   const NeButton.outline({
-    Key key,
+    Key? key,
     required this.label,
     required this.onTap,
     this.size = NeWidgetSize.medium,
@@ -115,7 +115,7 @@ class NeButton extends StatefulWidget {
 
   /// Automatically sets the [appearance] to be `WidgetAppearance.ghost`.
   const NeButton.ghost({
-    Key key,
+    Key? key,
     required this.label,
     required this.onTap,
     this.size = NeWidgetSize.medium,
@@ -160,13 +160,13 @@ class _NeButtonState extends State<NeButton> {
 
     list = [
       if (widget.leading != null) ...[
-        widget.leading,
+        widget.leading!,
         SizedBox(width: widget.separatorWidth),
       ],
       widget.label,
       if (widget.trailing != null) ...[
         SizedBox(width: widget.separatorWidth),
-        widget.trailing,
+        widget.trailing!,
       ],
     ];
 

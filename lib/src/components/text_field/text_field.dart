@@ -11,43 +11,43 @@ class NeTextField extends StatefulWidget {
   final NeWidgetShape shape;
 
   /// Controls the TextField's color.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Text to put as error. Will repaint the text field. If `null` is provided, no error will be drawn.
-  final String error;
+  final String? error;
 
   /// Text to put as a hint.
   final String hint;
 
   /// Text to put as a label. Can be `null`.
-  final String label;
+  final String? label;
 
   /// Text to put as a description. Can be `null`.
-  final String description;
+  final String? description;
 
   /// Can this text field be used?
   final bool enabled;
 
   /// TextEditingController to pass to the TextField
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   /// Gets called when user taps the TextField
-  final void Function() onTap;
+  final void Function()? onTap;
 
   /// Gets called when the text in the TextField is changed
-  final void Function(String) onChanged;
+  final void Function(String)? onChanged;
 
   /// Gets called when user submits text through keyboard
-  final void Function(String) onSubmitted;
+  final void Function(String)? onSubmitted;
 
   /// Gets called when user is finished editing this field
-  final void Function() onEditingComplete;
+  final void Function()? onEditingComplete;
 
   /// Icon to put into TextField. Position is controlled using [iconPosition].
-  final IconData icon;
+  final IconData? icon;
 
   /// Controls the position of [icon].
-  final NePositioning iconPosition;
+  final NePositioning? iconPosition;
 
   /// Whether to obscure the text or not. For example, when editing password you need to set this to true.
   final bool obscureText;
@@ -56,16 +56,16 @@ class NeTextField extends StatefulWidget {
   final NeWidgetSize size;
 
   /// Padding to use inside TextField.
-  final EdgeInsets padding;
+  final EdgeInsets? padding;
 
   /// Type of the keyboard.
   final TextInputType keyboardType;
 
   /// A [FocusNode] to pass to [TextField].
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
 
   const NeTextField({
-    Key key,
+    Key? key,
     required this.hint,
     this.shape = NeWidgetShape.rectangle,
     this.status,
@@ -92,7 +92,7 @@ class NeTextField extends StatefulWidget {
 
 class _NeTextFieldState extends State<NeTextField> {
   bool outlined = false;
-  FocusNode focusNode;
+  late FocusNode focusNode;
 
   void focusNodeListener() {
     setState(() {
@@ -103,7 +103,7 @@ class _NeTextFieldState extends State<NeTextField> {
   @override
   void initState() {
     if (widget.focusNode != null) {
-      this.focusNode = widget.focusNode;
+      this.focusNode = widget.focusNode!;
     } else {
       this.focusNode = FocusNode();
     }
@@ -151,7 +151,7 @@ class _NeTextFieldState extends State<NeTextField> {
       children: <Widget>[
         if (widget.label != null) ...[
           Text(
-            widget.label.toUpperCase(),
+            widget.label!.toUpperCase(),
             style: TextStyle(
               color: style.get('text-field-label-color'),
               fontSize: style.get('text-field-label-font-size'),
@@ -197,14 +197,14 @@ class _NeTextFieldState extends State<NeTextField> {
                   fillColor: style.get(generateSelector([...statusSelector, 'background-color'])),
                   prefixIcon: (widget.icon != null && widget.iconPosition == NePositioning.left)
                       ? NeIcon(
-                          widget.icon,
+                          widget.icon!,
                           color: style.get(generateSelector([...statusSelector, 'hint-color'])),
                           size: style.get(generateSelector([...sizedSelector, 'text-font-size'])),
                         )
                       : null,
                   suffixIcon: (widget.icon != null && widget.iconPosition == NePositioning.right)
                       ? NeIcon(
-                          widget.icon,
+                          widget.icon!,
                           color: style.get(generateSelector([...statusSelector, 'hint-color'])),
                           size: style.get(generateSelector([...sizedSelector, 'text-font-size'])),
                         )
@@ -250,7 +250,7 @@ class _NeTextFieldState extends State<NeTextField> {
         if (!errored && widget.description != null) ...[
           SizedBox(height: 4.0),
           Text(
-            widget.description,
+            widget.description!,
             style: TextStyle(
               color: style.get('text-field-description-color'),
               fontSize: style.get('text-field-description-font-size'),
@@ -262,7 +262,7 @@ class _NeTextFieldState extends State<NeTextField> {
         if (errored) ...[
           SizedBox(height: 4.0),
           Text(
-            widget.error,
+            widget.error!,
             style: TextStyle(
               color: style.get('text-field-error-color'),
               fontSize: style.get('text-field-error-font-size'),

@@ -1,8 +1,7 @@
 name: flutter_nebula
 description: A Flutter implementation of Eva Design System.
-version: 1.0.0
-author: SimMan
-homepage: http://gitlab.tqxd.com/aitd_exchange/aitd_exchange_mobile/flutter/flutter_nebula
+version: 1.0.0+1
+homepage: https://github.com/flutter-fast-kit/flutter_nebula
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

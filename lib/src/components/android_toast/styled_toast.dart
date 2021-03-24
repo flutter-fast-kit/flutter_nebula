@@ -29,14 +29,14 @@ const double _defaultHorizontalMargin = 50.0;
 /// Can be used without wrapping you app with StyledToast, but must specify context;
 /// When you wrap your app with StyledToast, [context] is optional;
 ToastFuture showToast(
-  String msg, {
+  String? msg, {
   BuildContext? context,
   Duration? duration,
   Duration? animDuration,
   AndroidToastPosition? position,
   TextStyle? textStyle,
   EdgeInsetsGeometry? textPadding,
-  double toastHorizontalMargin = _defaultHorizontalMargin,
+  double? toastHorizontalMargin = _defaultHorizontalMargin,
   Color? backgroundColor,
   BorderRadius? borderRadius,
   ShapeBorder? shapeBorder,
@@ -206,7 +206,7 @@ ToastFuture showToastWidget(
     );
   });
 
-  dismissOtherToast ??= _toastTheme?.dismissOtherOnShow ?? false;
+  // dismissOtherToast ??= _toastTheme?.dismissOtherOnShow ?? false;
 
   if (dismissOtherToast == true) {
     ToastManager().dismissAll();
@@ -459,7 +459,7 @@ class _StyledToastWidget extends StatefulWidget {
   final Alignment? alignment;
 
   ///Axis of animation, like size animation
-  final Axis axis;
+  final Axis? axis;
 
   ///Start offset of slide animation
   final Offset? startOffset;
@@ -577,7 +577,7 @@ class StyledToastWidgetState extends State<_StyledToastWidget>
 
   double get offset => widget.position.offset;
 
-  AlignmentGeometry get positionAlignment => widget.position.align;
+  AlignmentGeometry? get positionAlignment => widget.position.align;
 
   /// A [Timer] needed to dismiss the toast with animation
   /// after the given [duration] of time.
@@ -1409,7 +1409,7 @@ class StyledToastWidgetState extends State<_StyledToastWidget>
 
   ///Dismiss toast
   void dismissToast() {
-    _toastTimer?.cancel();
+    _toastTimer.cancel();
     setState(() {
       opacity = 0.0;
     });

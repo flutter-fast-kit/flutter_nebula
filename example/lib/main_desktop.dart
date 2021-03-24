@@ -22,6 +22,9 @@ class _EquinoxShowcaseAppState extends State<EquinoxShowcaseApp> {
       title: 'Flutter Demo',
       theme: AppState.theme,
       home: MainPage(),
+      builder: (BuildContext context, Widget? child) {
+        return Container();
+      },
     );
   }
 }

@@ -239,7 +239,7 @@ class NeAlertDialog extends StatelessWidget {
         case TargetPlatform.fuchsia:
         case TargetPlatform.linux:
         case TargetPlatform.windows:
-          label = semanticLabel ?? MaterialLocalizations.of(context)?.alertDialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context).alertDialogLabel;
       }
     }
 

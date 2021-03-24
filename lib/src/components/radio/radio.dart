@@ -8,7 +8,7 @@ export 'package:flutter_nebula/src/components/radio/radio_style.dart';
 /// Toggle represents a selection in a list of items.
 class NeRadio extends StatefulWidget {
   /// A method to call when user selects this radio button.
-  final VoidCallback onSelected;
+  final VoidCallback? onSelected;
 
   /// The value of radio. Cannot be null.
   final bool value;
@@ -20,7 +20,7 @@ class NeRadio extends StatefulWidget {
   final NeWidgetStatus? status;
 
   /// Controls the location of description.
-  final NePositioning descriptionPosition;
+  final NePositioning? descriptionPosition;
 
   /// Padding for the radio. Defaults to `control-padding`.
   final EdgeInsets? padding;

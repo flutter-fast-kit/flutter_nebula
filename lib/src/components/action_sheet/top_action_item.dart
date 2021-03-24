@@ -21,7 +21,7 @@ class TopActionItem extends ActionItem {
   final ValueChanged<List<int>>? doneAction;
 
   const TopActionItem(
-      {required String title,
+      {String? title,
       this.desc,
       TextStyle? titleTextStyle,
       this.descTextStyle,

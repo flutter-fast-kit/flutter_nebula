@@ -16,14 +16,14 @@ class NeToggle extends StatefulWidget {
   final String? description;
 
   /// Controls the location of description.
-  final NePositioning descriptionPosition;
+  final NePositioning? descriptionPosition;
 
   /// If it is true, Display icon when toggle is selected.
   final bool showIcon;
 
   /// A method to call when user presses the toggle. Passes the inverse of [value].
   /// If it is null, then toggle is disabled.
-  final void Function(bool) onChanged;
+  final void Function(bool)? onChanged;
 
   /// Amount of padding.
   final EdgeInsets? padding;
@@ -86,10 +86,12 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
   }
 
   _onTap() {
-    if (widget.value == null)
-      widget.onChanged(true);
-    else
-      widget.onChanged(!widget.value);
+    if (widget.onChanged != null) {
+      if (widget.value == null)
+        widget.onChanged!(true);
+      else
+        widget.onChanged!(!widget.value);
+    }
   }
 
   @override

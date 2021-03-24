@@ -22,7 +22,7 @@ class NeButton extends StatefulWidget {
   final NeWidgetShape shape;
 
   /// Method that is called when user presses the button. Button will become disabled if `null` is passed;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// Text to display inside of the button. Can be styled using [NeButtonThemeData].
   final Widget label;

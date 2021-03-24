@@ -19,7 +19,7 @@ class _ToggleShowcaseState extends ShowcaseState<ToggleShowcase> {
   Map<String, bool> status = {};
 
   bool getStatus(String key, [bool def = true]) {
-    if (status.containsKey(key)) return status[key];
+    if (status.containsKey(key)) return status[key]!;
     status[key] = def;
     return def;
   }

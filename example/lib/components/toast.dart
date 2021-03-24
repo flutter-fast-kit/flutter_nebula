@@ -44,7 +44,7 @@ class _ToastShowcaseState extends ShowcaseState<ToastShowcase> {
   String get showcaseName => 'Toasts';
 
   showToast(NeToast data) {
-    NeToastService.of(context).pushToast(toast: data);
+    NeToastService.of(context)?.pushToast(toast: data);
   }
 
   @override

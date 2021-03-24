@@ -25,7 +25,7 @@ import 'top_action_item.dart';
 ///
 Future<T?> showActionSheet<T>({
   required BuildContext context,
-  required List<ActionItem> actions,
+  List<ActionItem>? actions,
   Widget? content,
   ChoiceConfig? choiceConfig,
   TopActionItem? topActionItem,
@@ -109,7 +109,7 @@ class _TopActionItemWidget extends StatelessWidget {
                   color: style.get('action-sheet-header-text-color'),
                 ),
                 child: Text(
-                  topActionItem.title,
+                  topActionItem.title!,
                   style: const TextStyle().merge(topActionItem.titleTextStyle),
                   textAlign: TextAlign.center,
                   // style: topActionItem.titleTextStyle.copyWith({}),
@@ -202,7 +202,7 @@ class _BottomActionItemWidget extends StatelessWidget {
 
 /// ActionSheet
 class _ActionSheet extends StatefulWidget {
-  final List<ActionItem> actions;
+  final List<ActionItem>? actions;
   final Widget? content;
   final ChoiceConfig? choiceConfig;
   final TopActionItem? topActionItem;
@@ -211,8 +211,7 @@ class _ActionSheet extends StatefulWidget {
   @override
   _ActionSheetState createState() => _ActionSheetState();
 
-  const _ActionSheet(
-      {required this.actions, this.content, this.choiceConfig, this.topActionItem, this.bottomActionItem});
+  const _ActionSheet({this.actions, this.content, this.choiceConfig, this.topActionItem, this.bottomActionItem});
 }
 
 class _ActionSheetState extends State<_ActionSheet> {
@@ -240,18 +239,18 @@ class _ActionSheetState extends State<_ActionSheet> {
 
       /// 添加中间操作按钮
       if (widget.actions != null) {
-        widget.actions.forEach((action) {
-          final index = widget.actions.indexOf(action);
+        widget.actions!.forEach((action) {
+          final index = widget.actions!.indexOf(action);
           widgets.add(NeButton.ghost(
               fluid: true,
               size: NeWidgetSize.giant,
               label: NeText.subtitle1(
-                action.title,
+                action.title!,
                 state: NeTextState.basic,
                 textAlign: TextAlign.center,
               ),
               onTap: action.onPressed!));
-          if (index < widget.actions.length - 1) {
+          if (index < widget.actions!.length - 1) {
             widgets.add(NeDivider());
           }
         });
@@ -276,7 +275,7 @@ class _ActionSheetState extends State<_ActionSheet> {
             value: index,
             groupValue: widget.choiceConfig!.isCheckBox ? (_checkBoxValue.contains(index) ? index : -1) : _groupValue,
             isCheckBox: widget.choiceConfig!.isCheckBox,
-            title: item.title,
+            title: item.title!,
             titleTextStyle: item.titleTextStyle,
             leftIcon: item.leftIcon,
             onPress: (dynamic idx) {

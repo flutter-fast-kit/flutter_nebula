@@ -45,7 +45,7 @@ class NebulaApp extends StatelessWidget {
   /// Material specific features such as [showDialog] and [showMenu], and widgets
   /// such as [Tooltip], [PopupMenuButton], also require a [Navigator] to properly
   /// function.
-  final TransitionBuilder builder;
+  final TransitionBuilder? builder;
 
   /// {@macro flutter.widgets.widgetsApp.title}
   ///
@@ -239,7 +239,7 @@ class NebulaApp extends StatelessWidget {
     return MaterialDesign.MaterialApp(
       builder: (context, child) {
         var modifiedChild = child;
-        if (builder != null) modifiedChild = builder(context, child);
+        if (builder != null) modifiedChild = builder!(context, child);
         return NeTheme(
           theme: theme,
           isDarkMode: isDarkMode,

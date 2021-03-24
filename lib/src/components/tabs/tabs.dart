@@ -9,10 +9,10 @@ export 'package:flutter_nebula/src/components/tabs/tab.dart';
 /// [tabs] must not be null.
 class NeTabs extends StatefulWidget implements PreferredSizeWidget {
   /// Index of a tab that is selected by default.
-  final int defaultSelected;
+  final int? defaultSelected;
 
   /// This method is called when a tab is selected. Can be `null` to make all tabs disabled.
-  final Function(int) onSelect;
+  final Function(int)? onSelect;
 
   /// List of all tabs. See [NeTabData] for more;
   final List<NeTabData> tabs;
@@ -26,7 +26,7 @@ class NeTabs extends StatefulWidget implements PreferredSizeWidget {
   const NeTabs({
     Key? key,
     required this.defaultSelected,
-    required this.onSelect,
+    this.onSelect,
     required this.tabs,
     this.showPagerIndicator = true,
     this.pagerIndicatorPosition = NeVerticalPositioning.bottom,
@@ -43,13 +43,15 @@ class _NeTabsState extends State<NeTabs> {
 
   @override
   void initState() {
-    if (widget.defaultSelected != null) selected = widget.defaultSelected;
+    if (widget.defaultSelected != null) selected = widget.defaultSelected!;
     super.initState();
   }
 
   void onSelect(int index) {
     selected = index;
-    widget.onSelect(index);
+    if (widget.onSelect != null) {
+      widget.onSelect!(index);
+    }
     setState(() {});
   }
 

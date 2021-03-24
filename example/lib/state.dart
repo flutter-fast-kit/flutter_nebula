@@ -1,10 +1,11 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 
 class AppState {
   static StyleData theme = NeThemes.defaultLightTheme;
   static bool isDark = false;
-  static VoidCallback _subscriber;
+  static late VoidCallback _subscriber;
 
   static toggleTheme() {
     if (!AppState.isDark) {

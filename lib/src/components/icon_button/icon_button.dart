@@ -24,7 +24,7 @@ class NeIconButton extends StatefulWidget {
   final NeWidgetShape shape;
 
   /// Method is called when user taps on the button. Can be null to disable this button.
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// Icon to display.
   final IconData icon;
@@ -32,7 +32,7 @@ class NeIconButton extends StatefulWidget {
   const NeIconButton({
     Key? key,
     required this.icon,
-    required this.onTap,
+    this.onTap,
     this.size = NeWidgetSize.medium,
     this.status,
     this.appearance = NeWidgetAppearance.filled,

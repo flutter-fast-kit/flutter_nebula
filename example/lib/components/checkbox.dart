@@ -19,7 +19,7 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
   Map<String, bool> status = {};
 
   bool getStatus(String key, [bool def = true]) {
-    if (status.containsKey(key)) return status[key];
+    if (status.containsKey(key)) return status[key]!;
     status[key] = def;
     return def;
   }
@@ -42,7 +42,7 @@ class _CheckboxShowcaseState extends ShowcaseState<CheckboxShowcase> {
                 description: 'Description',
               ),
               NeCheckbox(
-                value: getStatus('d.1', null),
+                value: getStatus('d.1'),
                 onChanged: (v) => setStatus('d.1', v),
                 description: 'Tristate',
               ),

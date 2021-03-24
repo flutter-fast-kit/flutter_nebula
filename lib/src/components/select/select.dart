@@ -16,7 +16,7 @@ class NeSelect<T> extends StatefulWidget {
   final List<NeSelectItem<T>> items;
 
   /// This method is called when user selects an item in a list. Can be null to make the widget disabled.
-  final void Function(T) onSelect;
+  final void Function(T)? onSelect;
 
   /// Label is displayed on top of the widget. Optional.
   final String? label;
@@ -48,7 +48,7 @@ class NeSelect<T> extends StatefulWidget {
   const NeSelect({
     Key? key,
     required this.items,
-    required this.onSelect,
+    this.onSelect,
     required this.hint,
     this.label,
     this.description,
@@ -189,7 +189,9 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
               borderRadius: borderRadius,
               items: widget.items,
               onSelect: (index, item) {
-                widget.onSelect(item.value);
+                if (widget.onSelect != null) {
+                  widget.onSelect!(item.value);
+                }
                 setState(() => selectedIndex = index);
                 hideOverlay();
               },

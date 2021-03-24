@@ -56,14 +56,7 @@ packages:
       name: cupertino_icons
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
-  dotted_line:
-    dependency: "direct main"
-    description:
-      name: dotted_line
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.2"
+    version: "1.0.2"
   easy_localization:
     dependency: transitive
     description:
@@ -114,9 +107,9 @@ packages:
   flutter_css_style:
     dependency: transitive
     description:
-      name: flutter_css_style
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "/Users/simman/Documents/Develop/flutter_app/flutter_css_style"
+      relative: false
+    source: path
     version: "2.0.0"
   flutter_localizations:
     dependency: transitive
@@ -129,7 +122,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.0.0+1"
   flutter_platform_selector:
     dependency: transitive
     description:
@@ -147,13 +140,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  getwidget:
-    dependency: "direct main"
-    description:
-      name: getwidget
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.2.4"
   intl:
     dependency: transitive
     description:
@@ -237,7 +223,7 @@ packages:
       name: separated_column
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.1+2"
+    version: "1.1.0-nullsafety.0"
   shared_preferences:
     dependency: transitive
     description:

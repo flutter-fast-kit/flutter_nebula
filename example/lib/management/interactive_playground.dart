@@ -19,14 +19,13 @@ class InteractivePlayground extends StatefulWidget {
   final Widget Function(StyleData theme, Map<String, dynamic> data) builder;
   final Map<String, dynamic> data;
 
-  const InteractivePlayground({Key key, this.builder, this.data})
-      : super(key: key);
+  const InteractivePlayground({Key? key, required this.builder, required this.data}) : super(key: key);
   @override
   _InteractivePlaygroundState createState() => _InteractivePlaygroundState();
 }
 
 class _InteractivePlaygroundState extends State<InteractivePlayground> {
-  Map<String, dynamic> dataCopy;
+  late Map<String, dynamic> dataCopy;
 
   @override
   void initState() {

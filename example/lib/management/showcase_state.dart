@@ -6,13 +6,13 @@ import 'package:flutter_nebula_demo_online/state.dart';
 export 'package:flutter_nebula_demo_online/management/interactive_playground.dart';
 
 class ShowcaseWidgetData {
-  final String title;
+  final String? title;
   final Widget Function() builder;
   final bool override;
 
   ShowcaseWidgetData({
     this.title,
-    this.builder,
+    required this.builder,
     this.override = false,
   });
 }
@@ -31,7 +31,7 @@ abstract class ShowcaseState<T extends StatefulWidget> extends State<T> {
             ? showcase.builder()
             : NeCard(
                 statusAppearance: NeCardStatusAppearance.none,
-                header: Text(showcase.title),
+                header: Text(showcase.title!),
                 child: showcase.builder(),
               ),
       );

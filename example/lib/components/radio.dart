@@ -19,7 +19,7 @@ class _RadioShowcaseState extends ShowcaseState<RadioShowcase> {
   Map<String, bool> status = {};
 
   bool getStatus(String key, [bool def = false]) {
-    if (status.containsKey(key)) return status[key];
+    if (status.containsKey(key)) return status[key]!;
     status[key] = def;
     return def;
   }

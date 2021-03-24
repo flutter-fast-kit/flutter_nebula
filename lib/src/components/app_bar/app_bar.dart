@@ -459,7 +459,7 @@ class _NeAppBarState extends State<NeAppBar> {
         ),
         onTap: widget.onTap,
         onChanged: widget.onChanged,
-        controller: _searchController ?? widget.searchController,
+        controller: widget.searchController ?? _searchController,
         onSubmitted: widget.onSubmitted,
       );
     }

@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 ///
 @immutable
 class ActionItem {
-  final String title;
+  final String? title;
   final TextStyle? titleTextStyle;
   final VoidCallback? onPressed;
 
-  const ActionItem({required this.title, this.titleTextStyle, this.onPressed});
+  const ActionItem({this.title, this.titleTextStyle, this.onPressed});
 }

@@ -4,25 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 
 class NeSelectOverlay extends StatelessWidget {
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
   final Animation<double> animation;
   final double borderRadius;
   final List<NeSelectItem> items;
-  final int selectedIndex;
+  final int? selectedIndex;
   final void Function(int, NeSelectItem) onSelect;
   final bool openingFromBottom;
   final double height;
 
   const NeSelectOverlay({
-    Key key,
-    this.animation,
-    this.borderRadius,
-    this.items,
+    Key? key,
+    required this.animation,
+    required this.borderRadius,
+    required this.items,
     this.selectedIndex,
-    this.onSelect,
-    this.status,
-    this.openingFromBottom,
-    this.height,
+    required this.onSelect,
+    required this.status,
+    required this.openingFromBottom,
+    required this.height,
   }) : super(key: key);
 
   @override

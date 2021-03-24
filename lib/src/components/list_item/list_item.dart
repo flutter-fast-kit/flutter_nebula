@@ -19,7 +19,7 @@ class NeListItem extends StatefulWidget {
   final bool active;
 
   /// Controls the colors.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// This method is called when user presses the item.
   final VoidCallback onTap;

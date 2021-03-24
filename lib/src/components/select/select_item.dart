@@ -4,13 +4,13 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 /// Represents an item in Select list.
 class NeSelectItem<T> {
   /// Icon to display alongisde the title and subtitle.
-  final IconData icon;
+  final IconData? icon;
 
   /// Main information.
   final String title;
 
   /// Additional information.
-  final String subtitle;
+  final String? subtitle;
 
   /// Underlying value that this item holds.
   final T value;

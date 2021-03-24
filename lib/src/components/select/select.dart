@@ -19,22 +19,22 @@ class NeSelect<T> extends StatefulWidget {
   final void Function(T) onSelect;
 
   /// Label is displayed on top of the widget. Optional.
-  final String label;
+  final String? label;
 
   /// Hint is displayed inside the widget.
-  final String hint;
+  final String? hint;
 
   /// Description is displayed below the widget. Optional.
-  final String description;
+  final String? description;
 
   /// Icon is displayed on the left side of the widget. Optional.
-  final IconData icon;
+  final IconData? icon;
 
   /// WidgetShape controls the borderRadius.
-  final NeWidgetShape shape;
+  final NeWidgetShape? shape;
 
   /// WidgetStatus controls the color.
-  final NeWidgetStatus status;
+  final NeWidgetStatus? status;
 
   /// Controls the appearance.
   final NeWidgetAppearance appearance;
@@ -43,10 +43,10 @@ class NeSelect<T> extends StatefulWidget {
   final NeWidgetSize size;
 
   /// Index of an item that is selected by default.
-  final int selectedIndex;
+  final int? selectedIndex;
 
   const NeSelect({
-    Key key,
+    Key? key,
     required this.items,
     required this.onSelect,
     required this.hint,
@@ -65,15 +65,15 @@ class NeSelect<T> extends StatefulWidget {
 }
 
 class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMixin {
-  int selectedIndex;
+  int? selectedIndex;
   bool outlined = false;
-  OverlayEntry _overlayEntry;
+  OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
 
-  AnimationController animationController;
-  Animation<double> animation;
-  Duration animationDuration;
-  bool openingFromBottom;
+  late AnimationController animationController;
+  late Animation<double> animation;
+  late Duration animationDuration;
+  bool? openingFromBottom;
 
   didChangeDependencies() {
     super.didChangeDependencies();
@@ -102,7 +102,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
   showOverlay() {
     if (this._overlayEntry == null) {
       this._overlayEntry = createOverlay();
-      Overlay.of(context).insert(this._overlayEntry);
+      Overlay.of(context)?.insert(this._overlayEntry!);
       animationController.forward();
       setState(() {});
     }
@@ -111,7 +111,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
   hideOverlay([bool forced = false]) {
     if (this._overlayEntry != null) {
       if (forced) {
-        this._overlayEntry.remove();
+        this._overlayEntry!.remove();
         return;
       }
       animationController.reverse();
@@ -119,7 +119,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
       Future.delayed(animationDuration, () {
         if (!mounted) return;
 
-        this._overlayEntry.remove();
+        this._overlayEntry!.remove();
         this._overlayEntry = null;
         this.openingFromBottom = null;
         setState(() {});
@@ -135,7 +135,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
   }
 
   OverlayEntry createOverlay() {
-    RenderBox renderBox = context.findRenderObject();
+    RenderBox? renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
     final style = StaticStyle.of(context);
 
@@ -181,10 +181,10 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
           offset: Offset(0.0, verticalOffset),
           child: Container(
             height: height,
-            alignment: (openingFromBottom) ? Alignment.topCenter : Alignment.bottomCenter,
+            alignment: (openingFromBottom!) ? Alignment.topCenter : Alignment.bottomCenter,
             child: NeSelectOverlay(
               height: height,
-              openingFromBottom: openingFromBottom,
+              openingFromBottom: openingFromBottom!,
               animation: animation,
               borderRadius: borderRadius,
               items: widget.items,
@@ -232,11 +232,11 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
     var finalBorderRadius = borderRadius;
     var finalOutlineBorderRadius = borderRadius;
 
-    if (openingFromBottom != null && !openingFromBottom) {
+    if (openingFromBottom != null && !openingFromBottom!) {
       finalBorderRadius = BorderRadius.vertical(top: Radius.zero, bottom: borderRadius.bottomLeft);
       finalOutlineBorderRadius = BorderRadius.vertical(
           top: Radius.circular(style.get('border-radius-rectangle')), bottom: borderRadius.bottomLeft);
-    } else if (openingFromBottom != null && openingFromBottom) {
+    } else if (openingFromBottom != null && openingFromBottom!) {
       finalBorderRadius = BorderRadius.vertical(top: borderRadius.topLeft, bottom: Radius.zero);
 
       finalOutlineBorderRadius = BorderRadius.vertical(
@@ -251,7 +251,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
       children: <Widget>[
         if (widget.label != null) ...[
           Text(
-            widget.label.toUpperCase(),
+            widget.label!.toUpperCase(),
             style: TextStyle(
               color: style.get('select-label-color'),
               fontSize: style.get('select-label-font-size'),
@@ -294,7 +294,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
                       SizedBox(width: 16.0),
                     ],
                     Expanded(
-                      child: Text(selectedIndex != null ? widget.items[selectedIndex].title : widget.hint,
+                      child: Text(selectedIndex != null ? widget.items[selectedIndex!].title : widget.hint!,
                           style: (selectedIndex != null)
                               ? TextStyle(
                                   color: style.get(generateSelector([...selectorBase, 'text-color'])),
@@ -331,7 +331,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
         if (widget.description != null) ...[
           SizedBox(height: 4.0),
           Text(
-            widget.description,
+            widget.description!,
             style: TextStyle(
               color: style.get('select-description-color'),
               fontSize: style.get('select-description-font-size'),

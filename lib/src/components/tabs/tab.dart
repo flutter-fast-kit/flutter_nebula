@@ -7,13 +7,13 @@ export 'package:flutter_nebula/src/components/tabs/tab_style.dart';
 /// A data for tab. Either [icon] or [title] must be present.
 class NeTabData {
   /// Leading widget to display alongside [title].
-  final WidgetBuilder icon;
+  final WidgetBuilder? icon;
 
   /// Leading widget to display alongside [title] while tab is active.
-  final WidgetBuilder activeIcon;
+  final WidgetBuilder? activeIcon;
 
   /// Label to display. Can be null.
-  final WidgetBuilder title;
+  final WidgetBuilder? title;
 
   /// Whether the tab is disabled or not. By default it is false.
   final bool disabled;
@@ -26,16 +26,10 @@ class NeTabData {
   });
 
   factory NeTabData.fromIcon(
-      {String title,
-      IconData icon,
-      IconData activeIcon,
-      bool disabled = false,
-      double iconSize = 18.0}) {
+      {String? title, IconData? icon, IconData? activeIcon, bool disabled = false, double iconSize = 18.0}) {
     return NeTabData(
       icon: (icon != null) ? (_) => NeIcon(icon, size: iconSize) : null,
-      activeIcon: (icon != null && activeIcon != null)
-          ? (_) => NeIcon(activeIcon, size: iconSize)
-          : null,
+      activeIcon: (icon != null && activeIcon != null) ? (_) => NeIcon(activeIcon, size: iconSize) : null,
       title: (title != null) ? (_) => Text(title) : null,
       disabled: disabled,
     );
@@ -46,13 +40,13 @@ class NeTabData {
 class NeTab extends StatefulWidget {
   final NeTabData data;
   final bool active;
-  final VoidCallback onTap;
-  final bool showPagerIndicator;
+  final VoidCallback? onTap;
+  final bool? showPagerIndicator;
   final Alignment pagerIndicatorAlignment;
 
   const NeTab({
-    Key key,
-    this.data,
+    Key? key,
+    required this.data,
     this.active = false,
     this.onTap,
     this.showPagerIndicator = true,
@@ -95,10 +89,9 @@ class _NeTabState extends State<NeTab> {
       'color'
     ]));
 
-    bool showPagerIndicator = widget.showPagerIndicator;
+    bool? showPagerIndicator = widget.showPagerIndicator;
     if (showPagerIndicator == null) {
-      showPagerIndicator =
-          widget.data.title == null && widget.data.icon != null;
+      showPagerIndicator = widget.data.title == null && widget.data.icon != null;
     }
 
     return OutlinedGestureDetector(
@@ -132,12 +125,10 @@ class _NeTabState extends State<NeTab> {
                     children: [
                       if ((!widget.active && widget.data.icon != null) ||
                           (widget.active && widget.data.activeIcon == null))
-                        widget.data.icon(context),
-                      if (widget.active && widget.data.activeIcon != null)
-                        widget.data.activeIcon(context),
-                      if (widget.data.icon != null && widget.data.title != null)
-                        SizedBox(height: 2.0),
-                      if (widget.data.title != null) widget.data.title(context),
+                        widget.data.icon!(context),
+                      if (widget.active && widget.data.activeIcon != null) widget.data.activeIcon!(context),
+                      if (widget.data.icon != null && widget.data.title != null) SizedBox(height: 2.0),
+                      if (widget.data.title != null) widget.data.title!(context),
                     ],
                   ),
                 ),

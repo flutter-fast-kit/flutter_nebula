@@ -24,8 +24,8 @@ class NeTabs extends StatefulWidget implements PreferredSizeWidget {
   final NeVerticalPositioning pagerIndicatorPosition;
 
   const NeTabs({
-    Key key,
-    this.defaultSelected,
+    Key? key,
+    required this.defaultSelected,
     required this.onSelect,
     required this.tabs,
     this.showPagerIndicator = true,

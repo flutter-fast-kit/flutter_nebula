@@ -13,10 +13,10 @@ class NebulaApp extends StatelessWidget {
   final bool isDarkMode;
 
   /// {@macro flutter.widgets.widgetsApp.navigatorKey}
-  final GlobalKey<NavigatorState> navigatorKey;
+  final GlobalKey<NavigatorState>? navigatorKey;
 
   /// {@macro flutter.widgets.widgetsApp.home}
-  final Widget home;
+  final Widget? home;
 
   /// The application's top-level routing table.
   ///
@@ -29,13 +29,13 @@ class NebulaApp extends StatelessWidget {
   final Map<String, WidgetBuilder> routes;
 
   /// {@macro flutter.widgets.widgetsApp.initialRoute}
-  final String initialRoute;
+  final String? initialRoute;
 
   /// {@macro flutter.widgets.widgetsApp.onGenerateRoute}
-  final RouteFactory onGenerateRoute;
+  final RouteFactory? onGenerateRoute;
 
   /// {@macro flutter.widgets.widgetsApp.onUnknownRoute}
-  final RouteFactory onUnknownRoute;
+  final RouteFactory? onUnknownRoute;
 
   /// {@macro flutter.widgets.widgetsApp.navigatorObservers}
   final List<NavigatorObserver> navigatorObservers;
@@ -55,10 +55,10 @@ class NebulaApp extends StatelessWidget {
   /// {@macro flutter.widgets.widgetsApp.onGenerateTitle}
   ///
   /// This value is passed unmodified to [WidgetsApp.onGenerateTitle].
-  final GenerateAppTitle onGenerateTitle;
+  final GenerateAppTitle? onGenerateTitle;
 
   /// {@macro flutter.widgets.widgetsApp.locale}
-  final Locale locale;
+  final Locale? locale;
 
   /// {@macro flutter.widgets.widgetsApp.localizationsDelegates}
   ///
@@ -151,17 +151,17 @@ class NebulaApp extends StatelessWidget {
   ///    which provides material localizations for many languages.
   ///  * The Flutter Internationalization Tutorial,
   ///    <https://flutter.dev/tutorials/internationalization/>.
-  final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
+  final Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates;
 
   /// {@macro flutter.widgets.widgetsApp.localeListResolutionCallback}
   ///
   /// This callback is passed along to the [WidgetsApp] built by this widget.
-  final LocaleListResolutionCallback localeListResolutionCallback;
+  final LocaleListResolutionCallback? localeListResolutionCallback;
 
   /// {@macro flutter.widgets.widgetsApp.localeResolutionCallback}
   ///
   /// This callback is passed along to the [WidgetsApp] built by this widget.
-  final LocaleResolutionCallback localeResolutionCallback;
+  final LocaleResolutionCallback? localeResolutionCallback;
 
   /// {@macro flutter.widgets.widgetsApp.supportedLocales}
   ///
@@ -208,9 +208,9 @@ class NebulaApp extends StatelessWidget {
   final bool debugShowMaterialGrid;
 
   const NebulaApp({
-    Key key,
+    Key? key,
     required this.theme,
-    required this.isDarkMode = false,
+    this.isDarkMode = false,
     required this.title,
     this.navigatorKey,
     this.home,
@@ -219,7 +219,7 @@ class NebulaApp extends StatelessWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
     this.navigatorObservers = const <NavigatorObserver>[],
-    this.builder,
+    required this.builder,
     this.onGenerateTitle,
     this.locale,
     this.localizationsDelegates,
@@ -233,6 +233,7 @@ class NebulaApp extends StatelessWidget {
     this.showSemanticsDebugger = false,
     this.debugShowCheckedModeBanner = true,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialDesign.MaterialApp(
@@ -243,7 +244,7 @@ class NebulaApp extends StatelessWidget {
           theme: theme,
           isDarkMode: isDarkMode,
           child: NeToastService(
-            child: modifiedChild,
+            child: modifiedChild!,
           ),
         );
       },

@@ -7,14 +7,14 @@ class OutlinedWidget extends StatefulWidget {
   final bool outlined;
   final Widget child;
   final Size predefinedSize;
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
   final bool clipInner;
 
   const OutlinedWidget({
-    Key key,
+    Key? key,
     required this.outlined,
     required this.child,
-    this.predefinedSize,
+    required this.predefinedSize,
     this.borderRadius,
     this.clipInner = true,
   }) : super(key: key);
@@ -25,13 +25,13 @@ class OutlinedWidget extends StatefulWidget {
 
 class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProviderStateMixin {
   GlobalKey itemKey = GlobalKey();
-  Size itemSize;
-  BorderRadius borderRadius;
+  late Size? itemSize;
+  late BorderRadius borderRadius;
 
   bool isFirstCallback = true;
 
-  AnimationController animationController;
-  Animation<double> animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void didUpdateWidget(OutlinedWidget oldWidget) {
@@ -42,7 +42,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
         animationController.reverse();
       } else {
         Future.delayed(
-          animationController.duration - animationController.lastElapsedDuration,
+          animationController.duration! - animationController.lastElapsedDuration!,
           animationController.reverse,
         );
       }
@@ -78,8 +78,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
 
   VectorMath.Vector3 calculateScaleVector(double outlineWidth) {
     var value = VectorMath.Vector3(
-      1 * outlineWidth / itemSize.width,
-      1 * outlineWidth / itemSize.height,
+      1 * outlineWidth / itemSize!.width,
+      1 * outlineWidth / itemSize!.height,
       0.0,
     );
     if (widget.clipInner) {
@@ -124,7 +124,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
                           VectorMath.Quaternion.identity(),
                           scaleFactor,
                         ),
-                        origin: Offset(itemSize.width / 2.0, itemSize.height / 2.0),
+                        origin: Offset(itemSize!.width / 2.0, itemSize!.height / 2.0),
                         child: (widget.clipInner)
                             ? ClipPath(
                                 clipper: DoubleClipRRect(
@@ -133,8 +133,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
                                   outlineHorizontalWidth: (outlineWidth * animation.value) / (scaleFactor.x),
                                 ),
                                 child: Container(
-                                  width: itemSize.width,
-                                  height: itemSize.height,
+                                  width: itemSize!.width,
+                                  height: itemSize!.height,
                                   decoration: BoxDecoration(
                                     color: outlineColor,
                                     borderRadius: borderRadius,
@@ -142,8 +142,8 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
                                 ),
                               )
                             : Container(
-                                width: itemSize.width,
-                                height: itemSize.height,
+                                width: itemSize!.width,
+                                height: itemSize!.height,
                                 decoration: BoxDecoration(
                                   color: outlineColor,
                                   borderRadius: borderRadius,
@@ -165,7 +165,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     if (widget.predefinedSize == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
+      WidgetsBinding.instance?.addPostFrameCallback((_) {
         if (isFirstCallback) {
           isFirstCallback = false;
           setState(() {});

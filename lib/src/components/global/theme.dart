@@ -11,11 +11,9 @@ class NeTheme extends StatelessWidget {
 
   final bool isDarkMode;
 
-  const NeTheme({Key key, this.theme, this.child, this.isDarkMode = false})
-      : super(key: key);
+  const NeTheme({Key? key, required this.theme, required this.child, this.isDarkMode = false}) : super(key: key);
 
-  static const Map<TargetPlatform, PageTransitionsBuilder> _defaultBuilders =
-      <TargetPlatform, PageTransitionsBuilder>{
+  static const Map<TargetPlatform, PageTransitionsBuilder> _defaultBuilders = <TargetPlatform, PageTransitionsBuilder>{
     TargetPlatform.android: CupertinoPageTransitionsBuilder(),
     TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
   };
@@ -25,18 +23,16 @@ class NeTheme extends StatelessWidget {
     return MaterialDesign.Theme(
         data: MaterialDesign.ThemeData(
           // splashFactory: const NoSplashFactory(),
-          splashColor: Colors.transparent, // 取消水波纹
-          errorColor: isDarkMode
-              ? theme.get('color-danger-700')
-              : theme.get('color-danger-600'),
+          splashColor: Colors.transparent,
+          // 取消水波纹
+          errorColor: isDarkMode ? theme.get('color-danger-700') : theme.get('color-danger-600'),
           brightness: isDarkMode ? Brightness.dark : Brightness.light,
           primaryColor: isDarkMode ? Color(0xFF1A273F) : Color(0xFFFFFFFF),
           accentColor: Color(0xFF135FDB),
           // Tab指示器颜色
           indicatorColor: Color(0xFF135FDB),
           // 页面背景色
-          scaffoldBackgroundColor:
-              isDarkMode ? Color(0xFF1A273F) : Color(0xFFFFFFFF),
+          scaffoldBackgroundColor: isDarkMode ? Color(0xFF1A273F) : Color(0xFFFFFFFF),
           // 主要用于Material背景色
           canvasColor: isDarkMode ? Color(0xFF1A273F) : Color(0xFFFFFFFF),
           // 文字选择色（输入框复制粘贴菜单）
@@ -63,14 +59,12 @@ class NeTheme extends StatelessWidget {
             color: theme.get('app-bar-background-color'),
             brightness: isDarkMode ? Brightness.dark : Brightness.light,
           ),
-          dividerTheme: DividerThemeData(
-              color: theme.get('divider-color'), space: 0.6, thickness: 0.6),
+          dividerTheme: DividerThemeData(color: theme.get('divider-color'), space: 0.6, thickness: 0.6),
           cupertinoOverrideTheme: CupertinoThemeData(
             brightness: isDarkMode ? Brightness.dark : Brightness.light,
           ),
-          pageTransitionsTheme: PlatformUniversal.isWeb
-              ? PageTransitionsTheme()
-              : const PageTransitionsTheme(builders: _defaultBuilders),
+          pageTransitionsTheme:
+              PlatformUniversal.isWeb ? PageTransitionsTheme() : const PageTransitionsTheme(builders: _defaultBuilders),
         ),
         child: ScrollConfiguration(
           behavior: NebulaScrollBehavior(),

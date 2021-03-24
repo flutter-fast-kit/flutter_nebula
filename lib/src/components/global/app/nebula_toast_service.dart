@@ -9,21 +9,19 @@ import 'package:flutter_nebula/flutter_nebula.dart';
 class NeToastService extends StatefulWidget {
   final Widget child;
 
-  const NeToastService({Key key, this.child}) : super(key: key);
+  const NeToastService({Key? key, required this.child}) : super(key: key);
 
   @override
   NeToastServiceState createState() => NeToastServiceState();
 
-  static NeToastServiceState of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<_NeToastServiceInherited>()
-        .data;
+  static NeToastServiceState? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<_NeToastServiceInherited>()?.data;
   }
 }
 
 class NeToastServiceState extends State<NeToastService> {
-  List<NeToast> _toastQueue;
-  ScrollController _toastScrollController;
+  late List<NeToast> _toastQueue;
+  late ScrollController _toastScrollController;
 
   @override
   void initState() {
@@ -45,10 +43,9 @@ class NeToastServiceState extends State<NeToastService> {
   }
 
   /// Pushes a new toast to the list. Refer to [NeToast] for styling info.
-  void pushToast({NeToast toast}) {
+  void pushToast({required NeToast toast}) {
     _toastQueue.add(toast);
-    _toastScrollController.animateTo(0.0,
-        duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
+    _toastScrollController.animateTo(0.0, duration: Duration(milliseconds: 300), curve: Curves.easeInOut);
     setState(() {});
   }
 
@@ -102,11 +99,10 @@ class NeToastServiceState extends State<NeToastService> {
 }
 
 class _NeToastServiceInherited extends InheritedWidget {
-  final NeToastServiceState data;
+  final NeToastServiceState? data;
   final Widget child;
 
-  _NeToastServiceInherited({Key key, this.child, this.data})
-      : super(key: key, child: child);
+  _NeToastServiceInherited({Key? key, required this.child, this.data}) : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(_NeToastServiceInherited oldWidget) => false;

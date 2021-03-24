@@ -26,7 +26,7 @@ enum NeTextStyle {
 }
 
 class NeTextUtils {
-  static String getStyleName({NeTextStyle style}) {
+  static String getStyleName({NeTextStyle? style}) {
     switch (style) {
       case NeTextStyle.caption1:
         return 'caption';
@@ -59,8 +59,7 @@ class NeTextUtils {
     }
   }
 
-  static TextStyle getTextStyle(
-      {NeTextStyle style, StaticStyleState styleData}) {
+  static TextStyle getTextStyle({NeTextStyle? style, required StaticStyleState styleData}) {
     final styleName = 'text-${getStyleName(style: style)}';
     final fontFamily = styleData.get('$styleName-font-family');
     final fontSize = styleData.get('$styleName-font-size');

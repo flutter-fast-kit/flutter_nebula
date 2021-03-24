@@ -6,9 +6,9 @@ export 'package:flutter_nebula/src/components/text/text_params.dart';
 
 /// This widget provides quick and easy access to flutter_nebula's text styles. See the constructors for more info.
 class NeText extends StatelessWidget {
-  final NeTextStyle neStyle;
-  final NeTextState state;
-  final NeWidgetStatus status;
+  final NeTextStyle? neStyle;
+  final NeTextState? state;
+  final NeWidgetStatus? status;
 
   /// The text to display.
   ///
@@ -20,13 +20,13 @@ class NeText extends StatelessWidget {
   /// If the style's "inherit" property is true, the style will be merged with
   /// the closest enclosing [DefaultTextStyle]. Otherwise, the style will
   /// replace the closest enclosing [DefaultTextStyle].
-  final TextStyle style;
+  final TextStyle? style;
 
   /// {@macro flutter.painting.textPainter.strutStyle}
-  final StrutStyle strutStyle;
+  final StrutStyle? strutStyle;
 
   /// How the text should be aligned horizontally.
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
 
   /// The directionality of the text.
   ///
@@ -41,7 +41,7 @@ class NeText extends StatelessWidget {
   /// its left.
   ///
   /// Defaults to the ambient [Directionality], if any.
-  final TextDirection textDirection;
+  final TextDirection? textDirection;
 
   /// Used to select a font when the same Unicode character can
   /// be rendered differently, depending on the locale.
@@ -50,15 +50,15 @@ class NeText extends StatelessWidget {
   /// is inherited from the enclosing app with `Localizations.localeOf(context)`.
   ///
   /// See [RenderParagraph.locale] for more information.
-  final Locale locale;
+  final Locale? locale;
 
   /// Whether the text should break at soft line breaks.
   ///
   /// If false, the glyphs in the text will be positioned as if there was unlimited horizontal space.
-  final bool softWrap;
+  final bool? softWrap;
 
   /// How visual overflow should be handled.
-  final TextOverflow overflow;
+  final TextOverflow? overflow;
 
   /// The number of font pixels for each logical pixel.
   ///
@@ -68,7 +68,7 @@ class NeText extends StatelessWidget {
   /// The value given to the constructor as textScaleFactor. If null, will
   /// use the [MediaQueryData.textScaleFactor] obtained from the ambient
   /// [MediaQuery], or 1.0 if there is no [MediaQuery] in scope.
-  final double textScaleFactor;
+  final double? textScaleFactor;
 
   /// An optional maximum number of lines for the text to span, wrapping if necessary.
   /// If the text exceeds the given number of lines, it will be truncated according
@@ -81,7 +81,7 @@ class NeText extends StatelessWidget {
   /// an explicit number for its [DefaultTextStyle.maxLines], then the
   /// [DefaultTextStyle] value will take precedence. You can use a [RichText]
   /// widget directly to entirely override the [DefaultTextStyle].
-  final int maxLines;
+  final int? maxLines;
 
   /// An alternative semantics label for this text.
   ///
@@ -95,11 +95,11 @@ class NeText extends StatelessWidget {
   /// ```dart
   /// Text(r'$$', semanticsLabel: 'Double dollars')
   /// ```
-  final String semanticsLabel;
+  final String? semanticsLabel;
 
   const NeText(
     this.data, {
-    Key key,
+    Key? key,
     this.state,
     this.style,
     required this.neStyle,
@@ -117,19 +117,19 @@ class NeText extends StatelessWidget {
 
   factory NeText.heading1(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -152,19 +152,19 @@ class NeText extends StatelessWidget {
 
   factory NeText.heading2(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -186,19 +186,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.heading3(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -220,19 +220,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.heading4(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -254,19 +254,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.heading5(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -288,19 +288,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.heading6(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -322,19 +322,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.paragraph1(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -356,19 +356,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.paragraph2(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -390,19 +390,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.subtitle1(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -424,19 +424,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.subtitle2(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -458,19 +458,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.label(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -492,19 +492,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.caption1(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,
@@ -526,19 +526,19 @@ class NeText extends StatelessWidget {
   }
   factory NeText.caption2(
     String data, {
-    NeTextState state,
-    Key key,
-    TextStyle style,
-    StrutStyle strutStyle,
-    TextAlign textAlign,
-    TextDirection textDirection,
-    Locale locale,
-    bool softWrap,
-    double textScaleFactor,
-    int maxLines,
-    String semanticsLabel,
-    TextOverflow overflow,
-    NeWidgetStatus status,
+    NeTextState? state,
+    Key? key,
+    TextStyle? style,
+    StrutStyle? strutStyle,
+    TextAlign? textAlign,
+    TextDirection? textDirection,
+    Locale? locale,
+    bool? softWrap,
+    double? textScaleFactor,
+    int? maxLines,
+    String? semanticsLabel,
+    TextOverflow? overflow,
+    NeWidgetStatus? status,
   }) {
     return NeText(
       data,

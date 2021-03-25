@@ -16,8 +16,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1.4.0
-      - run: cd example
-      - run: flutter pub get
-      - run: flutter build web
-      - run: ls -la
-      - run: cd build/web
+      - run: cd example && flutter pub get && flutter build web
+      - run: cd example/build/web && ls -la

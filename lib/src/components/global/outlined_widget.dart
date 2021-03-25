@@ -30,20 +30,20 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
 
   bool isFirstCallback = true;
 
-  late AnimationController animationController;
+  AnimationController? animationController;
   late Animation<double> animation;
 
   @override
   void didUpdateWidget(OutlinedWidget oldWidget) {
     if (widget.outlined) {
-      animationController.forward();
+      animationController?.forward();
     } else {
-      if (animationController.lastElapsedDuration == null) {
-        animationController.reverse();
+      if (animationController?.lastElapsedDuration == null) {
+        animationController?.reverse();
       } else {
         Future.delayed(
-          animationController.duration! - animationController.lastElapsedDuration!,
-          animationController.reverse,
+          animationController!.duration! - animationController!.lastElapsedDuration!,
+          animationController!.reverse,
         );
       }
     }
@@ -62,11 +62,11 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
     var animationDuration = StaticStyle.of(context).get('minor-animation-duration');
 
     if (animationController != null) {
-      animationController.duration = animationDuration;
+      animationController?.duration = animationDuration;
     } else {
       animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(parent: animationController, curve: Curves.decelerate);
+    animation = CurvedAnimation(parent: animationController!, curve: Curves.decelerate);
   }
 
   @override
@@ -181,7 +181,7 @@ class _OutlinedWidgetState extends State<OutlinedWidget> with SingleTickerProvid
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController?.dispose();
     super.dispose();
   }
 }

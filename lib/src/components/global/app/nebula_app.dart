@@ -219,7 +219,7 @@ class NebulaApp extends StatelessWidget {
     this.onGenerateRoute,
     this.onUnknownRoute,
     this.navigatorObservers = const <NavigatorObserver>[],
-    required this.builder,
+    this.builder,
     this.onGenerateTitle,
     this.locale,
     this.localizationsDelegates,

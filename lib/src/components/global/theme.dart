@@ -26,7 +26,7 @@ class NeTheme extends StatelessWidget {
           // splashFactory: const NoSplashFactory(),
           splashColor: Colors.transparent,
           // 取消水波纹
-          errorColor: isDarkMode ? theme.get('color-danger-700') : theme.get('color-danger-600'),
+          // errorColor: isDarkMode ? theme.get('color-danger-700') : theme.get('color-danger-600'),
           brightness: isDarkMode ? Brightness.dark : Brightness.light,
           primaryColor: isDarkMode ? Color(0xFF1A273F) : Color(0xFFFFFFFF),
           accentColor: Color(0xFF135FDB),
@@ -52,15 +52,15 @@ class NeTheme extends StatelessWidget {
           //   subtitle2:
           //       isDarkMode ? TextStyles.textDarkGray12 : TextStyles.textGray12,
           // ),
-          inputDecorationTheme: InputDecorationTheme(
-            hintStyle: TextStyle(color: theme.get('text-hint-color')),
-          ),
+          // inputDecorationTheme: InputDecorationTheme(
+          //   hintStyle: TextStyle(color: theme.get('text-hint-color')),
+          // ),
           appBarTheme: AppBarTheme(
             elevation: 0.0,
-            color: theme.get('app-bar-background-color'),
+            // color: theme.get('app-bar-background-color'),
             brightness: isDarkMode ? Brightness.dark : Brightness.light,
           ),
-          dividerTheme: DividerThemeData(color: theme.get('divider-color'), space: 0.6, thickness: 0.6),
+          // dividerTheme: DividerThemeData(color: theme.get('divider-color'), space: 0.6, thickness: 0.6),
           cupertinoOverrideTheme: CupertinoThemeData(
             brightness: isDarkMode ? Brightness.dark : Brightness.light,
           ),

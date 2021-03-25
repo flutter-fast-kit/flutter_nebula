@@ -100,10 +100,10 @@ packages:
   flutter_css_style:
     dependency: "direct main"
     description:
-      path: "/Users/simman/Documents/Develop/flutter_app/flutter_css_style"
-      relative: false
-    source: path
-    version: "2.0.0"
+      name: flutter_css_style
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   flutter_localizations:
     dependency: transitive
     description: flutter

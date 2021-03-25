@@ -383,7 +383,7 @@ class _NeAppBarState extends State<NeAppBar> {
 
     Widget? title = widget.title;
     if (title != null) {
-      late bool namesRoute;
+      bool? namesRoute;
       switch (theme.platform) {
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:

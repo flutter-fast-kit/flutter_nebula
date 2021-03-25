@@ -44,7 +44,7 @@ class NeToggle extends StatefulWidget {
 }
 
 class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
+  AnimationController? animationController;
   late Animation<double> animation;
 
   bool outlined = false;
@@ -55,16 +55,16 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
     final animationDuration = style.get('minor-animation-duration');
 
     if (animationController != null) {
-      animationController.duration = animationDuration;
+      animationController?.duration = animationDuration;
     } else {
       animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(parent: animationController, curve: style.get('minor-animation-curve'));
+    animation = CurvedAnimation(parent: animationController!, curve: style.get('minor-animation-curve'));
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animationController?.dispose();
     super.dispose();
   }
 
@@ -77,9 +77,9 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
   void didUpdateWidget(NeToggle oldWidget) {
     if (oldWidget.value != widget.value) {
       if (widget.value) {
-        animationController.forward();
+        animationController?.forward();
       } else {
-        animationController.reverse();
+        animationController?.reverse();
       }
     }
     super.didUpdateWidget(oldWidget);

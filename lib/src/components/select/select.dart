@@ -70,7 +70,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
   OverlayEntry? _overlayEntry;
   final LayerLink _layerLink = LayerLink();
 
-  late AnimationController animationController;
+  AnimationController? animationController;
   late Animation<double> animation;
   late Duration animationDuration;
   bool? openingFromBottom;
@@ -81,15 +81,15 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
     animationDuration = style.get('minor-animation-duration');
 
     if (animationController != null) {
-      animationController.duration = animationDuration;
+      animationController!.duration = animationDuration;
     } else {
       animationController = AnimationController(vsync: this, duration: animationDuration);
     }
-    animation = CurvedAnimation(parent: animationController, curve: style.get('minor-animation-curve'));
+    animation = CurvedAnimation(parent: animationController!, curve: style.get('minor-animation-curve'));
   }
 
   dispose() {
-    animationController.dispose();
+    animationController?.dispose();
     hideOverlay(true);
     super.dispose();
   }
@@ -103,7 +103,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
     if (this._overlayEntry == null) {
       this._overlayEntry = createOverlay();
       Overlay.of(context)?.insert(this._overlayEntry!);
-      animationController.forward();
+      animationController?.forward();
       setState(() {});
     }
   }
@@ -114,7 +114,7 @@ class _NeSelectState<T> extends State<NeSelect> with SingleTickerProviderStateMi
         this._overlayEntry!.remove();
         return;
       }
-      animationController.reverse();
+      animationController?.reverse();
 
       Future.delayed(animationDuration, () {
         if (!mounted) return;

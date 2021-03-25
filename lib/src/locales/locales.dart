@@ -4,7 +4,7 @@ import 'package:flutter_nebula/src/locales/delegate.dart';
 
 class NeLocales {
   static NeLocalesDelegate get defaultLocales => NeLocalesDefault();
-  static late NeLocalesDelegate? _customLocale;
+  static NeLocalesDelegate? _customLocale;
 
   static NeLocalesDelegate? get customLocale => _customLocale;
 
@@ -43,7 +43,8 @@ class NeLocalesDefault implements NeLocalesDelegate {
 
   @override
   String load(BuildContext context, String key) {
-    final dic = _defaultLangs['${context.locale.languageCode}_${context.locale.countryCode}'];
+    final Locale? locale = EasyLocalization.of(context)?.locale;
+    final dic = _defaultLangs['${locale?.languageCode}_${locale?.countryCode}'];
     return dic?[key] ?? _defaultLangs['zh_TW']![key]!;
   }
 }

@@ -124,8 +124,11 @@ class _NeTabState extends State<NeTab> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if ((!widget.active && widget.data.icon != null) ||
-                          (widget.active && widget.data.activeIcon == null))
-                        widget.data.icon!(context),
+                          (widget.active && widget.data.activeIcon == null)) ...{
+                        if (widget.data.icon != null) ...{
+                          widget.data.icon!(context),
+                        }
+                      },
                       if (widget.active && widget.data.activeIcon != null) widget.data.activeIcon!(context),
                       if (widget.data.icon != null && widget.data.title != null) SizedBox(height: 2.0),
                       if (widget.data.title != null) widget.data.title!(context),

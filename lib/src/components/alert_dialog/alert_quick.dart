@@ -1,7 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_css_style/flutter_css_style.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
-import 'package:flutter_nebula/src/components/button/button.dart';
 import 'package:flutter_nebula/src/locales/locales.dart';
 import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
@@ -37,10 +36,9 @@ void showAlertDialog({
     context: context,
     barrierDismissible: barrierDismissible,
     builder: (BuildContext context) {
-      final style = StaticStyle.of(context);
       final List<Widget> actionWidgets = [];
       actions.forEach((action) {
-        late NeWidgetStatus status;
+        NeWidgetStatus? status;
         switch (action.actionStyle) {
           case AlertActionStyle.cancel:
             status = NeWidgetStatus.info;
@@ -88,6 +86,7 @@ void showAlertDialog({
           actions: actionWidgets,
           actionsPadding: PlatformSelector.select<EdgeInsetsGeometry>(
             ios: EdgeInsets.zero,
+            other: EdgeInsets.zero,
             android: EdgeInsets.only(bottom: 12, right: 12),
           )!);
     },

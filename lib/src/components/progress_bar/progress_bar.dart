@@ -42,21 +42,21 @@ class NeProgressBar extends StatefulWidget {
 }
 
 class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProviderStateMixin {
-  late AnimationController controller;
+  AnimationController? controller;
   late Animation<double> animation;
   late double value;
 
   didUpdateWidget(NeProgressBar oldWidget) {
     if (oldWidget.value != widget.value) {
       value = widget.value;
-      double diff = (controller.value - value).abs();
-      controller.animateTo(widget.value, duration: controller.duration! * diff);
+      double diff = (controller!.value - value).abs();
+      controller?.animateTo(widget.value, duration: controller!.duration! * diff);
     }
     super.didUpdateWidget(oldWidget);
   }
 
   dispose() {
-    controller.dispose();
+    controller?.dispose();
     super.dispose();
   }
 
@@ -65,10 +65,10 @@ class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProvider
     if (controller == null) {
       controller = AnimationController(vsync: this, duration: style.get('minor-animation-duration'));
 
-      controller.value = widget.value;
-      animation = CurvedAnimation(parent: controller, curve: Curves.linear);
+      controller?.value = widget.value;
+      animation = CurvedAnimation(parent: controller!, curve: Curves.linear);
     } else {
-      controller.duration = style.get('minor-animatino-duration');
+      controller?.duration = style.get('minor-animatino-duration');
     }
 
     super.didChangeDependencies();
@@ -102,7 +102,7 @@ class _NeProgressBarState extends State<NeProgressBar> with SingleTickerProvider
         color: style.get(generateSelector([...selectorBase, 'background-color'])),
       ),
       child: AnimatedBuilder(
-        animation: controller,
+        animation: controller!,
         builder: (context, _) {
           return FractionallySizedBox(
             widthFactor: animation.value,

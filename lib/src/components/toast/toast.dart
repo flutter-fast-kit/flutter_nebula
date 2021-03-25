@@ -23,7 +23,7 @@ class NeToastWidget extends StatefulWidget {
 }
 
 class _NeToastWidgetState extends State<NeToastWidget> with SingleTickerProviderStateMixin {
-  late AnimationController controller;
+  AnimationController? controller;
   late Animation<double> animation;
   bool revealing = true;
 
@@ -37,17 +37,17 @@ class _NeToastWidgetState extends State<NeToastWidget> with SingleTickerProvider
       );
       animation = CurvedAnimation(
         curve: style.get('minor-animation-curve'),
-        parent: controller,
+        parent: controller!,
       );
-      controller.addListener(() {
+      controller?.addListener(() {
         if (!mounted) return;
         setState(() {});
       });
-      controller.forward();
+      controller?.forward();
 
       Future.delayed(widget.data.duration, hide);
     } else {
-      controller.duration = style.get('minor-animation-duration');
+      controller?.duration = style.get('minor-animation-duration');
     }
 
     super.didChangeDependencies();
@@ -61,15 +61,15 @@ class _NeToastWidgetState extends State<NeToastWidget> with SingleTickerProvider
   void hide() {
     if (mounted && revealing) {
       revealing = false;
-      controller.reverse(from: 1.0);
-      Future.delayed(controller.duration!, widget.serviceRemoveToastCallback);
+      controller?.reverse(from: 1.0);
+      Future.delayed(controller!.duration!, widget.serviceRemoveToastCallback);
       setState(() {});
     }
   }
 
   @override
   void dispose() {
-    controller.dispose();
+    controller?.dispose();
     super.dispose();
   }
 

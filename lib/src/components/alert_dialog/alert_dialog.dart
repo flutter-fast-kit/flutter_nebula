@@ -255,6 +255,9 @@ class NeAlertDialog extends StatelessWidget {
                 ios: Center(
                   child: title,
                 ),
+                other: Center(
+                  child: title,
+                ),
                 android: title),
             namesRoute: true,
             container: true,
@@ -290,8 +293,10 @@ class NeAlertDialog extends StatelessWidget {
         padding: actionsPadding,
         height: PlatformSelector.select(ios: 50),
         child: Row(
-          mainAxisAlignment:
-              PlatformSelector.select(ios: MainAxisAlignment.spaceEvenly, android: MainAxisAlignment.end)!,
+          mainAxisAlignment: PlatformSelector.select(
+              ios: MainAxisAlignment.spaceEvenly,
+              android: MainAxisAlignment.end,
+              other: MainAxisAlignment.spaceEvenly)!,
           mainAxisSize: MainAxisSize.max,
           children: actions!,
         ),

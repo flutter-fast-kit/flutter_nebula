@@ -216,7 +216,7 @@ class _ActionSheet extends StatefulWidget {
 
 class _ActionSheetState extends State<_ActionSheet> {
   List<Widget> widgets = [];
-  late int _groupValue;
+  int _groupValue = -1;
   Set<int> _checkBoxValue = {};
 
   @override
@@ -265,7 +265,6 @@ class _ActionSheetState extends State<_ActionSheet> {
   }
 
   List<Widget> _buildChoiceItems() {
-    final style = StaticStyle.of(context);
     final List<Widget> choiceItems = [];
     if (widget.choiceConfig != null) {
       widget.choiceConfig!.items.forEach((item) {

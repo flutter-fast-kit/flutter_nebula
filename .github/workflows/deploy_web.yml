@@ -1,0 +1,27 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: DeployWeb
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1.4.0
+      - run: cd example && flutter pub get && flutter build web
+      - run: cd example/build/web && ls -la
+      - name: Publish to surge.sh
+        uses: dswistowski/surge-sh-action@v1.0.1
+        with:
+          domain: flutter-nebula.surge.sh
+          login: ${{ secrets.SURGE_LOGIN }}
+          token: ${{ secrets.SURGE_TOKEN }}
+          project: example/build/web

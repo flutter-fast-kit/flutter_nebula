@@ -1,6 +1,6 @@
 name: flutter_nebula
 description: A Flutter implementation of Eva Design System.
-version: 1.0.0+2
+version: 1.0.0+3
 homepage: https://github.com/flutter-fast-kit/flutter_nebula
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   # css 类样式
-  flutter_css_style: ^2.0.1
+  flutter_css_style: ^2.0.2
   # eva_icons_flutter
   # https://github.com/piyushmaurya23/eva_icons_flutter
   eva_icons_flutter: ^3.0.0

@@ -19,7 +19,7 @@ dependencies:
   # https://github.com/google/vector_math.dart
   vector_math: ^2.1.0
   flutter_platform_selector: ^2.0.1
-  easy_localization:
+  easy_localization: ^3.0.0
 
 dev_dependencies:
   flutter_test:

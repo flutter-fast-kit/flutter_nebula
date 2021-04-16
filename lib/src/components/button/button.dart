@@ -246,7 +246,7 @@ class _NeButtonState extends State<NeButton> {
       ),
       child: OutlinedGestureDetector(
         onTap: widget.onTap,
-        onOutlineChange: (v) => setState(() => outlined = v),
+        onOutlineChange: (v) => mounted ? setState(() => outlined = v) : null,
         child: Padding(
           padding: widget.padding ??
               style.get(

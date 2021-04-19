@@ -307,7 +307,7 @@ class _ActionSheetState extends State<_ActionSheet> {
           maxHeight: screenHeight - (screenHeight / 10),
         ),
         child: AnimatedPadding(
-          padding: MediaQuery.of(context).viewInsets,
+          padding: EdgeInsets.zero,
           duration: const Duration(milliseconds: 275),
           curve: Curves.easeOutQuad,
           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: [

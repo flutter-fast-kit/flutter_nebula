@@ -35,24 +35,38 @@ class NebulaScrollBehavior implements ScrollBehavior {
       case TargetPlatform.windows:
         return (PointerEvent event) => VelocityTracker.withKind(event.kind);
     }
+    assert(false);
+    return (PointerEvent event) => VelocityTracker(event.kind);
   }
 
   @override
   Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
-    return buildOverscrollIndicator(context, child, details);
+    return buildViewportChrome(context, child, details.direction);
   }
 
   @override
   Widget buildScrollbar(BuildContext context, Widget child, ScrollableDetails details) {
     // TODO: implement buildScrollbar
-    return buildScrollbar(context, child, details);
+    switch (getPlatform(context)) {
+      case TargetPlatform.linux:
+      case TargetPlatform.macOS:
+      case TargetPlatform.windows:
+        return RawScrollbar(
+          child: child,
+          controller: details.controller,
+        );
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+      case TargetPlatform.iOS:
+        return child;
+    }
   }
 
   @override
   ScrollBehavior copyWith(
       {bool scrollbars = true, bool overscroll = true, ScrollPhysics? physics, TargetPlatform? platform}) {
     // TODO: implement copyWith
-    // throw UnimplementedError();
-    return copyWith(scrollbars: scrollbars, overscroll: overscroll, physics: physics, platform: platform);
+    throw UnimplementedError();
+    // return super.copyWith(scrollbars: scrollbars, overscroll: overscroll, physics: physics, platform: platform);
   }
 }

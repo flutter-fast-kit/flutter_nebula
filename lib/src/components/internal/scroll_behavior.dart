@@ -35,13 +35,11 @@ class NebulaScrollBehavior implements ScrollBehavior {
       case TargetPlatform.windows:
         return (PointerEvent event) => VelocityTracker.withKind(event.kind);
     }
-    assert(false);
-    return (PointerEvent event) => VelocityTracker(event.kind);
   }
 
   @override
   Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
-    return buildViewportChrome(context, child, details.direction);
+    return buildOverscrollIndicator(context, child, details);
   }
 
   @override

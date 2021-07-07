@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 class NebulaScrollBehavior implements ScrollBehavior {
   @override
-  Widget buildViewportChrome(
-      BuildContext context, Widget child, AxisDirection axisDirection) {
+  Widget buildViewportChrome(BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
 
@@ -29,8 +28,7 @@ class NebulaScrollBehavior implements ScrollBehavior {
     switch (getPlatform(context)) {
       case TargetPlatform.iOS:
       case TargetPlatform.macOS:
-        return (PointerEvent event) =>
-            IOSScrollViewFlingVelocityTracker(event.kind);
+        return (PointerEvent event) => IOSScrollViewFlingVelocityTracker(event.kind);
       case TargetPlatform.android:
       case TargetPlatform.fuchsia:
       case TargetPlatform.linux:
@@ -39,5 +37,36 @@ class NebulaScrollBehavior implements ScrollBehavior {
     }
     assert(false);
     return (PointerEvent event) => VelocityTracker(event.kind);
+  }
+
+  @override
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+    return buildViewportChrome(context, child, details.direction);
+  }
+
+  @override
+  Widget buildScrollbar(BuildContext context, Widget child, ScrollableDetails details) {
+    // TODO: implement buildScrollbar
+    switch (getPlatform(context)) {
+      case TargetPlatform.linux:
+      case TargetPlatform.macOS:
+      case TargetPlatform.windows:
+        return RawScrollbar(
+          child: child,
+          controller: details.controller,
+        );
+      case TargetPlatform.android:
+      case TargetPlatform.fuchsia:
+      case TargetPlatform.iOS:
+        return child;
+    }
+  }
+
+  @override
+  ScrollBehavior copyWith(
+      {bool scrollbars = true, bool overscroll = true, ScrollPhysics? physics, TargetPlatform? platform}) {
+    // TODO: implement copyWith
+    throw UnimplementedError();
+    // return super.copyWith(scrollbars: scrollbars, overscroll: overscroll, physics: physics, platform: platform);
   }
 }

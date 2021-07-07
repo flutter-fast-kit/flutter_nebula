@@ -122,6 +122,34 @@ class _ActionSheetShowcaseState extends ShowcaseState<ActionSheetShowcase> {
                   );
                 },
                 label: Text('多选'),
+              ),
+              NeButton(
+                onTap: () {
+                  showActionSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      topActionItem: TopActionItem(
+                          title: "请选择支付方式",
+                          doneAction: (List<int> data) {
+                            Navigator.pop(context);
+                            print('选了数据: $data}');
+                          }),
+                      content: Container(
+                        child: Column(
+                          children: [
+                            TextField(),
+                            NeButton(
+                              onTap: null,
+                              label: Text('Only leading'),
+                              leading: NeIcon(EvaIcons.star),
+                              fluid: true,
+                            ),
+                            TextField(),
+                          ],
+                        ),
+                      ));
+                },
+                label: Text('模态输入框'),
               )
             ],
           ),

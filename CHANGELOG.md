@@ -1,3 +1,7 @@
+## [1.0.0+7]
+
+* fix ScrollBehavior
+
 ## [1.0.0+6]
 
 * flutter升级到2.2.2

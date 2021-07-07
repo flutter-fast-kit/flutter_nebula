@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_nebula/flutter_nebula.dart';
 import 'package:flutter_platform_selector/flutter_platform_selector.dart';
 
-import '../../nebula_internal.dart';
-
 class NeTheme extends StatelessWidget {
   final StyleData theme;
   final Widget child;
@@ -68,7 +66,7 @@ class NeTheme extends StatelessWidget {
               PlatformUniversal.isWeb ? PageTransitionsTheme() : const PageTransitionsTheme(builders: _defaultBuilders),
         ),
         child: ScrollConfiguration(
-          behavior: NebulaScrollBehavior(),
+          behavior: ScrollBehavior(),
           child: StaticStyle(
             data: theme,
             child: AnimatedDefaultTextStyle(

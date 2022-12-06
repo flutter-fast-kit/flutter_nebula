@@ -39,6 +39,7 @@ class NeLocalesDefault implements NeLocalesDelegate {
     'ja_JP': {'title': 'チップ', 'ok': '決定する', 'cancel': 'キャンセル'},
     'fr_FR': {'title': 'Conseils', 'ok': 'déterminer', 'cancel': 'Annulation'},
     'es_ES': {'title': 'Consejos', 'ok': 'determinar', 'cancel': 'Cancelar'},
+    'tr_TR': {'title': 'nazik ipuçları', 'ok': 'Elbette', 'cancel': 'İptal'},
   };
 
   @override

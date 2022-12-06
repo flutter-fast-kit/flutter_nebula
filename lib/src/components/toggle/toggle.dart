@@ -147,7 +147,7 @@ class _NeToggleState extends State<NeToggle> with SingleTickerProviderStateMixin
                           duration: Duration(milliseconds: 200),
                           opacity: selected ? 1 : 0,
                           child: NeIcon(
-                            EvaIcons.checkmarkOutline,
+                            EvaIcons.checkmarkSquare2Outline,
                             color: style.get(generateSelector([...selectorBasis, 'background-color'])),
                           ),
                         )

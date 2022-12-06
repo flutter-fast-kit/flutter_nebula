@@ -14,7 +14,7 @@ dependencies:
   flutter_css_style: ^2.0.2
   # eva_icons_flutter
   # https://github.com/piyushmaurya23/eva_icons_flutter
-  eva_icons_flutter: 3.0.0
+  eva_icons_flutter: ^3.1.0
   # 一个用于二维和三维应用的矢量数学库。
   # https://github.com/google/vector_math.dart
   vector_math: ^2.1.0
